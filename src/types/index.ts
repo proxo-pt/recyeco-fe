@@ -1,6 +1,5 @@
-export  interface SignUpType{
-    id: number;
-    src: string;
-    alt: string;
-} 
-    
+export interface SignUpType {
+  id: number;
+  src: string;
+  alt: string;
+}
