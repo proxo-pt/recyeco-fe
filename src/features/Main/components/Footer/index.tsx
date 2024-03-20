@@ -1,9 +1,9 @@
+import { FC } from 'react';
+import Image from 'next/image';
 import { FooterImg } from '@/constants/footer';
 import { MainMenu } from '@/constants/menu';
 import { SocialMedia } from '@/constants/socialMedia';
 import { getAssetUrl } from '@/lib/utils';
-import Image from 'next/image';
-import { FC } from 'react';
 
 const Footer: FC = () => {
   return (

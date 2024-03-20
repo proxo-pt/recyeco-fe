@@ -13,5 +13,5 @@ export interface FooterImgType {
 
 export interface SocialMediaType {
   id: number;
-  src?: LucideIcon;
+  src: LucideIcon;
 }
