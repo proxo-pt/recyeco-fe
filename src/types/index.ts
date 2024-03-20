@@ -15,3 +15,10 @@ export interface SocialMediaType {
   id: number;
   src: LucideIcon;
 }
+
+export interface CategoryItem {
+  id?: number;
+  backgroundColor?: string;
+  borderColor?: string;
+  label?: string;
+}
