@@ -51,6 +51,10 @@ const config = {
         card: {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))'
+        },
+        recyeco: {
+          primary: '#61C580',
+          secondary: '#6AE536'
         }
       },
       borderRadius: {
