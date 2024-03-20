@@ -33,7 +33,7 @@ const Navbar: FC = () => {
           <div>
             <ul className="flex gap-6">
               {MainMenu.map(menu => (
-                <li key={menu.id} className="text-xs">
+                <li key={menu.id} className="text-xs text-black">
                   <Link href="">{menu.title}</Link>
                 </li>
               ))}
