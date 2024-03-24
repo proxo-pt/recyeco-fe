@@ -54,7 +54,10 @@ const config = {
         },
         recyeco: {
           primary: '#61C580',
-          secondary: '#6AE536'
+          secondary: '#6AE536',
+          text: {
+            muted: '#888888'
+          }
         }
       },
       borderRadius: {
