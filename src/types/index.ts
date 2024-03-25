@@ -22,3 +22,9 @@ export interface CategoryItem {
   borderColor?: string;
   label?: string;
 }
+
+export interface IklanItem {
+  id?: number;
+  backgroundImage: string;
+  title: string;
+}
