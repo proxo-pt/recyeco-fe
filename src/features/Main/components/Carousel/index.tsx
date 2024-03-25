@@ -13,7 +13,7 @@ import { IklanItems } from '@/constants/menu';
 
 const CarouselIklan: FC = () => {
   return (
-    <div className="px-20">
+    <div className="px-6">
       <Carousel
         opts={{
           loop: true
