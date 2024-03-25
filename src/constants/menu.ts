@@ -1,4 +1,4 @@
-import { CategoryItem, MainMenuType } from '@/types';
+import { CategoryItem, IklanItem, MainMenuType } from '@/types';
 
 export const MainMenu: MainMenuType[] = [
   {
@@ -67,5 +67,23 @@ export const CategoryItems: CategoryItem[] = [
     backgroundColor: 'bg-[#C6A51A26]',
     borderColor: 'hover:border-[#C6A51A]',
     label: 'Baterai'
+  }
+];
+
+export const IklanItems: IklanItem[] = [
+  {
+    id: 1,
+    backgroundImage: 'carouselToko.svg',
+    title: 'Iklan Toko'
+  },
+  {
+    id: 2,
+    backgroundImage: 'carouselDana.svg',
+    title: 'Iklan Dana'
+  },
+  {
+    id: 3,
+    backgroundImage: 'carouselPlaceholder.svg',
+    title: 'Iklan'
   }
 ];
