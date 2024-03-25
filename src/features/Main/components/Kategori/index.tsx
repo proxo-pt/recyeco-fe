@@ -19,7 +19,7 @@ const CardKategori: FC = () => {
               key={id}
               asChild
               variant="outline"
-              className={`flex flex-col flex-auto justify-center items-center w-28 h-24 p-4 ${backgroundColor} border-2 ${borderColor} rounded-lg`}
+              className={`flex flex-col flex-auto justify-center items-center w-28 h-24 p-4 text-black hover:bg-[${backgroundColor}] ${backgroundColor} hover:border-2 ${borderColor} rounded-lg`}
             >
               <Link href="">
                 <Icon type={label} />
