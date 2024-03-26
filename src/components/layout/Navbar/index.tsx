@@ -21,8 +21,8 @@ import placeholderLogo from '@/assets/placeholder-logo.svg';
 
 const Navbar: FC = () => {
   return (
-    <header className="w-full sticky top-0 z-10 flex-none transition-colors duration-500 shadow-sm border-b">
-      <div className="hidden md:block bg-[#E7E7E7]">
+    <header className="w-full sticky top-0 z-10 flex-none transition-colors duration-500 shadow-sm border-b bg-white">
+      <div className="hidden md:block ">
         <div className="container flex justify-between items-center mx-auto px-6 py-2">
           <div className="flex items-center gap-2">
             <MapPin className="w-4" />
