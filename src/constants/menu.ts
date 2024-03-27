@@ -12,10 +12,6 @@ export const MainMenu: MainMenuType[] = [
   {
     id: 3,
     title: 'RecyEco Event'
-  },
-  {
-    id: 4,
-    title: 'RecyEco Care'
   }
 ];
 
