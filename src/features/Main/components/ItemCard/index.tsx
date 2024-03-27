@@ -9,7 +9,7 @@ import {
 import Image from 'next/image';
 import { Bookmark, ShoppingCart } from 'lucide-react';
 import { ItemCardProps } from '@/types';
-import { ItemAttribute, EventAttribute } from '@/constants/itemCardAttribute';
+import { ItemAttribute, EventAttribute } from '@/constants/attributes';
 import clsx from 'clsx';
 
 const ItemCard: FC<ItemCardProps> = ({ title, img, price, type, ...props }) => {
