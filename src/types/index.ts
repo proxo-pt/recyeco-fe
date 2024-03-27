@@ -28,3 +28,30 @@ export interface IklanItem {
   backgroundImage: string;
   title: string;
 }
+
+export interface ItemCardProps {
+  title?: string;
+  img?: string;
+  price?: number;
+  type: string;
+  [key: string]: any;
+}
+
+export interface ItemsType {
+  id: number;
+  img?: string;
+  title?: string;
+  price?: number;
+  weight?: number;
+  location?: string;
+}
+
+export interface EventType {
+  id: number;
+  img?: string;
+  title?: string;
+  point?: number;
+  date?: string;
+  slot?: number;
+  location?: string;
+}
