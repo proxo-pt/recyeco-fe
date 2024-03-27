@@ -13,7 +13,7 @@ import { IklanItems } from '@/constants/menu';
 
 const CarouselIklan: FC = () => {
   return (
-    <div className="px-6">
+    <div className="container mx-auto flex justify-center items-center px-6">
       <Carousel
         opts={{
           loop: true
@@ -27,17 +27,14 @@ const CarouselIklan: FC = () => {
         <CarouselContent>
           {IklanItems.map(({ id, backgroundImage, title }) => (
             <CarouselItem key={id}>
-              <div className={`flex justify-end`}>
+              <div className="flex justify-center">
                 <Image
                   src={getAssetUrl(`/imgs/${backgroundImage}`)}
                   alt={title}
                   width={1190}
                   height={370}
-                  className="relative"
+                  className="flex-1 object-fill"
                 />
-                <div className="absolute flex items-center justify-center w-24 h-8 mt-2 rounded-l-full bg-white">
-                  <p className="text-xs">RecyEco</p>
-                </div>
               </div>
             </CarouselItem>
           ))}
