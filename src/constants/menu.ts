@@ -79,7 +79,7 @@ export const IklanItems: IklanItem[] = [
   },
   {
     id: 3,
-    backgroundImage: 'carouselPlaceholder.svg',
-    title: 'Iklan'
+    backgroundImage: 'carouselProduk.svg',
+    title: 'Iklan Produk'
   }
 ];
