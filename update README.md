@@ -1,3 +1,4 @@
+![image](https://github.com/proxo-pt/recyeco-fe/assets/117993539/aa67bfc6-c38f-4905-ada8-813064833f70)
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
