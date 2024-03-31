@@ -1,37 +1,58 @@
-import { FC } from 'react';
-import Link from 'next/link';
+'use client';
+import { FC, useEffect, useState } from 'react';
 import ItemCard from '../../components/ItemCard';
 import { Items } from '@/constants/items';
 import { Event } from '@/constants/event';
 import { getAssetUrl } from '@/lib/utils';
+import { cn } from '@/lib/utils';
 
 const Market: FC = () => {
+  const [tab, setTab] = useState(1);
+
+  const updateTab = (id: number) => {
+    setTab(id);
+  };
+
   return (
     <div className="container mx-auto px-6 py-2">
-      <div className="mb-8">
-        <ul className="flex gap-4 text-xl">
-          <li className="">
-            <Link
-              href={'#'}
-              className="hover:font-semibold hover:text-[#3DAA5F] hover:border-b-4 border-[#3DAA5F]"
-            >
-              Recyeco Belanja
-            </Link>
+      <div className="mb-8 h-8">
+        <ul className="flex gap-4 text-base sm:text-xl">
+          <li
+            className={cn(
+              'hover:font-semibold hover:text-[#3DAA5F] hover:border-b-4 border-[#3DAA5F] cursor-pointer',
+              {
+                'text-[#3DAA5F] font-semibold border-b-4': tab === 1
+              }
+            )}
+            onClick={() => updateTab(1)}
+          >
+            Recyeco Belanja
           </li>
-          <li>
-            <Link
-              href={'#'}
-              className="hover:font-semibold hover:text-[#3DAA5F] hover:border-b-4 border-[#3DAA5F]"
-            >
-              Recyeco Event
-            </Link>
+          <li
+            className={cn(
+              'hover:font-semibold hover:text-[#3DAA5F] hover:border-b-4 border-[#3DAA5F] cursor-pointer',
+              {
+                'text-[#3DAA5F] font-semibold border-b-4': tab === 2
+              }
+            )}
+            onClick={() => updateTab(2)}
+          >
+            Recyeco Event
           </li>
         </ul>
       </div>
-      <div className="flex flex-wrap justify-center gap-x-3 gap-y-5">
+
+      <div
+        className={
+          tab === 1
+            ? `grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-4 justify-items-center sm:justify-items-stretch`
+            : `hidden`
+        }
+      >
         {Items.map(item => (
           <ItemCard
             key={item.id}
+            className="max-w-64 sm:max-w-full"
             type="item"
             title={item.title}
             img={getAssetUrl(`/img/${item.img}`)}
@@ -41,10 +62,17 @@ const Market: FC = () => {
           />
         ))}
       </div>
-      <div className="flex flex-wrap justify-center gap-x-3 gap-y-5 mt-5">
+      <div
+        className={
+          tab === 2
+            ? `grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-4 justify-items-center sm:justify-items-stretch`
+            : `hidden`
+        }
+      >
         {Event.map(item => (
           <ItemCard
             key={item.id}
+            className="max-w-64 sm:max-w-full"
             type="event"
             title={item.title}
             img={getAssetUrl(`/img/${item.img}`)}
