@@ -7,7 +7,6 @@ import Market from './sections/Market';
 const Main = () => {
   return (
     <div>
-      <Navbar />
       <CarouselIklan />
       <Dashboard />
       <Market />
