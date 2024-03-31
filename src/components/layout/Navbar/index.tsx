@@ -58,10 +58,8 @@ const Navbar: FC = () => {
             </Link>
             <div className="flex md:hidden text-xs">
               <DropdownMenu>
-                <DropdownMenuTrigger>
-                  <Button variant="outline" className="rounded-lg">
-                    <HamburgerMenuIcon />
-                  </Button>
+                <DropdownMenuTrigger className="border px-4 py-3 rounded-lg bg-background hover:bg-accent hover:text-accent-foreground">
+                  <HamburgerMenuIcon />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="mr-6">
                   <DropdownMenuSub>
