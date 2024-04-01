@@ -2,7 +2,7 @@
 import { FC } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { MapPin, Search, ShoppingCart } from 'lucide-react';
+import { Bell, MapPin, Search, ShoppingCart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -18,8 +18,11 @@ import { InputSearch } from '@/components/ui/input-search';
 import { MainMenu } from '@/constants/menu';
 import { HamburgerMenuIcon } from '@radix-ui/react-icons';
 import placeholderLogo from '@/assets/placeholder-logo.svg';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { NavbarProps } from '@/types';
 
-const Navbar: FC = () => {
+const Navbar: FC<NavbarProps> = () => {
+  const isLoggedIn = false;
   return (
     <header className="w-full sticky top-0 z-10 flex-none transition-colors duration-500 shadow-sm border-b bg-white">
       <div className="hidden md:block bg-[#E7E7E7]">
@@ -53,9 +56,20 @@ const Navbar: FC = () => {
             />
           </div>
           <div className="flex justify-center items-center">
-            <Link href="">
-              <ShoppingCart className="h-4 w-4 mr-4" />
-            </Link>
+            {!isLoggedIn ? (
+              <Link href="">
+                <ShoppingCart className="h-4 w-4 mr-4" />
+              </Link>
+            ) : (
+              <div className="flex">
+                <Link href="">
+                  <Bell className="h-4 w-4 mr-4" />
+                </Link>
+                <Link href="">
+                  <ShoppingCart className="h-4 w-4 mr-4" />
+                </Link>
+              </div>
+            )}
             <div className="flex md:hidden text-xs">
               <DropdownMenu>
                 <DropdownMenuTrigger className="border px-4 py-3 rounded-lg bg-background hover:bg-accent hover:text-accent-foreground">
@@ -82,21 +96,39 @@ const Navbar: FC = () => {
               </DropdownMenu>
             </div>
             <div className="hidden md:flex items-center font-semibold text-xs border-l border-neutral-400 pl-4">
-              <Button
-                asChild
-                size="sm"
-                variant="outline"
-                className="rounded-lg px-6 text-xs bg-transparent text-black border-black hover:text-black"
-              >
-                <Link href="/sign-up">Daftar</Link>
-              </Button>
-              <Button
-                asChild
-                size="sm"
-                className="rounded-lg ml-2 px-6 text-xs"
-              >
-                <Link href="/sign-in">Masuk</Link>
-              </Button>
+              {!isLoggedIn ? (
+                <div>
+                  <Button
+                    asChild
+                    size="sm"
+                    variant="outline"
+                    className="rounded-lg px-6 text-xs bg-transparent text-black border-black hover:text-black"
+                  >
+                    <Link href="/sign-up">Daftar</Link>
+                  </Button>
+                  <Button
+                    asChild
+                    size="sm"
+                    className="rounded-lg ml-2 px-6 text-xs"
+                  >
+                    <Link href="/sign-in">Masuk</Link>
+                  </Button>
+                </div>
+              ) : (
+                <div className="flex gap-2">
+                  <div className="w-22 h-12 flex items-center justify-between bg-[#E1F7E8] rounded-xl flex-row-reverse gap-2 px-2">
+                    <div className="w-10 h-10 bg-black rounded-xl"></div>
+                    <p className="font-normal">Toko</p>
+                  </div>
+                  <div className="w-36 h-12 flex items-center justify-between bg-[#E1F7E8] rounded-xl flex-row-reverse gap-2 px-2">
+                    <Avatar className="rounded-xl ">
+                      <AvatarImage src="https://github.com/shadcn.png" />
+                      <AvatarFallback>CN</AvatarFallback>
+                    </Avatar>
+                    <p className="font-normal">Anonymous</p>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
