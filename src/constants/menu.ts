@@ -12,10 +12,6 @@ export const MainMenu: MainMenuType[] = [
   {
     id: 3,
     title: 'RecyEco Event'
-  },
-  {
-    id: 4,
-    title: 'RecyEco Care'
   }
 ];
 
@@ -83,7 +79,7 @@ export const IklanItems: IklanItem[] = [
   },
   {
     id: 3,
-    backgroundImage: 'carouselPlaceholder.svg',
-    title: 'Iklan'
+    backgroundImage: 'carouselProduk.svg',
+    title: 'Iklan Produk'
   }
 ];

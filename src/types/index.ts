@@ -34,6 +34,7 @@ export interface ItemCardProps {
   img?: string;
   price?: number;
   type: string;
+  className?: string;
   [key: string]: any;
 }
 
@@ -54,4 +55,8 @@ export interface EventType {
   date?: string;
   slot?: number;
   location?: string;
+}
+
+export interface NavbarProps {
+  isLoggedIn: boolean;
 }
