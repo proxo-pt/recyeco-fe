@@ -22,7 +22,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { NavbarProps } from '@/types';
 
 const Navbar: FC<NavbarProps> = () => {
-  const isLoggedIn = false;
+  const isLoggedIn = true;
   return (
     <header className="w-full sticky top-0 z-10 flex-none transition-colors duration-500 shadow-sm border-b bg-white">
       <div className="hidden md:block bg-[#E7E7E7]">
