@@ -1,5 +1,5 @@
 'use client';
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { MapPin, Search, ShoppingCart } from 'lucide-react';
@@ -18,8 +18,11 @@ import { InputSearch } from '@/components/ui/input-search';
 import { MainMenu } from '@/constants/menu';
 import { HamburgerMenuIcon } from '@radix-ui/react-icons';
 import placeholderLogo from '@/assets/placeholder-logo.svg';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { NavbarProps } from '@/types';
 
-const Navbar: FC = () => {
+const Navbar: FC<NavbarProps> = () => {
+  const isLoggedIn = false;
   return (
     <header className="w-full sticky top-0 z-10 flex-none transition-colors duration-500 shadow-sm border-b bg-white">
       <div className="hidden md:block bg-[#E7E7E7]">
@@ -84,21 +87,30 @@ const Navbar: FC = () => {
               </DropdownMenu>
             </div>
             <div className="hidden md:flex items-center font-semibold text-xs border-l border-neutral-400 pl-4">
-              <Button
-                asChild
-                size="sm"
-                variant="outline"
-                className="rounded-lg px-6 text-xs bg-transparent text-black border-black hover:text-black"
-              >
-                <Link href="/sign-up">Daftar</Link>
-              </Button>
-              <Button
-                asChild
-                size="sm"
-                className="rounded-lg ml-2 px-6 text-xs"
-              >
-                <Link href="/sign-in">Masuk</Link>
-              </Button>
+              {isLoggedIn ? (
+                <div>
+                  <Button
+                    asChild
+                    size="sm"
+                    variant="outline"
+                    className="rounded-lg px-6 text-xs bg-transparent text-black border-black hover:text-black"
+                  >
+                    <Link href="/sign-up">Daftar</Link>
+                  </Button>
+                  <Button
+                    asChild
+                    size="sm"
+                    className="rounded-lg ml-2 px-6 text-xs"
+                  >
+                    <Link href="/sign-in">Masuk</Link>
+                  </Button>
+                </div>
+              ) : (
+                <Avatar>
+                  <AvatarImage src="https://github.com/shadcn.png" />
+                  <AvatarFallback>CN</AvatarFallback>
+                </Avatar>
+              )}
             </div>
           </div>
         </div>
