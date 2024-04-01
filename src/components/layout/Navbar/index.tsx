@@ -22,7 +22,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { NavbarProps } from '@/types';
 
 const Navbar: FC<NavbarProps> = () => {
-  const isLoggedIn = true;
+  const isLoggedIn = false;
   return (
     <header className="w-full sticky top-0 z-10 flex-none transition-colors duration-500 shadow-sm border-b bg-white">
       <div className="hidden md:block bg-[#E7E7E7]">
@@ -56,7 +56,7 @@ const Navbar: FC<NavbarProps> = () => {
             />
           </div>
           <div className="flex justify-center items-center">
-            {isLoggedIn ? (
+            {!isLoggedIn ? (
               <Link href="">
                 <ShoppingCart className="h-4 w-4 mr-4" />
               </Link>
@@ -96,7 +96,7 @@ const Navbar: FC<NavbarProps> = () => {
               </DropdownMenu>
             </div>
             <div className="hidden md:flex items-center font-semibold text-xs border-l border-neutral-400 pl-4">
-              {isLoggedIn ? (
+              {!isLoggedIn ? (
                 <div>
                   <Button
                     asChild
