@@ -34,6 +34,7 @@ export interface ItemCardProps {
   img?: string;
   price?: number;
   type: string;
+  className?: string;
   [key: string]: any;
 }
 
