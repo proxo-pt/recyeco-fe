@@ -1,5 +1,5 @@
 'use client';
-import { FC, useEffect, useState } from 'react';
+import { FC, useState } from 'react';
 import ItemCard from '../../components/ItemCard';
 import { Items } from '@/constants/items';
 import { Event } from '@/constants/event';
@@ -14,7 +14,7 @@ const Market: FC = () => {
   };
 
   return (
-    <div className="container mx-auto px-6 py-2">
+    <div className="container min-h-screen mx-auto px-6 py-2">
       <div className="mb-8 h-8">
         <ul className="flex gap-4 text-base sm:text-xl">
           <li
