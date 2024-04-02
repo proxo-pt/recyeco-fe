@@ -56,7 +56,3 @@ export interface EventType {
   slot?: number;
   location?: string;
 }
-
-export interface NavbarProps {
-  isLoggedIn: boolean;
-}
