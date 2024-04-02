@@ -60,3 +60,8 @@ export interface EventType {
 export interface NavbarProps {
   isLoggedIn: boolean;
 }
+
+export interface TokoMenuType {
+  id?: number;
+  title?: string;
+}
