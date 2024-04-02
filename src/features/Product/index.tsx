@@ -10,7 +10,7 @@ import {
   BreadcrumbSeparator
 } from '@/components/ui/breadcrumb';
 import TransactionPanel from './components/TransactionPanel';
-import { getAssetUrl } from '@/lib/utils';
+import { getAssetUrl, formatNumber } from '@/lib/utils';
 import ProfileCard from './components/ProfileCard';
 
 const Product = () => {
@@ -34,7 +34,7 @@ const Product = () => {
             </BreadcrumbList>
           </Breadcrumb>
         </div>
-        <div className="flex gap-7">
+        <div className="flex flex-wrap justify-center lg:flex-nowrap gap-7">
           <div>
             <div className="relative w-full h-96">
               <Image
@@ -59,7 +59,7 @@ const Product = () => {
                 </ul>
               </div>
               <div className="font-bold text-2xl text-recyeco-primary">
-                Rp. 12000
+                Rp. {formatNumber(12000)}
               </div>
             </div>
             <div className="flex flex-col gap-3">
@@ -81,7 +81,7 @@ const Product = () => {
               </p>
             </div>
           </div>
-          <div>
+          <div className="md:w-2/3">
             <ProfileCard />
           </div>
         </div>

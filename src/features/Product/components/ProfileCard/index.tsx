@@ -1,13 +1,19 @@
 import React, { FC } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Card, CardHeader, CardContent, CardTitle } from '@/components/ui/card';
+import {
+  Card,
+  CardHeader,
+  CardContent,
+  CardTitle,
+  CardFooter
+} from '@/components/ui/card';
 import { BookUser, MapPin } from 'lucide-react';
 import { getAssetUrl } from '@/lib/utils';
 
 const ProfileCard: FC = () => {
   return (
-    <Card className="w-72">
+    <Card className="lg:w-72">
       <CardHeader className="p-4">
         <CardTitle className="flex items-center gap-2 text-base">
           <div className="relative w-12 h-12 rounded-xl border">
@@ -41,6 +47,11 @@ const ProfileCard: FC = () => {
           </div>
         </div>
       </CardContent>
+      <Link href={'#'}>
+        <CardFooter className="flex justify-center p-4 text-xs bg-gray-200 rounded-b-lg hover:bg-gray-300">
+          5 tahap transaksi
+        </CardFooter>
+      </Link>
     </Card>
   );
 };
