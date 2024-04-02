@@ -69,17 +69,17 @@ export const CategoryItems: CategoryItem[] = [
 export const IklanItems: IklanItem[] = [
   {
     id: 1,
+    backgroundImage: 'carouselJoin.svg',
+    title: 'Iklan Join'
+  },
+  {
+    id: 2,
     backgroundImage: 'carouselToko.svg',
     title: 'Iklan Toko'
   },
   {
-    id: 2,
+    id: 3,
     backgroundImage: 'carouselDana.svg',
     title: 'Iklan Dana'
-  },
-  {
-    id: 3,
-    backgroundImage: 'carouselProduk.svg',
-    title: 'Iklan Produk'
   }
 ];
