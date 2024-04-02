@@ -19,9 +19,8 @@ import { MainMenu } from '@/constants/menu';
 import { HamburgerMenuIcon } from '@radix-ui/react-icons';
 import placeholderLogo from '@/assets/placeholder-logo.svg';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { NavbarProps } from '@/types';
 
-const Navbar: FC<NavbarProps> = () => {
+const Navbar: FC = () => {
   const isLoggedIn = false;
   return (
     <header className="w-full sticky top-0 z-10 flex-none transition-colors duration-500 shadow-sm border-b bg-white">

@@ -1,4 +1,3 @@
-import Footer from './components/Footer';
 import Dashboard from './sections/Dashboard';
 import Market from './sections/Market';
 
@@ -7,7 +6,6 @@ const Main = () => {
     <div>
       <Dashboard />
       <Market />
-      <Footer />
     </div>
   );
 };
