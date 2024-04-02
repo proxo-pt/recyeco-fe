@@ -80,3 +80,12 @@ export interface SidebarContextProps {
 export interface MenuSidebarProps {
   setOpen?: (open: boolean) => void;
 }
+
+export interface NavbarProps {
+  isLoggedIn: boolean;
+}
+
+export interface TokoMenuType {
+  id?: number;
+  title?: string;
+}

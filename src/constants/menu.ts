@@ -1,4 +1,4 @@
-import { CategoryItem, IklanItem, MainMenuType } from '@/types';
+import { CategoryItem, IklanItem, MainMenuType, TokoMenuType } from '@/types';
 
 export const MainMenu: MainMenuType[] = [
   {
@@ -81,5 +81,20 @@ export const IklanItems: IklanItem[] = [
     id: 3,
     backgroundImage: 'carouselDana.svg',
     title: 'Iklan Dana'
+  }
+];
+
+export const TokoMenu: TokoMenuType[] = [
+  {
+    id: 1,
+    title: 'Daftarkan Toko Kamu'
+  },
+  {
+    id: 2,
+    title: 'Daftarkan Toko Gratis'
+  },
+  {
+    id: 3,
+    title: 'Kamu bisa membuat event'
   }
 ];
