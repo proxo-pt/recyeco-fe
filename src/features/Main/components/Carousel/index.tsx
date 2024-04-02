@@ -13,7 +13,7 @@ import { IklanItems } from '@/constants/menu';
 
 const CarouselIklan: FC = () => {
   return (
-    <div className="container mx-auto flex justify-center items-center px-6">
+    <div className="flex justify-center items-center">
       <Carousel
         opts={{
           loop: true
