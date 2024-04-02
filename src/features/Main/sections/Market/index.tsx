@@ -1,6 +1,5 @@
 'use client';
 import { FC, useState } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
@@ -10,7 +9,6 @@ import { cn } from '@/lib/utils';
 import { Items } from '@/constants/items';
 import { Event } from '@/constants/event';
 import { CategoryItems } from '@/constants/menu';
-import joinRecyeco from '@/assets/imgs/joinRecyeco.svg';
 
 const Market: FC = () => {
   const [tab, setTab] = useState(1);
@@ -20,17 +18,8 @@ const Market: FC = () => {
   };
 
   return (
-    <div className="container min-h-screen mx-auto flex flex-col space-y-6 p-6">
-      <div className="flex justify-center items-center rounded-md">
-        <Link href="" className="w-full">
-          <Image
-            src={joinRecyeco}
-            alt="Join Recyeco"
-            className="w-full object-fill"
-          />
-        </Link>
-      </div>
-      <div className="flex-1 flex flex-col gap-3 mb-4">
+    <div className="container min-h-screen mx-auto px-6">
+      <div className="flex-1 flex flex-col gap-3 mb-8">
         <h1 className="text-lg font-bold">Kategori</h1>
         <div className="flex flex-wrap gap-4 items-center justify-center">
           {CategoryItems.map(({ id, backgroundColor, borderColor, label }) => (
@@ -74,7 +63,6 @@ const Market: FC = () => {
           </li>
         </ul>
       </div>
-
       <div
         className={
           tab === 1
