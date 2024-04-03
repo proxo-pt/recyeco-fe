@@ -47,9 +47,9 @@ const ProfileCard: FC = () => {
           </div>
         </div>
       </CardContent>
-      <Link href={'#'}>
+      <Link href="/product/transaction-steps">
         <CardFooter className="flex justify-center p-4 text-xs bg-gray-200 rounded-b-lg hover:bg-gray-300">
-          5 tahap transaksi
+          Tahap-tahap transaksi
         </CardFooter>
       </Link>
     </Card>
