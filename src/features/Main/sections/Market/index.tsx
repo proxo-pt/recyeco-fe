@@ -1,5 +1,5 @@
 'use client';
-import { FC, useState } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
@@ -10,7 +10,7 @@ import { Items } from '@/constants/items';
 import { Event } from '@/constants/event';
 import { CategoryItems } from '@/constants/menu';
 
-const Market: FC = () => {
+const Market = () => {
   const [tab, setTab] = useState(1);
 
   const updateTab = (id: number) => {

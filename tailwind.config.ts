@@ -55,6 +55,7 @@ const config = {
         recyeco: {
           primary: '#61C580',
           secondary: '#6AE536',
+          about: '#F8F8F8',
           text: {
             muted: '#888888',
             500: '#3DAA5F'
