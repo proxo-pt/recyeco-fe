@@ -8,14 +8,14 @@ import {
 } from '@/components/ui/popover';
 import { LockIcon, User2 } from 'lucide-react';
 import MobileSide from '../MobileSide';
-import placeholderLogo from '@/assets/placeholder-logo.svg';
+import recyecoLogo from '@/assets/recyeco-logo.svg';
 
 const DashboardNav = () => {
   return (
     <div className="absolute top-0 right-0 left-0 border-b bg-background/95 backdrop-blur z-40">
       <nav className="flex h-16 items-center justify-between px-8">
         <div className="hidden md:block">
-          <Image src={placeholderLogo} width={100} height={30} alt="Logo" />
+          <Image src={recyecoLogo} width={100} height={30} alt="Logo" />
         </div>
         <div className="block md:!hidden">
           <MobileSide />

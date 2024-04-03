@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { HamburgerMenuIcon } from '@radix-ui/react-icons';
 import MenuSide from '../MenuSide';
-import placeholderLogo from '@/assets/placeholder-logo.svg';
+import recyecoLogo from '@/assets/recyeco-logo.svg';
 import useSidebar from '@/hooks/useSidebar';
 
 const MobileSide = () => {
@@ -23,12 +23,12 @@ const MobileSide = () => {
               height={25}
               className="md:hidden md:opacity-0 duration-200 text-primary mr-1 -ml-4 cursor-pointer"
             />
-            <Image src={placeholderLogo} width={100} height={30} alt="Logo" />
+            <Image src={recyecoLogo} width={100} height={30} alt="Logo" />
           </div>
         </SheetTrigger>
         <SheetContent side="left" className="w-72">
           <div className="px-2">
-            <Image src={placeholderLogo} width={100} height={30} alt="Logo" />
+            <Image src={recyecoLogo} width={100} height={30} alt="Logo" />
           </div>
           <div className="mt-4">
             <MenuSide setOpen={() => toggleSidebar('responsive')} />
