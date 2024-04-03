@@ -56,7 +56,8 @@ const config = {
           primary: '#61C580',
           secondary: '#6AE536',
           text: {
-            muted: '#888888'
+            muted: '#888888',
+            500: '#3DAA5F'
           }
         }
       },

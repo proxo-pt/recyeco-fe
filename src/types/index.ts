@@ -63,3 +63,20 @@ export interface TransactionStepType {
   img?: string;
   desc?: any;
 }
+
+export type DashboardMenuType = {
+  id: number;
+  title: string;
+  icon: LucideIcon;
+  path: string;
+  isChildren: boolean;
+};
+
+export interface SidebarContextProps {
+  isOpen?: boolean;
+  toggleSidebar?: () => void;
+}
+
+export interface MenuSidebarProps {
+  setOpen?: (open: boolean) => void;
+}
