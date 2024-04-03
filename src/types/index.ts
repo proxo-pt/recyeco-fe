@@ -56,3 +56,10 @@ export interface EventType {
   slot?: number;
   location?: string;
 }
+
+export interface TransactionStepType {
+  id: number;
+  title?: string;
+  img?: string;
+  desc?: any;
+}
