@@ -17,7 +17,7 @@ import {
 import { InputSearch } from '@/components/ui/input-search';
 import { MainMenu } from '@/constants/menu';
 import { HamburgerMenuIcon } from '@radix-ui/react-icons';
-import placeholderLogo from '@/assets/placeholder-logo.svg';
+import recyecoLogo from '@/assets/recyeco-logo.svg';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 const Navbar: FC = () => {
@@ -45,7 +45,7 @@ const Navbar: FC = () => {
       </div>
       <div className="container mx-auto px-6 py-4 h-full">
         <div className="flex items-center justify-between">
-          <Image src={placeholderLogo} width={100} height={30} alt="Logo" />
+          <Image src={recyecoLogo} width={100} height={30} alt="Logo" />
           <div className="hidden lg:block w-6/12">
             <InputSearch
               type="search"
