@@ -17,7 +17,7 @@ import {
 import { InputSearch } from '@/components/ui/input-search';
 import { MainMenu } from '@/constants/menu';
 import { HamburgerMenuIcon } from '@radix-ui/react-icons';
-import recyecoLogo from '@/assets/recyeco-logo.svg';
+import recyecoLogo from '@/assets/recyeco-dark-logo.svg';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 const Navbar: FC = () => {

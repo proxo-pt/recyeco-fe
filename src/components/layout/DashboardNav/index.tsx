@@ -8,7 +8,7 @@ import {
 } from '@/components/ui/popover';
 import { LockIcon, User2 } from 'lucide-react';
 import MobileSide from '../MobileSide';
-import recyecoLogo from '@/assets/recyeco-logo.svg';
+import recyecoLogo from '@/assets/recyeco-dark-logo.svg';
 
 const DashboardNav = () => {
   return (

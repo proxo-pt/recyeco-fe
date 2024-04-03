@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { HamburgerMenuIcon } from '@radix-ui/react-icons';
 import MenuSide from '../MenuSide';
-import recyecoLogo from '@/assets/recyeco-logo.svg';
+import recyecoLogo from '@/assets/recyeco-dark-logo.svg';
 import useSidebar from '@/hooks/useSidebar';
 
 const MobileSide = () => {
