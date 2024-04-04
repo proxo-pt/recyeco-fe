@@ -47,6 +47,7 @@ const Footer: FC = () => {
           </div>
         </div>
         <div className="flex gap-1 justify-center items-center w-full h-10 text-xs text-center text-white bg-recyeco-primary">
+           Copyright &copy; 2024 . Recyeco All Rights Reserved
         </div>
       </div>
     </>
