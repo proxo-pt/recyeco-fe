@@ -160,7 +160,7 @@ const Navbar: FC<NavbarProps> = () => {
                       <DialogHeader>
                         <DialogTitle>Daftar Toko Gratis</DialogTitle>
                       </DialogHeader>
-                      <div className="gap-4 py-4">
+                      <div className="gap-4 ">
                         <div className="flex gap-2">
                           <div>
                             <DialogDescription>
@@ -168,24 +168,24 @@ const Navbar: FC<NavbarProps> = () => {
                             </DialogDescription>
                             <Image
                               src={getAssetUrl(`/img-dialog/mission.svg`)}
-                              width={210}
-                              height={210}
+                              width={250}
+                              height={250}
                               alt="toko"
                             />
                           </div>
                           <div className="flex flex-col gap-2">
-                            <div className="flex items-center gap-4">
+                            <div className="flex items-center gap-2">
                               <Label className="text-left">Nama Produk</Label>
-                              <Input id="name" className="col-span-full" />
+                              <Input id="name" className="col-span-3" />
                             </div>
-                            <div className="flex items-center gap-4">
+                            <div className="flex items-center gap-2">
                               <Label className="text-left">No Handphone</Label>
                               <Input
                                 id="phone"
                                 className="col-span-full flex-grow"
                               />
                             </div>
-                            <div className="flex items-center gap-4">
+                            <div className="flex items-center gap-2">
                               <Label className="text-left">Alamat</Label>
                               <Input
                                 id="address"
@@ -193,15 +193,15 @@ const Navbar: FC<NavbarProps> = () => {
                               />
                             </div>
                             <div className="flex">
-                              <div className="flex items-center gap-4">
-                                <Label className="text-left">Alamat</Label>
+                              <div className="flex items-center gap-2">
+                                <Label className="text-left">Latitude</Label>
                                 <Input
                                   id="address"
                                   className="col-span-full flex-grow"
                                 />
                               </div>
-                              <div className="flex items-center gap-4">
-                                <Label className="text-left">Alamat</Label>
+                              <div className="flex items-center gap-2">
+                                <Label className="text-left">Longtitude</Label>
                                 <Input
                                   id="address"
                                   className="col-span-full flex-grow"
