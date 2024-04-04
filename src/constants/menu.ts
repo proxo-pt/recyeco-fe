@@ -15,56 +15,56 @@ export const MainMenu: MainMenuType[] = [
   }
 ];
 
-export const CategoryItems: CategoryItem[] = [
-  {
-    id: 1,
+export const CategoryItems: CategoryItem = {
+  Plastik: {
     backgroundColor: 'bg-[#3B97D326]',
-    borderColor: 'hover:border-[#3B97D3]',
+    textColor: 'text-[#3B97D3]',
+    borderColor: 'border-[#3B97D3]',
     label: 'Plastik'
   },
-  {
-    id: 2,
+  Kaca: {
     backgroundColor: 'bg-[#35CC3326]',
-    borderColor: 'hover:border-[#35CC33]',
+    textColor: 'text-[#35CC33]',
+    borderColor: 'border-[#35CC33]',
     label: 'Kaca'
   },
-  {
-    id: 3,
+  Logam: {
     backgroundColor: 'bg-[#8A8B8E26]',
-    borderColor: 'hover:border-[#8A8B8E]',
+    textColor: 'text-[#8A8B8E]',
+    borderColor: 'border-[#8A8B8E]',
     label: 'Logam'
   },
-  {
-    id: 4,
+  Kertas: {
     backgroundColor: 'bg-[#C43B3B26]',
-    borderColor: 'hover:border-[#C43B3B]',
+    textColor: 'text-[#C43B3B]',
+    borderColor: 'border-[#C43B3B]',
     label: 'Kertas'
   },
-  {
-    id: 5,
+  Organik: {
     backgroundColor: 'bg-[#A0CC0026]',
-    borderColor: 'hover:border-[#A0CC00]',
+    textColor: 'text-[#A0CC00]',
+    borderColor: 'border-[#A0CC00]',
     label: 'Organik'
   },
-  {
-    id: 6,
+  Tekstil: {
     backgroundColor: 'bg-[#FFB65526]',
-    borderColor: 'hover:border-[#FFB655]',
+    textColor: 'text-[#FFB655]',
+    borderColor: 'border-[#FFB655]',
     label: 'Tekstil'
   },
-  {
-    id: 7,
+  Elektronik: {
     backgroundColor: 'bg-[#61788126]',
-    borderColor: 'hover:border-[#617881]',
+    textColor: 'text-[#617881]',
+    borderColor: 'border-[#617881]',
     label: 'Elektronik'
   },
-  {
-    id: 8,
+  Baterai: {
     backgroundColor: 'bg-[#C6A51A26]',
-    borderColor: 'hover:border-[#C6A51A]',
+    textColor: 'text-[#C6A51A]',
+    borderColor: 'border-[#C6A51A]',
     label: 'Baterai'
   }
-];
+};
 
 export const IklanItems: IklanItem[] = [
   {
