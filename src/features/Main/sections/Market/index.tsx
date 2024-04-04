@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
@@ -7,7 +6,7 @@ import { getAssetUrl } from '@/lib/utils';
 import { Items } from '@/constants/items';
 import { CategoryItems } from '@/constants/menu';
 
-const Market: FC = () => {
+const Market = () => {
   return (
     <div className="container min-h-screen mx-auto">
       <div className="flex-1 flex flex-col gap-3 mb-8">
