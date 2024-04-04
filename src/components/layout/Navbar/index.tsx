@@ -45,7 +45,13 @@ const Navbar: FC = () => {
       </div>
       <div className="container mx-auto py-4 h-full">
         <div className="flex items-center justify-between">
-          <Image src={recyecoLogo} width={100} height={30} alt="Logo" />
+          <Image
+            src={recyecoLogo}
+            width={0}
+            height={0}
+            alt="Logo"
+            className="w-24 h-auto"
+          />
           <div className="hidden lg:block w-6/12">
             <InputSearch
               type="search"

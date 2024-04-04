@@ -11,7 +11,7 @@ const Footer: FC = () => {
       <div className="bg-recyeco-footer h-64">
         <div className="container flex justify-between px-6 py-12 text-white">
           <div className="hidden md:flex flex-col gap-2 max-w-64">
-            <Image src={recyecoLogo} width={120} alt="Logo" />
+            <Image src={recyecoLogo} width={120} height={35} alt="Logo" />
             <Separator className="w-16 rounded-md" />
             <p className="text-xs">
               Ubah Sampah Menjadi Rupiah, Bersihkan Bumi!
