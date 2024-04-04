@@ -1,10 +1,10 @@
 import { FC } from 'react';
-import { CategoryColors } from '@/constants/menu';
+import { CategoryItems } from '@/constants/menu';
 import { cn } from '@/lib/utils';
 
 const LabelCategory: FC<{ category?: string }> = ({ category }) => {
   const { backgroundColor, borderColor, textColor, label } =
-    CategoryColors[category ?? ''] || CategoryColors.UNKNOWN;
+    CategoryItems[category ?? ''] || CategoryItems.Plastik;
   return (
     <div
       className={cn(
