@@ -25,7 +25,7 @@ const Navbar: FC = () => {
   return (
     <header className="w-full sticky top-0 z-10 flex-none transition-colors duration-500 shadow-sm border-b bg-white">
       <div className="hidden md:block bg-[#E7E7E7]">
-        <div className="container flex justify-between items-center mx-auto px-6 py-2">
+        <div className="container flex justify-between items-center mx-auto  py-2">
           <div className="flex items-center gap-2">
             <MapPin className="w-4" />
             <Link href="" className="text-xs">
@@ -43,7 +43,7 @@ const Navbar: FC = () => {
           </div>
         </div>
       </div>
-      <div className="container mx-auto px-6 py-4 h-full">
+      <div className="container mx-auto py-4 h-full">
         <div className="flex items-center justify-between">
           <Image src={recyecoLogo} width={100} height={30} alt="Logo" />
           <div className="hidden lg:block w-6/12">

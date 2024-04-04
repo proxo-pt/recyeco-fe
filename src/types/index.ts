@@ -17,10 +17,12 @@ export interface SocialMediaType {
 }
 
 export interface CategoryItem {
-  id?: number;
-  backgroundColor?: string;
-  borderColor?: string;
-  label?: string;
+  [key: string]: {
+    backgroundColor?: string;
+    textColor?: string;
+    borderColor?: string;
+    label?: string;
+  };
 }
 
 export interface IklanItem {
@@ -32,29 +34,21 @@ export interface IklanItem {
 export interface ItemCardProps {
   title?: string;
   img?: string;
-  price?: number;
-  type: string;
+  price: number;
+  category?: string;
+  shopName?: string;
   className?: string;
-  [key: string]: any;
 }
 
 export interface ItemsType {
   id: number;
   img?: string;
   title?: string;
-  price?: number;
+  price: number;
   weight?: number;
   location?: string;
-}
-
-export interface EventType {
-  id: number;
-  img?: string;
-  title?: string;
-  point?: number;
-  date?: string;
-  slot?: number;
-  location?: string;
+  category?: string;
+  shopName?: string;
 }
 
 export interface TransactionStepType {
