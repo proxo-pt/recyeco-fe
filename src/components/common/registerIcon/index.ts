@@ -6,6 +6,9 @@ import organikIcon from '@/assets/icons/organik.svg';
 import elektronikIcon from '@/assets/icons/elektronik.svg';
 import bateraiIcon from '@/assets/icons/baterai.svg';
 import tekstilIcon from '@/assets/icons/tekstil.svg';
+import whatsappIcon from '@/assets/icons/whatsapp.svg';
+import twitterIcon from '@/assets/icons/twitter.svg';
+import instagramIcon from '@/assets/icons/instagram.svg';
 
 export type IconName = string;
 
@@ -22,7 +25,10 @@ const loadIconData = (): IconData => {
     Organik: organikIcon,
     Elektronik: elektronikIcon,
     Baterai: bateraiIcon,
-    Tekstil: tekstilIcon
+    Tekstil: tekstilIcon,
+    Whatsapp: whatsappIcon,
+    Twitter: twitterIcon,
+    Instagram: instagramIcon
   };
 };
 
