@@ -1,61 +1,56 @@
 import { FC } from 'react';
 import Image from 'next/image';
-import { getAssetUrl } from '@/lib/utils';
-import { MainMenu } from '@/constants/menu';
-import { SocialMedia } from '@/constants/socialMedia';
-import { FooterImg } from '@/constants/footer';
+import recyecoLogo from '@/assets/recyeco-light-logo.svg';
+import { Separator } from '@/components/ui/separator';
+import Link from 'next/link';
+import Icon from '@/components/ui/icon';
 
 const Footer: FC = () => {
   return (
-    <div className="bg-[#E7E7E7]">
-      <div className="container mx-auto">
-        <div className=" flex flex-wrap justify-between text-black md:py-14  py-6  md:text-[15px] text-[14px] md:flex-row flex-col gap-6 md:gap-4 ">
-          <div className="flex flex-col md:gap-2 gap-2 items-left">
-            {MainMenu.map(item => (
-              <div key={item.id} className="">
-                <p>{item.title}</p>
+    <>
+      <div className="bg-recyeco-footer h-64">
+        <div className="container flex justify-between px-6 py-12 text-white">
+          <div className="hidden md:flex flex-col gap-2 max-w-64">
+            <Image src={recyecoLogo} width={120} height={35} alt="Logo" />
+            <Separator className="w-16 rounded-md" />
+            <p className="text-xs">
+              Ubah Sampah Menjadi Rupiah, Bersihkan Bumi!
+            </p>
+          </div>
+          <div className="flex justify-between w-full md:w-auto space-x-16">
+            <div className="flex flex-col gap-2">
+              <strong className="text-sm md:text-lg">Jelajahi</strong>
+              <Separator className="w-14 rounded-md" />
+              <div className="flex flex-col gap-4 mt-2 text-xs">
+                <Link href="/">Beranda</Link>
+                <Link href="/about">Tentang Recyeco</Link>
+                <Link href="">Mulai Berjualan</Link>
               </div>
-            ))}
-          </div>
-          <div className="flex flex-col md:gap-4 gap-2 items-left md:items-center">
-            <p className="font-semibold">Supported By:</p>
-            <div className="flex">
-              {FooterImg.map(item => (
-                <div
-                  key={item.id}
-                  className="flex items-center md:justify-center justify-start"
-                >
-                  <Image
-                    src={getAssetUrl(`/img-footer/${item.src}`)}
-                    alt={`${item.alt}`}
-                    height={50}
-                    width={50}
-                  />
-                </div>
-              ))}
+            </div>
+            <div className="flex flex-col gap-2">
+              <strong className="text-sm md:text-lg">
+                Terhubung Dengan Kami
+              </strong>
+              <Separator className="w-24 rounded-md" />
+              <div className="flex gap-6 mt-2">
+                <Link href="https://wa.me/6285348203913?text=Halo Bang">
+                  <Icon type="Whatsapp" className="size-4" />
+                </Link>
+                <Link href="https://www.instagram.com/farhans711/">
+                  <Icon type="Instagram" className="size-4" />
+                </Link>
+                <Link href="https://twitter.com/home">
+                  <Icon type="Twitter" className="size-4" />
+                </Link>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div className="bg-[#91F165]">
-        <div className="container mx-auto">
-          <div className="flex md:flex-row flex-col-reverse justify-between md:py-3 py-4 gap-4">
-            <div className="flex items-center text-left gap-2">
-              <span>Copyright &copy; 2024</span>
-              <span className="font-bold">Recyeco Mart</span>
-            </div>
-            <div className="flex gap-2">
-              <p>Ikuti kami: </p>
-              {SocialMedia.map(item => (
-                <div key={item.id}>
-                  <item.src />
-                </div>
-              ))}
-            </div>
-          </div>
+        <div className="flex gap-1 justify-center items-center w-full h-10 text-xs text-center text-white bg-recyeco-primary">
+           Copyright &copy; 2024 . Recyeco All Rights Reserved
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

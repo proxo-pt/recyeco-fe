@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { HamburgerMenuIcon } from '@radix-ui/react-icons';
 import MenuSide from '../MenuSide';
@@ -23,12 +24,16 @@ const MobileSide = () => {
               height={25}
               className="md:hidden md:opacity-0 duration-200 text-primary mr-1 -ml-4 cursor-pointer"
             />
-            <Image src={recyecoLogo} width={100} height={30} alt="Logo" />
+            <Link href="/">
+              <Image src={recyecoLogo} width={100} height={30} alt="Logo" />
+            </Link>
           </div>
         </SheetTrigger>
         <SheetContent side="left" className="w-72">
           <div className="px-2">
-            <Image src={recyecoLogo} width={100} height={30} alt="Logo" />
+            <Link href="/">
+              <Image src={recyecoLogo} width={100} height={30} alt="Logo" />
+            </Link>
           </div>
           <div className="mt-4">
             <MenuSide setOpen={() => toggleSidebar('responsive')} />
