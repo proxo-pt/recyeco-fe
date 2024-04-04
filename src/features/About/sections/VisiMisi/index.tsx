@@ -6,6 +6,7 @@ const VisiMisi = () => {
   return (
     <>
       <Image
+        priority
         src={aboutBg}
         className="w-full object-cover"
         alt="About Background"
