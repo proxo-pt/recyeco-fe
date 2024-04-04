@@ -17,13 +17,6 @@ export interface SocialMediaType {
 }
 
 export interface CategoryItem {
-  id?: number;
-  backgroundColor?: string;
-  borderColor?: string;
-  label?: string;
-}
-
-export interface CategoryColor {
   [key: string]: {
     backgroundColor?: string;
     textColor?: string;
