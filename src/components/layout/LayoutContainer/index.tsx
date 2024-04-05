@@ -6,7 +6,15 @@ import { SidebarProvider } from '@/providers/sidebarProvider';
 
 const LayoutContainer = ({ children }: { children: ReactNode }) => {
   const routerPath = usePathname();
-  const pathName = ['/', '/sign-in', '/sign-up', '/about'];
+  const pathName = [
+    '/',
+    '/sign-in',
+    '/sign-up',
+    '/about',
+    '/forget-pass',
+    '/forget-newpass',
+    '/forget-resetpass'
+  ];
   const isIndexPage = pathName.includes(routerPath);
 
   return (
