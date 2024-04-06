@@ -74,3 +74,11 @@ export interface SidebarContextProps {
 export interface MenuSidebarProps {
   setOpen?: (open: boolean) => void;
 }
+
+export interface AboutTeamType {
+  id?: number;
+  title?: string;
+  description?: string;
+  src?: string;
+  alt?: string;
+}
