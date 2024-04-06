@@ -1,8 +1,15 @@
 'use client';
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Bell, MapPin, Search, ShoppingCart } from 'lucide-react';
+import {
+  Bell,
+  MapPin,
+  Search,
+  ShoppingCart,
+  Store,
+  BookUser
+} from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -15,23 +22,12 @@ import {
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
 import { InputSearch } from '@/components/ui/input-search';
-import { MainMenu, TokoMenu } from '@/constants/menu';
+import { MainMenu } from '@/constants/menu';
 import { HamburgerMenuIcon } from '@radix-ui/react-icons';
 import recyecoLogo from '@/assets/recyeco-dark-logo.svg';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { NavbarProps } from '@/types';
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger
-} from '@/components/ui/dialog';
-import { Label } from '@radix-ui/react-dropdown-menu';
-import { Input } from '@/components/ui/input';
-import { getAssetUrl } from '@/lib/utils';
+import DialogDaftarToko from './components/DialogDaftarToko';
 
 const Navbar: FC<NavbarProps> = () => {
   const isLoggedIn = true;
@@ -137,105 +133,7 @@ const Navbar: FC<NavbarProps> = () => {
                 </div>
               ) : (
                 <div className="flex gap-2">
-                  <Dialog>
-                    <DropdownMenu>
-                      <DropdownMenuTrigger>
-                        <div className=" h-12 flex items-center justify-between bg-[#E1F7E8] rounded-xl flex-row-reverse gap-2 px-2">
-                          <div className="w-10 h-10 bg-black rounded-xl"></div>
-                          <p className="font-normal">Toko</p>
-                        </div>
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent className="p-4 rounded-b-lg">
-                        <DropdownMenuGroup className="flex flex-col rounded-b-lg">
-                          {/* {TokoMenu.map(data => (
-                          <DropdownMenuItem key={data.id}>
-                            <Link href="" className="text-gray-700 font-light">
-                              {data.title}
-                            </Link>
-                          </DropdownMenuItem>
-                        ))} */}
-                          <DropdownMenuItem>Daftar Toko Kamu</DropdownMenuItem>
-                          <DropdownMenuItem>
-                            <DialogTrigger>Daftar Toko Gratis</DialogTrigger>
-                          </DropdownMenuItem>
-                          <DropdownMenuItem>
-                            Kamu Bisa Membuat Event
-                          </DropdownMenuItem>
-                        </DropdownMenuGroup>
-                      </DropdownMenuContent>
-                    </DropdownMenu>
-                    <DialogContent className="w-full">
-                      <DialogHeader>
-                        <DialogTitle>Daftar Toko Gratis</DialogTitle>
-                      </DialogHeader>
-                      <div className="gap-4 ">
-                        <div className="flex gap-2">
-                          <div>
-                            <DialogDescription>
-                              Logo Toko Anda
-                            </DialogDescription>
-                            <Image
-                              src={getAssetUrl(`/img-dialog/mission.svg`)}
-                              width={250}
-                              height={250}
-                              alt="toko"
-                            />
-                          </div>
-                          <div className="flex flex-col gap-2">
-                            <div className="flex items-center gap-2">
-                              <Label className="text-left">Nama Produk</Label>
-                              <Input id="name" className="col-span-3" />
-                            </div>
-                            <div className="flex items-center gap-2">
-                              <Label className="text-left">No Handphone</Label>
-                              <Input
-                                id="phone"
-                                className="col-span-full flex-grow"
-                              />
-                            </div>
-                            <div className="flex items-center gap-2">
-                              <Label className="text-left">Alamat</Label>
-                              <Input
-                                id="address"
-                                className="col-span-full flex-grow"
-                              />
-                            </div>
-                            <div className="flex">
-                              <div className="flex items-center gap-2">
-                                <Label className="text-left">Latitude</Label>
-                                <Input
-                                  id="address"
-                                  className="col-span-full flex-grow"
-                                />
-                              </div>
-                              <div className="flex items-center gap-2">
-                                <Label className="text-left">Longtitude</Label>
-                                <Input
-                                  id="address"
-                                  className="col-span-full flex-grow"
-                                />
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <DialogFooter>
-                        <Button
-                          type="submit"
-                          className="bg-[#828282] hover:bg-gray-400"
-                        >
-                          Batal
-                        </Button>
-                        <Button
-                          type="submit"
-                          className="bg-[#3DAA5F] hover:bg-gray-400"
-                        >
-                          Daftar
-                        </Button>
-                      </DialogFooter>
-                    </DialogContent>
-                  </Dialog>
-
+                  <DialogDaftarToko />
                   <Link href="">
                     <div className="w-36 h-12 flex items-center justify-between bg-[#E1F7E8] rounded-xl flex-row-reverse gap-2 px-2">
                       <Avatar className="rounded-xl ">

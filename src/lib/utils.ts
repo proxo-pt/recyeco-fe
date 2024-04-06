@@ -10,3 +10,10 @@ export const getAssetUrl = (url: string) => `/assets${url}`;
 export const formatNumber = (number: number): string => {
   return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
 };
+
+export const handleChange = (e: any) => {
+  if (e.target.files && e.target.files.length > 0) {
+    return URL.createObjectURL(e.target.files[0]);
+  }
+  return '';
+};
