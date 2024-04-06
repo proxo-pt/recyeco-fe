@@ -24,7 +24,7 @@ const AboutTeam: FC = () => {
               className="flex lg:flex-col items-center lg:gap-2 lg:justify-center justify-between"
             >
               <Image
-                src={`${getAssetUrl(`/img-team3/${item.src}`)}`}
+                src={`${getAssetUrl(`/imgs/${item.src}`)}`}
                 width={150}
                 height={150}
                 alt="our photos"
@@ -44,7 +44,7 @@ const AboutTeam: FC = () => {
             >
               <div className="flex lg:flex-col items-center lg:gap-2 gap-4">
                 <Image
-                  src={`${getAssetUrl(`/img-team2/${item.src}`)}`}
+                  src={`${getAssetUrl(`/imgs/${item.src}`)}`}
                   width={150}
                   height={150}
                   alt="our photos"
