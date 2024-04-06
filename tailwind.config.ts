@@ -59,7 +59,8 @@ const config = {
           footer: '#222D33',
           text: {
             muted: '#888888',
-            500: '#3DAA5F'
+            500: '#3DAA5F',
+            600: '#5D5D5D'
           }
         }
       },

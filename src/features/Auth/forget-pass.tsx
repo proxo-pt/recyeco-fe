@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
+import { InputSuffix } from '@/components/ui/input-suffix';
 import { getAssetUrl } from '@/lib/utils';
 import { Mail } from 'lucide-react';
 import Image from 'next/image';
@@ -17,7 +17,7 @@ const ForgetPass: FC = () => {
           </p>
         </div>
         <div className="flex flex-col gap-5 w-8/12">
-          <Input
+          <InputSuffix
             type="email"
             placeholder="Masukkan email..."
             suffix={

@@ -13,7 +13,8 @@ const LayoutContainer = ({ children }: { children: ReactNode }) => {
     '/about',
     '/forget-pass',
     '/forget-newpass',
-    '/forget-resetpass'
+    '/forget-resetpass',
+    '/profile'
   ];
   const isIndexPage = pathName.includes(routerPath);
 
