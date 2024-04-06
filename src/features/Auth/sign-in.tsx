@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input } from '@/components/ui/input';
+import { InputSuffix } from '@/components/ui/input-suffix';
 import { InputPassword } from '@/components/ui/input-password';
 import { Mail, Lock } from 'lucide-react';
 
@@ -19,7 +19,7 @@ const SignIn = () => {
           </p>
         </div>
         <div className="flex flex-col gap-5 w-8/12">
-          <Input
+          <InputSuffix
             type="email"
             placeholder="Masukkan email..."
             suffix={
