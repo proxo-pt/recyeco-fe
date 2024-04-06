@@ -21,7 +21,7 @@ const Footer: FC = () => {
             <div className="flex flex-col gap-2">
               <strong className="text-sm md:text-lg">Jelajahi</strong>
               <Separator className="w-14 rounded-md" />
-              <div className="flex flex-col gap-4 mt-2 text-xs">
+              <div className="flex flex-col gap-4 mt-2 text-xs text-nowrap">
                 <Link href="/">Beranda</Link>
                 <Link href="/about">Tentang Recyeco</Link>
                 <Link href="">Mulai Berjualan</Link>
@@ -47,7 +47,7 @@ const Footer: FC = () => {
           </div>
         </div>
         <div className="flex gap-1 justify-center items-center w-full h-10 text-xs text-center text-white bg-recyeco-primary">
-           Copyright &copy; 2024 . Recyeco All Rights Reserved
+          Copyright &copy; 2024 . Recyeco All Rights Reserved
         </div>
       </div>
     </>
