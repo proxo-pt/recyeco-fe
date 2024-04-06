@@ -83,18 +83,3 @@ export const IklanItems: IklanItem[] = [
     title: 'Iklan Dana'
   }
 ];
-
-export const TokoMenu: TokoMenuType[] = [
-  {
-    id: 1,
-    title: 'Daftarkan Toko Kamu'
-  },
-  {
-    id: 2,
-    title: 'Daftarkan Toko Gratis'
-  },
-  {
-    id: 3,
-    title: 'Kamu bisa membuat event'
-  }
-];
