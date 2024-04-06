@@ -3,15 +3,11 @@ import { CategoryItem, IklanItem, MainMenuType, TokoMenuType } from '@/types';
 export const MainMenu: MainMenuType[] = [
   {
     id: 1,
-    title: 'Tentang RecyEco'
+    title: 'Tentang Recyeco'
   },
   {
     id: 2,
-    title: 'Mulai Berjualan'
-  },
-  {
-    id: 3,
-    title: 'RecyEco Event'
+    title: 'Recyeco Market'
   }
 ];
 
