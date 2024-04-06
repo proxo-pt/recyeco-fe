@@ -20,7 +20,8 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { MapPin, Store, BookUser } from 'lucide-react';
 import { Input } from '@/components/ui/input';
-import { getAssetUrl, handleChange } from '@/lib/utils';
+import { getAssetUrl, handleFileChange } from '@/lib/utils';
+import { InputSuffix } from '@/components/ui/input-suffix';
 
 const DialogDaftarToko: FC = () => {
   const [file, setFile] = useState('');
@@ -36,33 +37,34 @@ const DialogDaftarToko: FC = () => {
         </DropdownMenuTrigger>
         <DropdownMenuContent className="p-4 rounded-b-lg">
           <DropdownMenuGroup className="flex flex-col items-center rounded-b-lg">
-            <DropdownMenuItem disabled>Daftarkan Toko Kamu</DropdownMenuItem>
+            <DropdownMenuItem disabled className="text-xs">
+              Daftarkan Toko Kamu
+            </DropdownMenuItem>
             <DropdownMenuItem className="w-full text-white font-semibold bg-recyeco-primary focus:bg-recyeco-primary focus:text-white">
               <DialogTrigger className="w-full">
                 Daftar Toko Gratis
               </DialogTrigger>
             </DropdownMenuItem>
-            <DropdownMenuItem disabled>
-              Kamu Bisa Membuat Event
-            </DropdownMenuItem>
           </DropdownMenuGroup>
         </DropdownMenuContent>
       </DropdownMenu>
-      <DialogContent className="lg:max-w-4xl">
+      <DialogContent className="rounded-lg sm:max-w-2xl lg:max-w-3xl">
         <DialogHeader>
           <DialogTitle>Daftar Toko Gratis</DialogTitle>
         </DialogHeader>
         <div className="gap-4 ">
-          <div className="flex gap-6">
-            <div className="flex flex-col gap-3 min-w-64">
-              <DialogDescription>Logo Toko Anda</DialogDescription>
-              <label htmlFor="image" className="bg-red-300">
+          <div className="flex flex-col items-center sm:flex-row gap-6">
+            <div className="flex flex-col gap-3 min-w-64 items-center sm:items-start">
+              <DialogDescription>Logo / Foto Toko Anda</DialogDescription>
+              <label
+                htmlFor="image"
+                className="relative w-28 h-28 sm:w-full sm:h-64"
+              >
                 <Image
-                  src={file || getAssetUrl('/imgs/placeholder.svg')}
-                  width={250}
-                  height={250}
+                  src={file || getAssetUrl('/imgs/gambarTokoPlaceholder.png')}
+                  layout="fill"
+                  objectFit="cover"
                   alt="foto toko"
-                  id="shopImage"
                 />
               </label>
               <Input
@@ -70,7 +72,7 @@ const DialogDaftarToko: FC = () => {
                 type="file"
                 id="image"
                 className={`hidden`}
-                onChange={e => setFile(handleChange(e))}
+                onChange={e => setFile(handleFileChange(e))}
               />
             </div>
             <div className="flex flex-col w-full gap-6">
@@ -81,7 +83,7 @@ const DialogDaftarToko: FC = () => {
                 >
                   Nama Toko
                 </label>
-                <Input
+                <InputSuffix
                   suffix={<Store className="text-gray-500" />}
                   id="shopName"
                 />
@@ -93,7 +95,7 @@ const DialogDaftarToko: FC = () => {
                 >
                   Nomor HP
                 </label>
-                <Input
+                <InputSuffix
                   suffix={<BookUser className="text-gray-500" />}
                   id="phone"
                 />
@@ -105,7 +107,7 @@ const DialogDaftarToko: FC = () => {
                 >
                   Alamat
                 </label>
-                <Input
+                <InputSuffix
                   suffix={<MapPin className="text-gray-500" />}
                   id="address"
                 />
@@ -115,9 +117,9 @@ const DialogDaftarToko: FC = () => {
                   htmlFor="mapLink"
                   className="absolute -top-2 left-3 bg-white px-1 text-xs"
                 >
-                  Link Google Maps Lokasi Anda
+                  Link Google Maps Toko Anda
                 </label>
-                <Input
+                <InputSuffix
                   suffix={<MapPin className="text-gray-500" />}
                   id="mapLink"
                 />
@@ -125,7 +127,7 @@ const DialogDaftarToko: FC = () => {
             </div>
           </div>
         </div>
-        <DialogFooter className="gap-2">
+        <DialogFooter className="flex flex-row justify-end w-full gap-2">
           <DialogClose className="text-white text-sm bg-[#828282] hover:bg-gray-400 rounded-md h-10 px-4 py-2 ">
             Batal
           </DialogClose>
