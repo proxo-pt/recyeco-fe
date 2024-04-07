@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, ReactNode, useState } from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import {
@@ -11,43 +11,17 @@ import {
   DialogTitle,
   DialogTrigger
 } from '@/components/ui/dialog';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuTrigger
-} from '@/components/ui/dropdown-menu';
 import { MapPin, Store, BookUser } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { getAssetUrl, handleFileChange } from '@/lib/utils';
 import { InputSuffix } from '@/components/ui/input-suffix';
 
-const DialogDaftarToko: FC = () => {
+export const DialogDaftarToko = ({ children }: { children: ReactNode }) => {
   const [file, setFile] = useState('');
 
   return (
     <Dialog>
-      <DropdownMenu>
-        <DropdownMenuTrigger>
-          <div className=" h-12 flex items-center justify-between bg-[#E1F7E8] rounded-xl flex-row-reverse gap-2 px-2">
-            <div className="w-10 h-10 bg-black rounded-xl"></div>
-            <p className="font-normal">Toko</p>
-          </div>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent className="p-4 rounded-b-lg">
-          <DropdownMenuGroup className="flex flex-col items-center rounded-b-lg">
-            <DropdownMenuItem disabled className="text-xs">
-              Daftarkan Toko Kamu
-            </DropdownMenuItem>
-            <DropdownMenuItem className="w-full text-white font-semibold bg-recyeco-primary focus:bg-recyeco-primary focus:text-white">
-              <DialogTrigger className="w-full">
-                Daftar Toko Gratis
-              </DialogTrigger>
-            </DropdownMenuItem>
-          </DropdownMenuGroup>
-        </DropdownMenuContent>
-      </DropdownMenu>
+      {children}
       <DialogContent className="rounded-lg sm:max-w-2xl lg:max-w-3xl">
         <DialogHeader>
           <DialogTitle>Daftar Toko Gratis</DialogTitle>
@@ -139,5 +113,3 @@ const DialogDaftarToko: FC = () => {
     </Dialog>
   );
 };
-
-export default DialogDaftarToko;
