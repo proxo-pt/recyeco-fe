@@ -1,5 +1,5 @@
 'use client';
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Avatar, AvatarImage } from '@/components/ui/avatar';
@@ -20,11 +20,11 @@ import recyecoLogo from '@/assets/recyeco-dark-logo.svg';
 import DialogDaftarToko from './components/DialogDaftarToko';
 
 const Navbar: FC = () => {
-  const isLoggedIn = false;
+  const isLoggedIn = true;
   const renderUserNav = (background: string) => {
     return (
       <div
-        className={`w-36 h-12 flex md:flex-row flex-row-reverse items-center justify-between ${background} rounded-xl gap-2 px-2`}
+        className={`md:w-36 w-auto h-12 flex md:flex-row flex-row-reverse items-center justify-between ${background} rounded-xl gap-2 px-2`}
       >
         <p className="hidden md:block font-normal">Anonymous</p>
         <Avatar className="rounded-full md:rounded-xl">
@@ -39,12 +39,14 @@ const Navbar: FC = () => {
       <DropdownMenu>
         <DropdownMenuTrigger className="outline-none">
           {!isLoggedIn ? (
-            <HamburgerMenuIcon />
+            <div className="border px-4 py-3 rounded-lg bg-background hover:bg-accent hover:text-accent-foreground">
+              <HamburgerMenuIcon />
+            </div>
           ) : (
             renderUserNav('md:bg-[#E1F7E8]')
           )}
         </DropdownMenuTrigger>
-        <DropdownMenuContent align="end" className="w-64 p-2">
+        <DropdownMenuContent align="end" className="w-64 p-2 ">
           {!isLoggedIn ? (
             <div className="flex justify-center item-center">
               <Button
@@ -75,7 +77,6 @@ const Navbar: FC = () => {
               </DropdownMenuItem>
             </Link>
           )}
-          <DropdownMenuSeparator />
           <DropdownMenuSeparator />
           <DropdownMenuGroup className="block md:hidden">
             {MainMenu.map(item => (
@@ -115,7 +116,7 @@ const Navbar: FC = () => {
             <ul className="flex gap-6">
               {MainMenu.map(menu => (
                 <li key={menu.id} className="text-xs text-black">
-                  <Link href="">{menu.title}</Link>
+                  <Link href={menu.url}>{menu.title}</Link>
                 </li>
               ))}
             </ul>

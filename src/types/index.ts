@@ -3,6 +3,7 @@ import { LucideIcon } from 'lucide-react';
 export interface MainMenuType {
   id?: number;
   title?: string;
+  url: string;
 }
 
 export interface FooterImgType {
