@@ -1,13 +1,15 @@
-import { CategoryItem, IklanItem, MainMenuType } from '@/types';
+import { CategoryItem, IklanItem, MainMenuType, TokoMenuType } from '@/types';
 
 export const MainMenu: MainMenuType[] = [
   {
     id: 1,
-    title: 'Tentang Recyeco'
+    title: 'Tentang Recyeco',
+    url: '/about'
   },
   {
     id: 2,
-    title: 'Recyeco Market'
+    title: 'Recyeco Market',
+    url: '/'
   }
 ];
 

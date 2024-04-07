@@ -2,125 +2,21 @@
 import { FC } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Avatar, AvatarImage } from '@/components/ui/avatar';
-import { Button } from '@/components/ui/button';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger
-} from '@/components/ui/dropdown-menu';
+import useWindowSize from '@/hooks/useWindowSize';
 import { InputSearch } from '@/components/ui/input-search';
-import { MainMenu } from '@/constants/menu';
-import { Bell, LogOut, MapPin, Search, ShoppingCart } from 'lucide-react';
-import { HamburgerMenuIcon } from '@radix-ui/react-icons';
+import { Bell, Search, ShoppingCart } from 'lucide-react';
 import recyecoLogo from '@/assets/recyeco-dark-logo.svg';
+import HeaderMenu from './components/HeaderMenu';
+import { UserMobileDefault, UserMobileLogin } from './components/UserMobile';
+import { UserDesktopDefault, UserDesktopLogin } from './components/UserDesktop';
 
 const Navbar: FC = () => {
-  const isLoggedIn = false;
-  const renderUserNav = (background: string) => {
-    return (
-      <div
-        className={`w-36 h-12 flex md:flex-row flex-row-reverse items-center justify-between ${background} rounded-xl gap-2 px-2`}
-      >
-        <p className="hidden md:block font-normal">Anonymous</p>
-        <Avatar className="rounded-full md:rounded-xl">
-          <AvatarImage src="https://github.com/shadcn.png" />
-        </Avatar>
-      </div>
-    );
-  };
-
-  const renderDropdown = () => {
-    return (
-      <DropdownMenu>
-        <DropdownMenuTrigger className="outline-none">
-          {!isLoggedIn ? (
-            <HamburgerMenuIcon />
-          ) : (
-            renderUserNav('md:bg-[#E1F7E8]')
-          )}
-        </DropdownMenuTrigger>
-        <DropdownMenuContent align="end" className="w-64 p-2">
-          {!isLoggedIn ? (
-            <div className="flex justify-center item-center">
-              <Button
-                asChild
-                size="sm"
-                variant="outline"
-                className="rounded-lg px-6 text-xs bg-transparent text-black border-black hover:text-black"
-              >
-                <Link href="/sign-up">Daftar</Link>
-              </Button>
-              <Button
-                asChild
-                size="sm"
-                className="rounded-lg ml-2 px-6 text-xs"
-              >
-                <Link href="/sign-in">Masuk</Link>
-              </Button>
-            </div>
-          ) : (
-            <Link href="/profile">
-              <DropdownMenuItem className="flex items-center gap-4 cursor-pointer">
-                <Avatar className="rounded-full md:rounded-xl">
-                  <AvatarImage src="https://github.com/shadcn.png" />
-                </Avatar>
-                <h1 className="text-sm text-recyeco-primary font-semibold">
-                  Anonymous
-                </h1>
-              </DropdownMenuItem>
-            </Link>
-          )}
-          <DropdownMenuSeparator />
-          <DropdownMenuSeparator />
-          <DropdownMenuGroup className="block md:hidden">
-            {MainMenu.map(item => (
-              <DropdownMenuItem key={item.id}>
-                <Link href="">{item.title}</Link>
-              </DropdownMenuItem>
-            ))}
-          </DropdownMenuGroup>
-          {!isLoggedIn ? (
-            <></>
-          ) : (
-            <Link href="" className="font-semibold">
-              <DropdownMenuItem className="flex justify-between items-center cursor-pointer">
-                <span>Log Out</span>
-                <div>
-                  <LogOut className="text-red-600" />
-                </div>
-              </DropdownMenuItem>
-            </Link>
-          )}
-        </DropdownMenuContent>
-      </DropdownMenu>
-    );
-  };
+  const isLoggedIn = true;
+  const screenSize = useWindowSize();
 
   return (
     <header className="w-full sticky top-0 z-10 flex-none transition-colors duration-500 shadow-sm border-b bg-white">
-      <div className="hidden md:block bg-[#E7E7E7]">
-        <div className="container flex justify-between items-center py-2">
-          <div className="flex items-center gap-2">
-            <MapPin className="w-4" />
-            <Link href="" className="text-xs">
-              Pilih Alamat Pengirimanmu
-            </Link>
-          </div>
-          <div>
-            <ul className="flex gap-6">
-              {MainMenu.map(menu => (
-                <li key={menu.id} className="text-xs text-black">
-                  <Link href="">{menu.title}</Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </div>
+      <HeaderMenu />
       <div className="container mx-auto py-4 h-full">
         <div className="flex items-center justify-between">
           <Link href="/">
@@ -155,36 +51,15 @@ const Navbar: FC = () => {
                 </Link>
               </div>
             )}
-            <div className="flex md:hidden text-xs">{renderDropdown()}</div>
-            <div className="hidden md:flex items-center font-semibold text-xs border-l border-neutral-400 pl-4">
-              {!isLoggedIn ? (
-                <div>
-                  <Button
-                    asChild
-                    size="sm"
-                    variant="outline"
-                    className="rounded-lg px-6 text-xs bg-transparent text-black border-black hover:text-black"
-                  >
-                    <Link href="/sign-up">Daftar</Link>
-                  </Button>
-                  <Button
-                    asChild
-                    size="sm"
-                    className="rounded-lg ml-2 px-6 text-xs"
-                  >
-                    <Link href="/sign-in">Masuk</Link>
-                  </Button>
-                </div>
-              ) : (
-                <div className="flex gap-2">
-                  <div className="w-22 h-12 flex items-center justify-between bg-[#E1F7E8] rounded-xl gap-2 px-2">
-                    <p className="font-normal">Toko</p>
-                    <div className="w-10 h-10 bg-black rounded-xl"></div>
-                  </div>
-                  {renderDropdown()}
-                </div>
-              )}
-            </div>
+            {screenSize.width < 768 ? (
+              <div className="flex text-xs">
+                {!isLoggedIn ? <UserMobileDefault /> : <UserMobileLogin />}
+              </div>
+            ) : (
+              <div className="flex items-center font-semibold text-xs border-l border-neutral-400 pl-4">
+                {!isLoggedIn ? <UserDesktopDefault /> : <UserDesktopLogin />}
+              </div>
+            )}
           </div>
         </div>
       </div>
