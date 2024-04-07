@@ -24,7 +24,7 @@ const InputSuffix = React.forwardRef<HTMLInputElement, InputProps>(
         <input
           type={type}
           className={cn(
-            'w-full h-full outline-none placeholder:text-black bg-transparent text-base font-light rounded-md px-2',
+            'w-full h-full outline-none placeholder:text-black text-base bg-transparent font-light rounded-md px-2',
             className
           )}
           ref={ref}
