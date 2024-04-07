@@ -28,7 +28,7 @@ export const Team2: AboutTeamType[] = [
   {
     id: 4,
     title: 'Febriyadi',
-    description: 'IT Support',
+    description: 'Front End Developer',
     src: 'febri.svg',
     alt: 'foto febri'
   },

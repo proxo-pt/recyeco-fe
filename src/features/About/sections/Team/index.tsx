@@ -17,42 +17,42 @@ const AboutTeam: FC = () => {
         </p>
       </div>
       <div className="flex flex-col gap-10 mt-20">
-        <div className="flex gap-4 justify-between lg:mx-36 flex-col lg:flex-row">
+        <div className="flex gap-4 justify-between lg:mx-36 md:mx-24 flex-col lg:flex-row">
           {Team3.map(item => (
             <div
               key={item.id}
-              className="flex lg:flex-col items-center lg:gap-2 lg:justify-center justify-between"
+              className="flex lg:flex-col items-center lg:gap-2 lg:justify-center justify-between md:gap-6 gap-6"
             >
               <Image
                 src={`${getAssetUrl(`/imgs/${item.src}`)}`}
                 width={150}
                 height={150}
-                alt="our photos"
+                alt={`${item.alt}`}
               />
-              <div className="flex flex-col items-start lg:items-center">
+              <div className="flex flex-col md:items-end lg:items-center items-start">
                 <h1 className="font-bold">{item.title}</h1>
                 <p className="text-gray-500">{item.description}</p>
               </div>
             </div>
           ))}
         </div>
-        <div className="flex gap-4 justify-between lg:mx-96 flex-col lg:flex-row">
+      </div>
+      <div className="flex flex-col gap-10 mt-4">
+        <div className="flex md:gap-12 gap-4 justify-between lg:mx-96 md:mx-24 flex-col lg:flex-row">
           {Team2.map(item => (
             <div
               key={item.id}
-              className="flex items-center lg:justify-center justify-between"
+              className="flex lg:flex-col items-center lg:gap-4 lg:justify-center justify-between md:gap-8 gap-6"
             >
-              <div className="flex lg:flex-col items-center lg:gap-2 gap-4">
-                <Image
-                  src={`${getAssetUrl(`/imgs/${item.src}`)}`}
-                  width={150}
-                  height={150}
-                  alt="our photos"
-                />
-                <div className="flex flex-col items-start lg:items-center">
-                  <h1 className="font-bold">{item.title}</h1>
-                  <p className="text-gray-500">{item.description}</p>
-                </div>
+              <Image
+                src={`${getAssetUrl(`/imgs/${item.src}`)}`}
+                width={150}
+                height={150}
+                alt={`${item.alt}`}
+              />
+              <div className="flex flex-col md:items-end lg:items-center items-start">
+                <h1 className="font-bold">{item.title}</h1>
+                <p className="text-gray-500">{item.description}</p>
               </div>
             </div>
           ))}
