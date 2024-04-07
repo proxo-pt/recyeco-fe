@@ -22,8 +22,7 @@ export const useAuthRegister = () => {
     onError: (err: AxiosError) => {
       showToast({
         title: 'Registrasi Gagal',
-        description:
-          err?.message || 'Ada Sesuatu Yang Salah!',
+        description: err?.message || 'Ada Sesuatu Yang Salah!',
         type: 'error'
       });
     }
@@ -46,8 +45,7 @@ export const useAuthLogin = () => {
     onError: (err: AxiosError) => {
       showToast({
         title: 'Login Gagal!',
-        description:
-          err?.message || 'Ada Sesuatu Yang Salah!',
+        description: err?.message || 'Ada Sesuatu Yang Salah!',
         type: 'error'
       });
     }

@@ -11,10 +11,13 @@ import {
 import TransactionPanel from './components/TransactionPanel';
 import { getAssetUrl, formatNumber } from '@/lib/utils';
 import ProfileCard from './components/ProfileCard';
+import Navbar from '@/components/layout/Navbar';
+import Footer from '@/components/layout/Footer';
 
 const Product = () => {
   return (
     <>
+      <Navbar />
       <div className="container mx-auto px-6 py-2">
         <div className="my-4">
           <Breadcrumb>
@@ -82,6 +85,7 @@ const Product = () => {
         </div>
       </div>
       <TransactionPanel />
+      <Footer />
     </>
   );
 };
