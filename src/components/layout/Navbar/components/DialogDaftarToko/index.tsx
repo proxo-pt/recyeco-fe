@@ -8,10 +8,9 @@ import {
   DialogDescription,
   DialogFooter,
   DialogHeader,
-  DialogTitle,
-  DialogTrigger
+  DialogTitle
 } from '@/components/ui/dialog';
-import { MapPin, Store, BookUser } from 'lucide-react';
+import { MapPin, Store, BookUser, PencilLine } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { getAssetUrl, handleFileChange } from '@/lib/utils';
 import { InputSuffix } from '@/components/ui/input-suffix';
@@ -32,13 +31,17 @@ export const DialogDaftarToko = ({ children }: { children: ReactNode }) => {
               <DialogDescription>Logo / Foto Toko Anda</DialogDescription>
               <label
                 htmlFor="image"
-                className="relative w-28 h-28 sm:w-full sm:h-64"
+                className="relative w-28 h-28 sm:w-full sm:h-64 rounded-xl cursor-pointer"
               >
+                <div className="absolute z-50 p-2 rounded-tl-xl rounded-br-xl text-recyeco-background bg-slate-500/50 right-0 bottom-0">
+                  <PencilLine />
+                </div>
                 <Image
                   src={file || getAssetUrl('/imgs/gambarTokoPlaceholder.png')}
                   layout="fill"
                   objectFit="cover"
                   alt="foto toko"
+                  className="rounded-xl"
                 />
               </label>
               <Input
