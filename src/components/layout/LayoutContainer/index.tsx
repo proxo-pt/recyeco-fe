@@ -14,7 +14,9 @@ const LayoutContainer = ({ children }: { children: ReactNode }) => {
     '/forget-pass',
     '/forget-newpass',
     '/forget-resetpass',
-    '/profile'
+    '/profile',
+    '/detail-product',
+    '/detail-product/transaction-steps'
   ];
   const isIndexPage = pathName.includes(routerPath);
 

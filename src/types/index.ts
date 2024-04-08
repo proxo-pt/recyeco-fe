@@ -3,6 +3,7 @@ import { LucideIcon } from 'lucide-react';
 export interface MainMenuType {
   id?: number;
   title?: string;
+  url: string;
 }
 
 export interface FooterImgType {
@@ -73,6 +74,15 @@ export interface SidebarContextProps {
 
 export interface MenuSidebarProps {
   setOpen?: (open: boolean) => void;
+}
+
+export interface NavbarProps {
+  isLoggedIn: boolean;
+}
+
+export interface TokoMenuType {
+  id?: number;
+  title?: string;
 }
 
 export interface AboutTeamType {

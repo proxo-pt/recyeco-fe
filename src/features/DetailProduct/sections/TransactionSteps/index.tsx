@@ -10,10 +10,13 @@ import {
 } from '@/components/ui/breadcrumb';
 import { getAssetUrl } from '@/lib/utils';
 import { TransactionStepItem } from '@/constants/transactionStep';
+import Navbar from '@/components/layout/Navbar';
+import Footer from '@/components/layout/Footer';
 
 const TransactionStep = () => {
   return (
     <>
+      <Navbar />
       <div className="container mx-auto px-6 py-2">
         <div className="my-4">
           <Breadcrumb>
@@ -55,6 +58,7 @@ const TransactionStep = () => {
           ))}
         </div>
       </div>
+      <Footer />
     </>
   );
 };
