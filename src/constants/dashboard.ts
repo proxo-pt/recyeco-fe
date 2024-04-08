@@ -202,13 +202,4 @@ export const DashProductMain: DashProductType[] = [
   }
 ];
 
-export type DashboardProductType = {
-  id?: number;
-  number: number;
-  description: string;
-  user: string;
-  weight: string;
-  price: string;
-  status: string;
-  action: ['Setujui', 'Batalkan'];
-};
+
