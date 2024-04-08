@@ -12,7 +12,7 @@ enum MESSAGE {
   CONFIRM = 'Confirm Password must be filled in'
 }
 
-const EmailSchema = z
+export const EmailSchema = z
   .string({ required_error: MESSAGE_EMAIL.EMAIL })
   .min(1, { message: MESSAGE_EMAIL.EMAIL })
   .email(MESSAGE_EMAIL.INVALID);

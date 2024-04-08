@@ -5,6 +5,7 @@ import axios, {
   InternalAxiosRequestConfig
 } from 'axios';
 import { BASE_URL } from '@/constants/configs';
+import { getToken } from '@/lib/storage';
 
 export const fetcher: AxiosInstance = axios.create({
   baseURL: BASE_URL,
@@ -15,7 +16,11 @@ export const fetcher: AxiosInstance = axios.create({
 });
 
 fetcher.interceptors.request.use(
-  (config: InternalAxiosRequestConfig) => {
+  async (config: InternalAxiosRequestConfig) => {
+    const token = await getToken();
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
     return config;
   },
   (error: AxiosError) => {

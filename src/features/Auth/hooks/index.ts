@@ -16,7 +16,8 @@ export const useAuthRegister = () => {
       router.push('/sign-in');
       showToast({
         title: 'Registrasi Berhasil',
-        description: 'Dimohon untuk Login!'
+        description: 'Dimohon untuk Login!',
+        type: 'success'
       });
     },
     onError: (err: AxiosError) => {
