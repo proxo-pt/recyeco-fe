@@ -125,3 +125,14 @@ export interface TabManageType {
   title: string;
   total: number;
 }
+
+export interface DataDashboardTotal {
+  id?: number;
+  title?: string;
+}
+
+export interface ProductSalesType {
+  name?: string;
+  Terjual?: number;
+  BelumTerjual?: number;
+}
