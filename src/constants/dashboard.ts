@@ -201,5 +201,3 @@ export const DashProductMain: DashProductType[] = [
     action: ['Setujui', 'Batalkan']
   }
 ];
-
-

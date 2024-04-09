@@ -1,25 +1,15 @@
 import React, { ReactNode } from 'react';
-import DashboardSide from '../DashboardSide';
+import Navbar from '../Navbar';
 import Footer from '../Footer';
-import DashboardNav from '../DashboardNav';
 
-const WrapperDashboard = ({ children }: { children: ReactNode }) => {
+const Wrapper = ({ children }: { children: ReactNode }) => {
   return (
-    <div className="flex w-full">
-      <div className="w-full">
-        <DashboardNav />
-        <div className="flex">
-          <DashboardSide />
-          <div className="flex h-screen border-collapse overflow-hidden w-full">
-            <main className="flex-1 overflow-y-auto overflow-x-hidden pt-14">
-              <div>{children}</div>
-            </main>
-          </div>
-        </div>
-        <Footer />
-      </div>
+    <div>
+      <Navbar />
+      {children}
+      <Footer />
     </div>
   );
 };
 
-export default WrapperDashboard;
+export default Wrapper;
