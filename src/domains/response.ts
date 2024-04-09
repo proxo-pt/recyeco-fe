@@ -2,8 +2,11 @@ import { z } from 'zod';
 
 export const BaseResponseSchema = <T extends z.ZodTypeAny>(dataSchema: T) =>
   z.object({
-    data: dataSchema.nullable(),
-    code: z.number(),
+    data: dataSchema.optional(),
+    user: dataSchema.optional(),
+    code: z.number().optional(),
+    error: z.boolean().optional(),
+    page: z.string().optional(),
     message: z.string().optional()
   });
 

@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Avatar, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import {
@@ -14,16 +14,51 @@ import { Label } from '@/components/ui/label';
 import {
   Select,
   SelectContent,
-  SelectGroup,
   SelectItem,
   SelectTrigger,
   SelectValue
 } from '@/components/ui/select';
-import { cn, handleFileChange } from '@/lib/utils';
+import { handleFileChange } from '@/lib/utils';
+import { ProfileResSchema, ProfileResType } from '@/domains/profile';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage
+} from '@/components/ui/form';
+import { useProfileData, useProfileUpdate } from '../../hooks';
 
 const UserForm = () => {
-  const [openName, setOpenName] = useState(false);
+  const [open, setOpen] = useState({
+    inputName: false,
+    inputDate: false,
+    inputGender: false,
+    inputEmail: false
+  });
   const [file, setFile] = useState('');
+
+  const { data } = useProfileData();
+  const profileData = data;
+
+  const { mutate } = useProfileUpdate();
+
+  const form = useForm<ProfileResType>({
+    resolver: zodResolver(ProfileResSchema),
+    defaultValues: {
+      username: profileData?.username,
+      birthdate: profileData?.birthdate,
+      gender: profileData?.gender,
+      email: profileData?.email
+    }
+  });
+
+  const onSubmit = (values: ProfileResType) => {
+    mutate(values);
+  };
 
   return (
     <div className="w-full xl:col-span-3 col-span-4">
@@ -70,65 +105,111 @@ const UserForm = () => {
                 </CardFooter>
               </Card>
             </div>
-            <div className="lg:basis-[60%] w-full p-6">
-              <h1 className="font-semibold">Ubah Biodata Diri</h1>
-              <div className="grid lg:grid-rows-3 gap-y-4 mt-2">
-                <div className="flex items-center">
-                  <span className="text-sm font-semibold">Anonymous</span>
-                  <Button
-                    variant="link"
-                    className="text-recyeco-primary"
-                    onClick={() => setOpenName(!openName)}
-                  >
-                    {openName ? 'Batal' : 'Ubah'}
-                  </Button>
-                  <Input
-                    type="text"
-                    id="name"
-                    placeholder="Masukkan Nama Anda"
-                    className={cn(
-                      openName ? `duration-300 origin-left` : `scale-0`,
-                      ''
+            <Form {...form}>
+              <div className="lg:basis-[60%] w-full p-6">
+                <h1 className="font-semibold">Ubah Biodata Diri</h1>
+                <div className="grid lg:grid-rows-3 gap-y-4 mt-2">
+                  <FormField
+                    control={form.control}
+                    name="username"
+                    render={({ field }) => (
+                      <FormItem className="h-auto">
+                        <div className="flex items-center gap-4">
+                          <span className="text-sm">Nama: </span>
+                          <h1 className="text-sm font-semibold">
+                            {profileData?.username || 'Masukkan Nama'}
+                          </h1>
+                        </div>
+                        <FormControl>
+                          <Input
+                            type="text"
+                            id="username"
+                            placeholder="Masukkan Nama Anda"
+                            {...field}
+                            value={field.value}
+                          />
+                        </FormControl>
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="birthdate"
+                    render={({ field }) => (
+                      <FormItem>
+                        <div className="flex items-center gap-4">
+                          <span className="text-sm">Tanggal Lahir: </span>
+                          <h1 className="text-sm font-semibold">
+                            {profileData?.birthdate || 'Masukkan Tanggal Lahir'}
+                          </h1>
+                        </div>
+                        <FormControl>
+                          <Input
+                            type="date"
+                            id="birthdate"
+                            {...field}
+                            value={field.value}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="gender"
+                    render={({ field }) => (
+                      <FormItem>
+                        <div className="flex items-center gap-4">
+                          <span className="text-sm">Jenis Kelamin: </span>
+                          <h1 className="text-sm font-semibold">
+                            {profileData?.gender || 'Masukkan Jenis Kelamin'}
+                          </h1>
+                        </div>
+                        <Select {...field} onValueChange={field.onChange}>
+                          <FormControl>
+                            <SelectTrigger>
+                              <SelectValue placeholder="Masukkan Jenis Kelamin" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            <SelectItem value="Laki-laki">Laki-laki</SelectItem>
+                            <SelectItem value="Perempuan">Perempuan</SelectItem>
+                          </SelectContent>
+                        </Select>
+                        <FormMessage />
+                      </FormItem>
                     )}
                   />
                 </div>
-                <div>
-                  <Label htmlFor="dob" className="text-sm">
-                    Tanggal
-                  </Label>
-                  <Input type="date" id="dob" />
-                </div>
-                <div>
-                  <Label htmlFor="gender" className="text-sm">
-                    Jenis Kelamin
-                  </Label>
-                  <Select>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Masukkan Jenis Kelamin" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectGroup>
-                        <SelectItem value="male">Laki-laki</SelectItem>
-                        <SelectItem value="female">Perempuan</SelectItem>
-                      </SelectGroup>
-                    </SelectContent>
-                  </Select>
-                </div>
-              </div>
-              <div className="mt-6">
-                <h1 className="font-semibold">Ubah Kontak</h1>
-                <div className="mt-2">
-                  <Label htmlFor="email" className="text-sm">
-                    Email
-                  </Label>
-                  <Input
-                    type="email"
-                    id="email"
-                    placeholder="Masukkan Email Anda"
+                <div className="mt-6">
+                  <h1 className="font-semibold">Ubah Kontak</h1>
+                  <FormField
+                    control={form.control}
+                    name="email"
+                    render={({ field }) => (
+                      <FormItem className="mt-2">
+                        <div className="flex items-center gap-4">
+                          <span className="text-sm">Email: </span>
+                          <h1 className="text-sm font-semibold">
+                            {profileData?.email || 'Masukkan Email'}
+                          </h1>
+                        </div>
+                        <FormControl>
+                          <Input
+                            type="email"
+                            id="email"
+                            placeholder="Masukkan Email Anda"
+                            {...field}
+                            value={field.value}
+                          />
+                        </FormControl>
+                      </FormItem>
+                    )}
                   />
                 </div>
               </div>
-            </div>
+            </Form>
           </div>
         </CardContent>
         <CardFooter className="justify-end items-center py-4">
@@ -136,6 +217,7 @@ const UserForm = () => {
             type="submit"
             variant="outline"
             className="border-recyeco-primary hover:text-recyeco-primary text-recyeco-primary rounded-xl"
+            onClick={form.handleSubmit(onSubmit)}
           >
             Simpan Perubahan
           </Button>

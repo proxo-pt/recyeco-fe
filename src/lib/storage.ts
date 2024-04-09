@@ -1,8 +1,5 @@
 export const setToken = (token: string) => {
-  const date = new Date();
-  date.setTime(date.getTime() + 12 * 60 * 60 * 1000);
-
-  document.cookie = 'token' + '=' + token + '; expires=' + date.toUTCString();
+  document.cookie = 'token' + '=' + token;
 };
 
 export const getCookie = (name: string) => {
@@ -16,6 +13,15 @@ export const getCookie = (name: string) => {
   return null;
 };
 
+export const getToken = () => {
+  const token = getCookie('token');
+  return token;
+};
+
 export const removeCookie = (name: string) => {
   document.cookie = `${name}=; expires=${new Date(Date.now() - 1).toUTCString()}; path=/;`;
+};
+
+export const setProfile = (profileData: object) => {
+  document.cookie = 'profileData' + '=' + JSON.stringify(profileData);
 };
