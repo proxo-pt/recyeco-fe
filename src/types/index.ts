@@ -99,15 +99,15 @@ export interface ProductDashType {
 }
 
 export interface DashProductType {
-  id?: number;
-  number: number;
+  id: number;
+  name: string;
   description: string;
-  user: string;
+  type: string;
   weight: string;
   price: string;
   status: string;
-  action: ActionType[];
 }
+
 export interface ManageProductType {
   id?: number;
   number: number;
@@ -117,8 +117,6 @@ export interface ManageProductType {
   price: string;
   status: string;
 }
-
-type ActionType = 'Setujui' | 'Batalkan';
 
 export interface TabManageType {
   id?: number;
