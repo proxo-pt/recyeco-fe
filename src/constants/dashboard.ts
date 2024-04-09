@@ -1,9 +1,10 @@
 import {
   DashProductType,
   DashboardMenuType,
+  DataDashboardTotal,
   ManageProductType,
-  ProductDashType,
-  TabManageType
+  TabManageType,
+  ProductDashType
 } from '@/types';
 import { LayoutDashboard, Package } from 'lucide-react';
 
@@ -207,6 +208,7 @@ export const DashProductMain: DashProductType[] = [
     action: ['Setujui', 'Batalkan']
   }
 ];
+
 export const ManageProductTitle: ProductDashType[] = [
   {
     id: 1,
@@ -396,5 +398,20 @@ export const TabManage: TabManageType[] = [
     id: 4,
     title: 'Terjual',
     total: 69
+  }
+];
+
+export const dataDashboardTotals: DataDashboardTotal[] = [
+  {
+    id: 1,
+    title: 'Total Produk'
+  },
+  {
+    id: 2,
+    title: 'Total Pendapatan'
+  },
+  {
+    id: 3,
+    title: 'Total Produk Terjual'
   }
 ];
