@@ -12,7 +12,7 @@ import {
 
 const DashboardStatistics = () => {
   return (
-    <div className="hidden md:flex flex-col justify-center items-center w-full bg-white rounded-xl p-6">
+    <div className="flex flex-col justify-center items-center bg-white rounded-xl p-6">
       <div className="flex justify-center items-center self-end gap-2 mb-2">
         <div className="bg-[#FDD43D] size-4 rounded-full"></div>
         <h1 className="text-sm mr-2">Terjual</h1>
