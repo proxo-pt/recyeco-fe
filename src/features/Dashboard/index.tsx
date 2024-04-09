@@ -1,3 +1,4 @@
+import DashboardStatistics from './sections/DashboardOverview/dashboardStatistics';
 import DashboardTotals from './sections/DashboardOverview/dashboardTotals';
 import DashboardProduct from './sections/DashboardProduct';
 
@@ -6,6 +7,7 @@ const DashboardToko = () => {
     <div>
       <div className="text-2xl font-bold space-y-4">
         <DashboardTotals />
+        <DashboardStatistics />
         <DashboardProduct />
       </div>
     </div>

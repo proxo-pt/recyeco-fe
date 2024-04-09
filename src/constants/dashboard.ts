@@ -3,8 +3,9 @@ import {
   DashboardMenuType,
   DataDashboardTotal,
   ManageProductType,
-  TabManageType,
-  ProductDashType
+  ProductDashType,
+  ProductSalesType,
+  TabManageType
 } from '@/types';
 import { LayoutDashboard, Package } from 'lucide-react';
 
@@ -413,5 +414,68 @@ export const dataDashboardTotals: DataDashboardTotal[] = [
   {
     id: 3,
     title: 'Total Produk Terjual'
+  }
+];
+
+export const DataProductSales: ProductSalesType[] = [
+  {
+    name: 'Januari',
+    Terjual: 400,
+    BelumTerjual: 240
+  },
+  {
+    name: 'Februari',
+    Terjual: 300,
+    BelumTerjual: 139
+  },
+  {
+    name: 'Maret',
+    Terjual: 200,
+    BelumTerjual: 980
+  },
+  {
+    name: 'April',
+    Terjual: 278,
+    BelumTerjual: 390
+  },
+  {
+    name: 'Mei',
+    Terjual: 189,
+    BelumTerjual: 480
+  },
+  {
+    name: 'Juni',
+    Terjual: 239,
+    BelumTerjual: 380
+  },
+  {
+    name: 'Juli',
+    Terjual: 349,
+    BelumTerjual: 430
+  },
+  {
+    name: 'Agustus',
+    Terjual: 275,
+    BelumTerjual: 310
+  },
+  {
+    name: 'September',
+    Terjual: 388,
+    BelumTerjual: 280
+  },
+  {
+    name: 'Oktober',
+    Terjual: 498,
+    BelumTerjual: 320
+  },
+  {
+    name: 'November',
+    Terjual: 364,
+    BelumTerjual: 270
+  },
+  {
+    name: 'Desember',
+    Terjual: 289,
+    BelumTerjual: 210
   }
 ];
