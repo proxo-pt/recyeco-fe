@@ -1,5 +1,4 @@
-'use client';
-import { FC, SetStateAction } from 'react';
+import { FC } from 'react';
 import { InputSearch } from '@/components/ui/input-search';
 import { Search } from 'lucide-react';
 import {
@@ -12,20 +11,11 @@ import {
 } from '@/components/ui/table';
 import { DashProduct, DashProductMain } from '@/constants/dashboard';
 import { Button } from '@/components/ui/button';
-import {
-  Pagination,
-  PaginationContent,
-  PaginationEllipsis,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious
-} from '@/components/ui/pagination';
 import React from 'react';
 
 const DashboardProduct: FC = () => {
   return (
-    <div className="bg-white m-8 p-5 rounded">
+    <div className="bg-white p-5 rounded-xl">
       <div className="flex items-center justify-between">
         <strong>Verifikasi Produk</strong>
         <div className="hidden lg:block w-4/12">
@@ -37,7 +27,7 @@ const DashboardProduct: FC = () => {
           />
         </div>
       </div>
-      <div className="my-8">
+      <div className="mt-8">
         <Table>
           <TableHeader>
             <TableRow>
@@ -79,24 +69,6 @@ const DashboardProduct: FC = () => {
             ))}
           </TableBody>
         </Table>
-        <Pagination>
-          <PaginationContent>
-            <PaginationItem>
-              <PaginationPrevious />
-            </PaginationItem>
-
-            <PaginationItem>
-              <PaginationLink></PaginationLink>
-            </PaginationItem>
-
-            <PaginationItem>
-              <PaginationEllipsis />
-            </PaginationItem>
-            <PaginationItem>
-              <PaginationNext />
-            </PaginationItem>
-          </PaginationContent>
-        </Pagination>
       </div>
     </div>
   );

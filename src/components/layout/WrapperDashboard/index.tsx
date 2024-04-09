@@ -1,6 +1,5 @@
 import React, { ReactNode } from 'react';
 import DashboardSide from '../DashboardSide';
-import Footer from '../Footer';
 import DashboardNav from '../DashboardNav';
 
 const WrapperDashboard = ({ children }: { children: ReactNode }) => {
@@ -10,13 +9,12 @@ const WrapperDashboard = ({ children }: { children: ReactNode }) => {
         <DashboardNav />
         <div className="flex">
           <DashboardSide />
-          <div className="flex h-screen border-collapse overflow-hidden w-full">
+          <div className="flex h-screen bg-[#E7E7E7] overflow-hidden w-full">
             <main className="flex-1 overflow-y-auto overflow-x-hidden pt-14">
-              <div className="pt-6 pl-8">{children}</div>
+              <div className="py-6 px-8">{children}</div>
             </main>
           </div>
         </div>
-        <Footer />
       </div>
     </div>
   );
