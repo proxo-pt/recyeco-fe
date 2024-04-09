@@ -17,7 +17,7 @@ const InputPassword = React.forwardRef<HTMLInputElement, InputProps>(
     return (
       <label
         className={cn(
-          'flex items-center gap-4 w-full h-14 rounded-xl border border-black bg-transparent placeholder-black px-6 py-3 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
+          'flex items-center gap-1 w-full h-14 rounded-xl border border-black bg-transparent placeholder-black px-4 py-3 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
           isFocused && 'outline outline-1'
         )}
       >
