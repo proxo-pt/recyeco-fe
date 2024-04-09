@@ -6,9 +6,9 @@ export const ProfileDataService = async (): Promise<ProfileResType> => {
   return res.data.user;
 };
 
-export const ProfileUpdateService = async (
-  data: ProfileResType
-): Promise<ProfileResType> => {
-  const res = await fetcher.put('profil/edit', data);
-  return res.data.user;
+export const ProfileUpdateService = async (data: FormData): Promise<any> => {
+  const res = await fetcher.put('profil/edit', data, {
+    headers: { 'Content-Type': 'multipart/form-data' }
+  });
+  return res.data;
 };
