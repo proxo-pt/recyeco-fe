@@ -97,6 +97,7 @@ export interface ProductDashType {
   id?: number;
   title?: string;
 }
+
 export interface DashProductType {
   id?: number;
   number: number;
@@ -107,5 +108,20 @@ export interface DashProductType {
   status: string;
   action: ActionType[];
 }
+export interface ManageProductType {
+  id?: number;
+  number: number;
+  description: string;
+  type: string;
+  weight: string;
+  price: string;
+  status: string;
+}
 
 type ActionType = 'Setujui' | 'Batalkan';
+
+export interface TabManageType {
+  id?: number;
+  title: string;
+  total: number;
+}

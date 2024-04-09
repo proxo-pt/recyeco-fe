@@ -1,16 +1,11 @@
 'use client';
-import { EditProduk } from '../components/DialogEditProduk';
-import { HapusProduk } from '../components/DialogHapusProduk';
-import { LihatProduk } from '../components/DialogLihatProduk';
-import { TambahProduk } from '../components/DialogTambahProduk';
+import ManageProduct from '../sections/ManageProduct';
+
 const Product = () => {
   return (
     <>
-      <h1>Product Page</h1>
-      <TambahProduk />
-      <EditProduk />
-      <HapusProduk />
-      <LihatProduk />
+      <h1 className="text-2xl font-bold mb-7">Product Page</h1>
+      <ManageProduct />
     </>
   );
 };
