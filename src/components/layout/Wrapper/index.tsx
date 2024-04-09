@@ -12,7 +12,7 @@ const WrapperDashboard = ({ children }: { children: ReactNode }) => {
           <DashboardSide />
           <div className="flex h-screen border-collapse overflow-hidden w-full">
             <main className="flex-1 overflow-y-auto overflow-x-hidden pt-14">
-              <div className="pt-6 pl-8">{children}</div>
+              <div>{children}</div>
             </main>
           </div>
         </div>

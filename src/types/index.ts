@@ -92,3 +92,20 @@ export interface AboutTeamType {
   src?: string;
   alt?: string;
 }
+
+export interface ProductDashType {
+  id?: number;
+  title?: string;
+}
+export interface DashProductType {
+  id?: number;
+  number: number;
+  description: string;
+  user: string;
+  weight: string;
+  price: string;
+  status: string;
+  action: ActionType[];
+}
+
+type ActionType = 'Setujui' | 'Batalkan';
