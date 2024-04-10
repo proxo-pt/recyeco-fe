@@ -83,7 +83,7 @@ const SignIn = () => {
             />
           </Form>
           <Link
-            href={'#'}
+            href={'/forget-pass'}
             className="self-end text-xs text-gray-500 font-medium"
           >
             Lupa Password ?

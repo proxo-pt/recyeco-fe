@@ -1,3 +1,4 @@
+'use client';
 import { Button } from '@/components/ui/button';
 import { InputSuffix } from '@/components/ui/input-suffix';
 import { getAssetUrl } from '@/lib/utils';
@@ -5,8 +6,29 @@ import { Mail } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { FC } from 'react';
+import { useAuthForgetPass } from './hooks';
+import { useForm } from 'react-hook-form';
+import { ForgetPassSchema, ForgetPassType } from '@/domains/auth';
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage
+} from '@/components/ui/form';
+import { zodResolver } from '@hookform/resolvers/zod';
 
-const ForgetPass: FC = () => {
+const ForgetPass = () => {
+  const { mutate } = useAuthForgetPass();
+  const form = useForm<ForgetPassType>({
+    resolver: zodResolver(ForgetPassSchema)
+  });
+
+  const onSubmit = (values: ForgetPassType) => {
+    console.log(values);
+    mutate(values);
+  };
+
   return (
     <div className="flex justify-between h-screen">
       <div className="flex flex-col gap-7 justify-center items-center w-full bg-[#DCDCDC]">
@@ -17,17 +39,33 @@ const ForgetPass: FC = () => {
           </p>
         </div>
         <div className="flex flex-col gap-5 w-8/12">
-          <InputSuffix
-            type="email"
-            placeholder="Masukkan email..."
-            suffix={
-              <div className="w-6 h-6">
-                <Mail strokeWidth={'1'} />
-              </div>
-            }
-          />
+          <Form {...form}>
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <InputSuffix
+                      type="email"
+                      placeholder="Masukkan email..."
+                      suffix={
+                        <div className="w-6 h-6">
+                          <Mail strokeWidth={'1'} />
+                        </div>
+                      }
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </Form>
 
-          <Button size={'login'}>Reset Kata Sandi</Button>
+          <Button size={'login'} onClick={form.handleSubmit(onSubmit)}>
+            Reset Kata Sandi
+          </Button>
 
           <Link href={'/sign-up'} className="self-center font-medium">
             Belum memiliki akun? <span className="text-[#3DAA5F]">Daftar</span>

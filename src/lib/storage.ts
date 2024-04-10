@@ -1,4 +1,4 @@
-export const setToken = (token: string) => {
+export const setToken = (token: string | null) => {
   document.cookie = 'token' + '=' + token;
 };
 
