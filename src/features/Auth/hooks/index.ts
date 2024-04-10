@@ -1,5 +1,10 @@
 'use client';
-import { LoginType, RegisterType } from '@/domains/auth';
+import {
+  ForgetPassType,
+  LoginType,
+  RegisterType,
+  ResetPassType
+} from '@/domains/auth';
 import useToast from '@/hooks/useToast';
 import { AuthService } from '@/service/auth';
 import { useMutation } from '@tanstack/react-query';
@@ -46,6 +51,54 @@ export const useAuthLogin = () => {
     onError: (err: AxiosError) => {
       showToast({
         title: 'Login Gagal!',
+        description: err?.message || 'Ada Sesuatu Yang Salah!',
+        type: 'error'
+      });
+    }
+  });
+};
+
+export const useAuthForgetPass = () => {
+  const { showToast } = useToast();
+  const router = useRouter();
+  return useMutation({
+    mutationFn: async (values: ForgetPassType) =>
+      await AuthService.forgetPass(values),
+    onSuccess: data => {
+      router.push('/forget-resetpass');
+      showToast({
+        title: data?.message || 'Berhasil Mengirim',
+        description: 'Silahkan cek email anda / cek di bagian spam',
+        type: 'success'
+      });
+    },
+    onError: (err: AxiosError) => {
+      showToast({
+        title: 'Gagal Mengirim',
+        description: err?.message || 'Ada Sesuatu Yang Salah!',
+        type: 'error'
+      });
+    }
+  });
+};
+
+export const useAuthResetPass = () => {
+  const { showToast } = useToast();
+  const router = useRouter();
+  return useMutation({
+    mutationFn: async (values: ResetPassType) =>
+      await AuthService.resetPass(values),
+    onSuccess: data => {
+      router.push('/sign-in');
+      showToast({
+        title: data?.message || 'Berhasil Mengganti Password',
+        description: 'Silahkan Login Kembali',
+        type: 'success'
+      });
+    },
+    onError: (err: AxiosError) => {
+      showToast({
+        title: 'Gagal Mengirim',
         description: err?.message || 'Ada Sesuatu Yang Salah!',
         type: 'error'
       });
