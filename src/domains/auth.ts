@@ -46,6 +46,19 @@ export const RegisterSchema = z
 
 export type RegisterType = z.infer<typeof RegisterSchema>;
 
+export const ForgetPassSchema = z.object({
+  email: EmailSchema
+});
+
+export type ForgetPassType = z.infer<typeof ForgetPassSchema>;
+
+export const ResetPassSchema = z.object({
+  newpassword: PasswordSchema,
+  confirmpassword: PasswordSchema
+});
+
+export type ResetPassType = z.infer<typeof ResetPassSchema>;
+
 const RegisterResSchema = z.object({
   id: z.number(),
   username: z.string(),
@@ -61,3 +74,11 @@ export type RegisterResType = z.infer<typeof RegisterResSchema>;
 const LoginResSchema = z.string();
 
 export type LoginResType = z.infer<typeof LoginResSchema>;
+
+const ForgetPassResSchema = z.string();
+
+export type ForgetPassResType = z.infer<typeof ForgetPassResSchema>;
+
+const ResetPassResSchema = z.string();
+
+export type ResetPassResType = z.infer<typeof ResetPassResSchema>;
