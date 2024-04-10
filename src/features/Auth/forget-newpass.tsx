@@ -1,11 +1,39 @@
-import { FC } from 'react';
+'use client';
 import { getAssetUrl } from '@/lib/utils';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Lock } from 'lucide-react';
 import { InputPassword } from '@/components/ui/input-password';
+import { useAuthResetPass } from './hooks';
+import { useForm } from 'react-hook-form';
+import { ResetPassSchema, ResetPassType } from '@/domains/auth';
+import { zodResolver } from '@hookform/resolvers/zod';
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage
+} from '@/components/ui/form';
+import { useSearchParams } from 'next/navigation';
+import { setToken } from '@/lib/storage';
 
-const NewPassword: FC = () => {
+const NewPassword = () => {
+  const searchParams = useSearchParams();
+  const search = searchParams.get('param');
+  if (search) {
+    setToken(search);
+  }
+
+  const { mutate } = useAuthResetPass();
+  const form = useForm<ResetPassType>({
+    resolver: zodResolver(ResetPassSchema)
+  });
+
+  const onSubmit = (values: ResetPassType) => {
+    mutate(values);
+  };
+
   return (
     <div className="flex justify-between h-screen">
       <div className="hidden lg:flex justify-center items-center w-full bg-gradient-to-b from-[#61C580] to-[#C7F7AE]">
@@ -28,31 +56,59 @@ const NewPassword: FC = () => {
             sandi ke proxo@gmail.com
           </p>
           <p className="text-right mt-8">
-            Tidak menerima emailnya? periksa folder spam atau
+            Tidak menerima emailnya? periksa folder spam
           </p>
         </div>
         <div className="flex flex-col gap-5 w-8/12">
-          <InputPassword
-            type="password"
-            placeholder="Masukkan Kata Sandi..."
-            suffix={
-              <div className="w-6 h-6">
-                <Lock strokeWidth={'1'} />
-              </div>
-            }
-          />
-          <InputPassword
-            type="password"
-            placeholder="Konfirmasi Kata Sandi Baru"
-            suffix={
-              <div className="w-6 h-6">
-                <Lock strokeWidth={'1'} />
-              </div>
-            }
-          />
+          <Form {...form}>
+            <FormField
+              control={form.control}
+              name="newpassword"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <InputPassword
+                      type="password"
+                      placeholder="Masukkan Kata Sandi..."
+                      suffix={
+                        <div className="w-6 h-6">
+                          <Lock strokeWidth={'1'} />
+                        </div>
+                      }
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="confirmpassword"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <InputPassword
+                      type="password"
+                      placeholder="Konfirmasi Kata Sandi Baru"
+                      suffix={
+                        <div className="w-6 h-6">
+                          <Lock strokeWidth={'1'} />
+                        </div>
+                      }
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </Form>
+
           <Button
             size={'login'}
             className="bg-[#DCDCDC] text-black border-black border-2 hover:bg-[#4F4F4F] hover:border-0 hover:text-white"
+            onClick={form.handleSubmit(onSubmit)}
           >
             Simpan Kata Sandi
           </Button>
