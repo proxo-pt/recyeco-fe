@@ -2,7 +2,11 @@ import {
   LoginResType,
   LoginType,
   RegisterType,
-  RegisterResType
+  RegisterResType,
+  ForgetPassType,
+  ForgetPassResType,
+  ResetPassType,
+  ResetPassResType
 } from '@/domains/auth';
 import { BaseResponseType } from '@/domains/response';
 import { fetcher } from './instance';
@@ -19,6 +23,20 @@ export const AuthService = {
   login: async (data: LoginType): Promise<BaseResponseType<LoginResType>> => {
     const res = await fetcher.post('login', data);
     await setToken(res.data.token);
+    return res.data;
+  },
+
+  forgetPass: async (
+    data: ForgetPassType
+  ): Promise<BaseResponseType<ForgetPassResType>> => {
+    const res = await fetcher.post('sendemail', data);
+    return res.data;
+  },
+
+  resetPass: async (
+    data: ResetPassType
+  ): Promise<BaseResponseType<ResetPassResType>> => {
+    const res = await fetcher.put('resetpassword', data);
     return res.data;
   }
 };
