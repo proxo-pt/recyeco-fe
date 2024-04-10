@@ -12,7 +12,8 @@ export const ProfileResSchema = z.object({
   username: z.string({ required_error: MESSAGE.USERNAME }).min(3).optional(),
   birthdate: z.string({ required_error: MESSAGE.BIRTHDATE }).optional(),
   gender: z.string({ required_error: MESSAGE.GENDER }).optional(),
-  email: EmailSchema.optional()
+  email: EmailSchema.optional(),
+  foto: z.any()
 });
 
 export type ProfileResType = z.infer<typeof ProfileResSchema>;

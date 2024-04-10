@@ -18,47 +18,42 @@ import {
   SelectTrigger,
   SelectValue
 } from '@/components/ui/select';
-import { handleFileChange } from '@/lib/utils';
-import { ProfileResSchema, ProfileResType } from '@/domains/profile';
+import { ProfileResType } from '@/domains/profile';
 import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
 import {
   Form,
   FormControl,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage
 } from '@/components/ui/form';
 import { useProfileData, useProfileUpdate } from '../../hooks';
 
 const UserForm = () => {
-  const [open, setOpen] = useState({
-    inputName: false,
-    inputDate: false,
-    inputGender: false,
-    inputEmail: false
-  });
-  const [file, setFile] = useState('');
-
-  const { data } = useProfileData();
-  const profileData = data;
-
-  const { mutate } = useProfileUpdate();
-
-  const form = useForm<ProfileResType>({
-    resolver: zodResolver(ProfileResSchema),
-    defaultValues: {
-      username: profileData?.username,
-      birthdate: profileData?.birthdate,
-      gender: profileData?.gender,
-      email: profileData?.email
-    }
-  });
+  const [formData, setFormData] = useState(new FormData());
+  const { data: profileData } = useProfileData();
+  const { mutate, isSuccess, isError } = useProfileUpdate();
+  const form = useForm();
 
   const onSubmit = (values: ProfileResType) => {
-    mutate(values);
+    formData.append('username', values?.username ?? '');
+    formData.append('gender', values?.gender ?? '');
+    formData.append('birthdate', values?.birthdate ?? '');
+    formData.append('email', values?.email ?? '');
+    mutate(formData);
   };
+
+  const handleUploadedFile = (e: React.ChangeEvent<HTMLInputElement> | any) => {
+    e.preventDefault();
+    const uploadedImage = e.target.files[0];
+    formData.append('foto', uploadedImage);
+  };
+
+  useEffect(() => {
+    if (isSuccess || isError) {
+      setFormData(new FormData());
+    }
+  }, [isSuccess, isError]);
 
   return (
     <div className="w-full xl:col-span-3 col-span-4">
@@ -70,47 +65,59 @@ const UserForm = () => {
         </CardHeader>
         <CardContent className="p-4">
           <div className="flex flex-wrap justify-between">
-            <div className="lg:basis-[40%] w-full">
-              <Card className="border-2 shadow-lg rounded-2xl">
-                <CardHeader className="justify-center items-center">
-                  <Avatar className="w-full h-auto rounded-2xl">
-                    <AvatarImage
-                      src={file || 'https://github.com/shadcn.png'}
-                    />
-                  </Avatar>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex justify-center items-center">
-                    <Label
-                      htmlFor="profile"
-                      className="text-center text-recyeco-primary absolute"
-                    >
-                      Pilih Foto
-                    </Label>
-                    <Input
-                      type="file"
-                      accept="image/*"
-                      name="profile"
-                      className="p-0 rounded-xl border-recyeco-primary outline-recyeco-primary"
-                      classInput="opacity-0"
-                      onChange={e => setFile(handleFileChange(e))}
-                    />
-                  </div>
-                </CardContent>
-                <CardFooter>
-                  <p className="text-xs text-recyeco-text-muted">
-                    Besar file: maksimum 10.000.000 bytes (10 Megabytes).
-                    Ekstensi file yang diperbolehkan: .JPG .JPEG .PNG
-                  </p>
-                </CardFooter>
-              </Card>
-            </div>
             <Form {...form}>
+              <div className="lg:basis-[40%] w-full">
+                <Card className="border-2 shadow-lg rounded-2xl">
+                  <CardHeader className="justify-center items-center">
+                    <Avatar className="w-full h-auto rounded-2xl ">
+                      <AvatarImage
+                        src={
+                          profileData?.foto || 'https://github.com/shadcn.png'
+                        }
+                      />
+                    </Avatar>
+                  </CardHeader>
+                  <CardContent>
+                    <FormField
+                      name="foto"
+                      render={({ field: { onChange, ...field } }) => (
+                        <FormItem className="h-auto">
+                          <FormControl>
+                            <div className="flex justify-center items-center">
+                              <Label
+                                htmlFor="foto"
+                                className="text-center text-recyeco-primary absolute"
+                              >
+                                Pilih Foto
+                              </Label>
+                              <Input
+                                type="file"
+                                accept="image/*"
+                                id="foto"
+                                className="p-0 rounded-xl border-recyeco-primary outline-recyeco-primary"
+                                classInput="opacity-0"
+                                onChange={handleUploadedFile}
+                                {...field}
+                              />
+                            </div>
+                          </FormControl>
+                        </FormItem>
+                      )}
+                    />
+                  </CardContent>
+                  <CardFooter>
+                    <p className="text-xs text-recyeco-text-muted">
+                      Besar file: maksimum 10.000.000 bytes (10 Megabytes).
+                      Ekstensi file yang diperbolehkan: .JPG .JPEG .PNG
+                    </p>
+                  </CardFooter>
+                </Card>
+              </div>
+
               <div className="lg:basis-[60%] w-full p-6">
                 <h1 className="font-semibold">Ubah Biodata Diri</h1>
                 <div className="grid lg:grid-rows-3 gap-y-4 mt-2">
                   <FormField
-                    control={form.control}
                     name="username"
                     render={({ field }) => (
                       <FormItem className="h-auto">
@@ -126,14 +133,13 @@ const UserForm = () => {
                             id="username"
                             placeholder="Masukkan Nama Anda"
                             {...field}
-                            value={field.value}
+                            // defaultValue={profileData?.username}
                           />
                         </FormControl>
                       </FormItem>
                     )}
                   />
                   <FormField
-                    control={form.control}
                     name="birthdate"
                     render={({ field }) => (
                       <FormItem>
@@ -148,7 +154,7 @@ const UserForm = () => {
                             type="date"
                             id="birthdate"
                             {...field}
-                            value={field.value}
+                            // defaultValue={profileData?.birthdate}
                           />
                         </FormControl>
                         <FormMessage />
@@ -156,7 +162,6 @@ const UserForm = () => {
                     )}
                   />
                   <FormField
-                    control={form.control}
                     name="gender"
                     render={({ field }) => (
                       <FormItem>
@@ -166,7 +171,11 @@ const UserForm = () => {
                             {profileData?.gender || 'Masukkan Jenis Kelamin'}
                           </h1>
                         </div>
-                        <Select {...field} onValueChange={field.onChange}>
+                        <Select
+                          {...field}
+                          onValueChange={field.onChange}
+                          // defaultValue={profileData?.gender}
+                        >
                           <FormControl>
                             <SelectTrigger>
                               <SelectValue placeholder="Masukkan Jenis Kelamin" />
@@ -185,7 +194,6 @@ const UserForm = () => {
                 <div className="mt-6">
                   <h1 className="font-semibold">Ubah Kontak</h1>
                   <FormField
-                    control={form.control}
                     name="email"
                     render={({ field }) => (
                       <FormItem className="mt-2">
@@ -201,7 +209,7 @@ const UserForm = () => {
                             id="email"
                             placeholder="Masukkan Email Anda"
                             {...field}
-                            value={field.value}
+                            // defaultValue={profileData?.email}
                           />
                         </FormControl>
                       </FormItem>

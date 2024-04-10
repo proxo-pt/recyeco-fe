@@ -1,5 +1,5 @@
 'use client';
-import { FC } from 'react';
+import { FC, useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import useWindowSize from '@/hooks/useWindowSize';
@@ -9,9 +9,19 @@ import recyecoLogo from '@/assets/recyeco-dark-logo.svg';
 import HeaderMenu from './components/HeaderMenu';
 import { UserMobileDefault, UserMobileLogin } from './components/UserMobile';
 import { UserDesktopDefault, UserDesktopLogin } from './components/UserDesktop';
+import { getToken } from '@/lib/storage';
 
 const Navbar: FC = () => {
-  const isLoggedIn = true;
+  const [isLoggedIn, setLogin] = useState(false);
+
+  useEffect(() => {
+    if (getToken()) {
+      setLogin(true);
+    } else {
+      setLogin(false);
+    }
+  }, []);
+
   const screenSize = useWindowSize();
 
   return (

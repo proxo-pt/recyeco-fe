@@ -3,18 +3,23 @@ import Link from 'next/link';
 import { Avatar, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
+import { useProfileData } from '../../hooks';
 
 const UserCard = () => {
+  const { data: profileData } = useProfileData();
+
   return (
     <div className="xl:col-span-1 col-span-4">
       <Card className="rounded-2xl shadow-xl divide-y-2">
         <CardHeader>
           <div className="flex items-center gap-4">
             <Avatar className="rounded-xl">
-              <AvatarImage src="https://github.com/shadcn.png" />
+              <AvatarImage
+                src={profileData?.foto || 'https://github.com/shadcn.png'}
+              />
             </Avatar>
             <h1 className="text-sm text-recyeco-primary font-semibold">
-              Anonymous
+              {profileData?.username}
             </h1>
           </div>
         </CardHeader>

@@ -24,9 +24,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={poppins.className}>
-        <LayoutContainer>
-          <TanstackProvider>{children}</TanstackProvider>
-        </LayoutContainer>
+        <TanstackProvider>
+          <LayoutContainer>{children}</LayoutContainer>
+        </TanstackProvider>
         <Toaster />
       </body>
     </html>
