@@ -14,8 +14,12 @@ import { LogOut } from 'lucide-react';
 import { HamburgerMenuIcon } from '@radix-ui/react-icons';
 import { DialogDaftarToko } from '../DialogDaftarToko';
 import { DialogTrigger } from '@/components/ui/dialog';
+import { useProfileData } from '@/features/Profile/hooks';
+import { handleLogout } from '@/lib/utils';
 
 export const UserMobileLogin: FC = () => {
+  const { data: profileData } = useProfileData();
+
   return (
     <DialogDaftarToko>
       <DropdownMenu>
@@ -24,7 +28,9 @@ export const UserMobileLogin: FC = () => {
             className={`w-auto h-12 flex flex-row-reverse items-center justify-between rounded-xl gap-2 px-2`}
           >
             <Avatar className="rounded-full">
-              <AvatarImage src="https://github.com/shadcn.png" />
+              <AvatarImage
+                src={profileData?.foto || 'https://github.com/shadcn.png'}
+              />
             </Avatar>
           </div>
         </DropdownMenuTrigger>
@@ -35,10 +41,12 @@ export const UserMobileLogin: FC = () => {
               className="flex items-center gap-4 cursor-pointer"
             >
               <Avatar className="rounded-full md:rounded-xl">
-                <AvatarImage src="https://github.com/shadcn.png" />
+                <AvatarImage
+                  src={profileData?.foto || 'https://github.com/shadcn.png'}
+                />
               </Avatar>
               <h1 className="text-sm text-recyeco-primary font-semibold">
-                Anonymous
+                {profileData?.username}
               </h1>
             </Link>
           </DropdownMenuItem>
@@ -53,7 +61,7 @@ export const UserMobileLogin: FC = () => {
               </DropdownMenuItem>
             ))}
           </DropdownMenuGroup>
-          <Link href="" className="font-semibold">
+          <Link href="" className="font-semibold" onClick={handleLogout}>
             <DropdownMenuItem className="flex justify-between items-center cursor-pointer">
               <span>Log Out</span>
               <div>
