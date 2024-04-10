@@ -1,0 +1,283 @@
+'use client';
+import * as React from 'react';
+import {
+  ColumnDef,
+  ColumnFiltersState,
+  SortingState,
+  VisibilityState,
+  flexRender,
+  getCoreRowModel,
+  getFilteredRowModel,
+  getPaginationRowModel,
+  getSortedRowModel,
+  useReactTable
+} from '@tanstack/react-table';
+import { ChevronDown } from 'lucide-react';
+
+import { Button } from '@/components/ui/button';
+import { Checkbox } from '@/components/ui/checkbox';
+import {
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuTrigger
+} from '@/components/ui/dropdown-menu';
+import { Input } from '@/components/ui/input';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow
+} from '@/components/ui/table';
+import { LihatProduk } from '../DialogLihatProduk';
+import { EditProduk } from '../DialogEditProduk';
+import { HapusProduk } from '../DialogHapusProduk';
+import { DashProductType } from '@/types';
+import { DashProductMain } from '@/constants/dashboard';
+import { TambahProduk } from '../DialogTambahProduk';
+
+export const columns: ColumnDef<DashProductType>[] = [
+  {
+    id: 'select',
+    header: ({ table }) => (
+      <div className="w-10">
+        <Checkbox
+          checked={
+            table.getIsAllPageRowsSelected() ||
+            (table.getIsSomePageRowsSelected() && 'indeterminate')
+          }
+          onCheckedChange={value => table.toggleAllPageRowsSelected(!!value)}
+          aria-label="Select all"
+        />
+      </div>
+    ),
+    cell: ({ row }) => (
+      <Checkbox
+        checked={row.getIsSelected()}
+        onCheckedChange={value => row.toggleSelected(!!value)}
+        aria-label="Select row"
+      />
+    ),
+    enableSorting: false,
+    enableHiding: false
+  },
+  {
+    accessorKey: 'id',
+    header: () => <div className="text-center">No</div>,
+    cell: ({ row }) => <div className="text-center">{row.getValue('id')}</div>,
+    enableHiding: false
+  },
+  {
+    accessorKey: 'name',
+    header: () => <div className="md:mr-12 text-nowrap">Nama Produk</div>,
+    cell: ({ row }) => (
+      <div className="md:mr-12 text-nowrap">{row.getValue('name')}</div>
+    )
+  },
+  {
+    accessorKey: 'status',
+    header: 'Status',
+    cell: ({ row }) => <div>{row.getValue('status')}</div>
+  },
+  {
+    accessorKey: 'type',
+    header: () => <div className="md:mx-12">Jenis</div>,
+    cell: ({ row }) => <div className="md:mx-12">{row.getValue('type')}</div>
+  },
+  {
+    accessorKey: 'weight',
+    header: () => <div className="md:mx-12">Berat</div>,
+    cell: ({ row }) => <div className="md:mx-12">{row.getValue('weight')}</div>
+  },
+  {
+    accessorKey: 'price',
+    header: () => <div className="md:mx-12">Harga</div>,
+    cell: ({ row }) => <div className="md:mx-10">{row.getValue('price')}</div>
+  },
+  {
+    id: 'actions',
+    enableHiding: false,
+    header: () => <div className="text-center">Aksi</div>,
+    cell: ({ row }) => {
+      return (
+        <div className="flex justify-center items-center">
+          {row.original.status === 'Menunggu' ? (
+            <div className="flex gap-2">
+              <Button className="hover:bg-green-700 bg-green-600">
+                Setujui
+              </Button>
+              <Button className="hover:bg-red-700 bg-red-600">Batalkan</Button>
+            </div>
+          ) : (
+            <div className="flex gap-4">
+              <LihatProduk />
+              <EditProduk />
+              <HapusProduk />
+            </div>
+          )}
+        </div>
+      );
+    }
+  }
+];
+
+export const DataTableProducts = () => {
+  const [sorting, setSorting] = React.useState<SortingState>([]);
+  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
+    []
+  );
+  const [columnVisibility, setColumnVisibility] =
+    React.useState<VisibilityState>({});
+  const [rowSelection, setRowSelection] = React.useState({});
+
+  const [selectedStatus, setSelectedStatus] = React.useState<string | null>(
+    null
+  );
+
+  const handleStatusFilter = (status: string | null) => {
+    table.getColumn('status')?.setFilterValue(status);
+    setSelectedStatus(status);
+  };
+
+  const table = useReactTable({
+    data: DashProductMain,
+    columns,
+    onSortingChange: setSorting,
+    onColumnFiltersChange: setColumnFilters,
+    getCoreRowModel: getCoreRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+    getFilteredRowModel: getFilteredRowModel(),
+    onColumnVisibilityChange: setColumnVisibility,
+    onRowSelectionChange: setRowSelection,
+    state: {
+      sorting,
+      columnFilters,
+      columnVisibility,
+      rowSelection
+    }
+  });
+
+  return (
+    <div className="w-full">
+      <div className="flex justify-between items-center py-4">
+        <div className="space-x-2">
+          <Input
+            value={
+              (table.getColumn('status')?.getFilterValue() as string) ?? ''
+            }
+            onChange={event =>
+              table.getColumn('status')?.setFilterValue(event.target.value)
+            }
+            className="max-w-sm hidden"
+          />
+          <Button
+            variant="outline"
+            onClick={() => handleStatusFilter(null)}
+            className={`max-w-sm ${selectedStatus === null && 'bg-recyeco-primary text-white'}`}
+          >
+            Semua
+          </Button>
+          <Button
+            variant="outline"
+            onClick={() => handleStatusFilter('Tersedia')}
+            className={`max-w-sm ${selectedStatus === 'Tersedia' && 'bg-recyeco-primary text-white'}`}
+          >
+            Tersedia
+          </Button>
+          <Button
+            variant="outline"
+            onClick={() => handleStatusFilter('Menunggu')}
+            className={`max-w-sm ${selectedStatus === 'Menunggu' && 'bg-recyeco-primary text-white'}`}
+          >
+            Menunggu
+          </Button>
+          <Button
+            variant="outline"
+            onClick={() => handleStatusFilter('Terjual')}
+            className={`max-w-sm ${selectedStatus === 'Terjual' && 'bg-recyeco-primary text-white'}`}
+          >
+            Terjual
+          </Button>
+        </div>
+        <TambahProduk />
+      </div>
+      <div className="rounded-md border">
+        <Table>
+          <TableHeader>
+            {table.getHeaderGroups().map(headerGroup => (
+              <TableRow key={headerGroup.id}>
+                {headerGroup.headers.map(header => {
+                  return (
+                    <TableHead key={header.id}>
+                      {header.isPlaceholder
+                        ? null
+                        : flexRender(
+                            header.column.columnDef.header,
+                            header.getContext()
+                          )}
+                    </TableHead>
+                  );
+                })}
+              </TableRow>
+            ))}
+          </TableHeader>
+          <TableBody>
+            {table.getRowModel().rows?.length ? (
+              table.getRowModel().rows.map(row => (
+                <TableRow
+                  key={row.id}
+                  data-state={row.getIsSelected() && 'selected'}
+                >
+                  {row.getVisibleCells().map(cell => (
+                    <TableCell key={cell.id}>
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext()
+                      )}
+                    </TableCell>
+                  ))}
+                </TableRow>
+              ))
+            ) : (
+              <TableRow>
+                <TableCell
+                  colSpan={columns.length}
+                  className="h-24 text-center"
+                >
+                  No results.
+                </TableCell>
+              </TableRow>
+            )}
+          </TableBody>
+        </Table>
+      </div>
+      <div className="flex items-center justify-end space-x-2 py-4">
+        <div className="flex-1 text-sm text-muted-foreground">
+          {table.getFilteredSelectedRowModel().rows.length} of{' '}
+          {table.getFilteredRowModel().rows.length} row(s) selected.
+        </div>
+        <div className="space-x-2">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => table.previousPage()}
+            disabled={!table.getCanPreviousPage()}
+          >
+            Previous
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => table.nextPage()}
+            disabled={!table.getCanNextPage()}
+          >
+            Next
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+};

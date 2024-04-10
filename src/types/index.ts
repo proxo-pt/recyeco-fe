@@ -97,15 +97,40 @@ export interface ProductDashType {
   id?: number;
   title?: string;
 }
+
 export interface DashProductType {
-  id?: number;
-  number: number;
+  id: number;
+  name: string;
   description: string;
-  user: string;
+  type: string;
   weight: string;
   price: string;
   status: string;
-  action: ActionType[];
 }
 
-type ActionType = 'Setujui' | 'Batalkan';
+export interface ManageProductType {
+  id?: number;
+  number: number;
+  description: string;
+  type: string;
+  weight: string;
+  price: string;
+  status: string;
+}
+
+export interface TabManageType {
+  id?: number;
+  title: string;
+  total: number;
+}
+
+export interface DataDashboardTotal {
+  id?: number;
+  title?: string;
+}
+
+export interface ProductSalesType {
+  name?: string;
+  Terjual?: number;
+  BelumTerjual?: number;
+}
