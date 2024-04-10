@@ -36,6 +36,7 @@ import { EditProduk } from '../DialogEditProduk';
 import { HapusProduk } from '../DialogHapusProduk';
 import { DashProductType } from '@/types';
 import { DashProductMain } from '@/constants/dashboard';
+import { TambahProduk } from '../DialogTambahProduk';
 
 export const columns: ColumnDef<DashProductType>[] = [
   {
@@ -65,11 +66,12 @@ export const columns: ColumnDef<DashProductType>[] = [
   {
     accessorKey: 'id',
     header: () => <div className="text-center">No</div>,
-    cell: ({ row }) => <div className="text-center">{row.getValue('id')}</div>
+    cell: ({ row }) => <div className="text-center">{row.getValue('id')}</div>,
+    enableHiding: false
   },
   {
     accessorKey: 'name',
-    header: () => <div className="md:mr-12 text-nowrap">Product Name</div>,
+    header: () => <div className="md:mr-12 text-nowrap">Nama Produk</div>,
     cell: ({ row }) => (
       <div className="md:mr-12 text-nowrap">{row.getValue('name')}</div>
     )
@@ -81,37 +83,39 @@ export const columns: ColumnDef<DashProductType>[] = [
   },
   {
     accessorKey: 'type',
-    header: () => <div className="md:mx-12">Type</div>,
+    header: () => <div className="md:mx-12">Jenis</div>,
     cell: ({ row }) => <div className="md:mx-12">{row.getValue('type')}</div>
   },
   {
     accessorKey: 'weight',
-    header: () => <div className="md:mx-12">Weight</div>,
+    header: () => <div className="md:mx-12">Berat</div>,
     cell: ({ row }) => <div className="md:mx-12">{row.getValue('weight')}</div>
   },
   {
     accessorKey: 'price',
-    header: () => <div className="md:mx-12">Price</div>,
+    header: () => <div className="md:mx-12">Harga</div>,
     cell: ({ row }) => <div className="md:mx-10">{row.getValue('price')}</div>
   },
   {
     id: 'actions',
     enableHiding: false,
-    header: () => <div className="text-center">Actions</div>,
+    header: () => <div className="text-center">Aksi</div>,
     cell: ({ row }) => {
       return (
-        <div className="flex justify-center items-center gap-4">
+        <div className="flex justify-center items-center">
           {row.original.status === 'Menunggu' ? (
-            <>
-              <Button className="bg-green-600">Setujui</Button>
-              <Button className="bg-red-600">Batalkan</Button>
-            </>
+            <div className="flex gap-2">
+              <Button className="hover:bg-green-700 bg-green-600">
+                Setujui
+              </Button>
+              <Button className="hover:bg-red-700 bg-red-600">Batalkan</Button>
+            </div>
           ) : (
-            <>
+            <div className="flex gap-4">
               <LihatProduk />
               <EditProduk />
               <HapusProduk />
-            </>
+            </div>
           )}
         </div>
       );
@@ -127,6 +131,15 @@ export const DataTableProducts = () => {
   const [columnVisibility, setColumnVisibility] =
     React.useState<VisibilityState>({});
   const [rowSelection, setRowSelection] = React.useState({});
+
+  const [selectedStatus, setSelectedStatus] = React.useState<string | null>(
+    null
+  );
+
+  const handleStatusFilter = (status: string | null) => {
+    table.getColumn('status')?.setFilterValue(status);
+    setSelectedStatus(status);
+  };
 
   const table = useReactTable({
     data: DashProductMain,
@@ -149,39 +162,47 @@ export const DataTableProducts = () => {
 
   return (
     <div className="w-full">
-      <div className="flex items-center py-4">
-        <Input
-          placeholder="Cari Disini..."
-          value={(table.getColumn('type')?.getFilterValue() as string) ?? ''}
-          onChange={event =>
-            table.getColumn('type')?.setFilterValue(event.target.value)
-          }
-          className="max-w-sm"
-        />
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="outline" className="ml-auto">
-              Columns <ChevronDown className="ml-2 h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            {table
-              .getAllColumns()
-              .filter(column => column.getCanHide())
-              .map(column => {
-                return (
-                  <DropdownMenuCheckboxItem
-                    key={column.id}
-                    className="capitalize"
-                    checked={column.getIsVisible()}
-                    onCheckedChange={value => column.toggleVisibility(!!value)}
-                  >
-                    {column.id}
-                  </DropdownMenuCheckboxItem>
-                );
-              })}
-          </DropdownMenuContent>
-        </DropdownMenu>
+      <div className="flex justify-between items-center py-4">
+        <div className="space-x-2">
+          <Input
+            value={
+              (table.getColumn('status')?.getFilterValue() as string) ?? ''
+            }
+            onChange={event =>
+              table.getColumn('status')?.setFilterValue(event.target.value)
+            }
+            className="max-w-sm hidden"
+          />
+          <Button
+            variant="outline"
+            onClick={() => handleStatusFilter(null)}
+            className={`max-w-sm ${selectedStatus === null && 'bg-recyeco-primary text-white'}`}
+          >
+            Semua
+          </Button>
+          <Button
+            variant="outline"
+            onClick={() => handleStatusFilter('Tersedia')}
+            className={`max-w-sm ${selectedStatus === 'Tersedia' && 'bg-recyeco-primary text-white'}`}
+          >
+            Tersedia
+          </Button>
+          <Button
+            variant="outline"
+            onClick={() => handleStatusFilter('Menunggu')}
+            className={`max-w-sm ${selectedStatus === 'Menunggu' && 'bg-recyeco-primary text-white'}`}
+          >
+            Menunggu
+          </Button>
+          <Button
+            variant="outline"
+            onClick={() => handleStatusFilter('Terjual')}
+            className={`max-w-sm ${selectedStatus === 'Terjual' && 'bg-recyeco-primary text-white'}`}
+          >
+            Terjual
+          </Button>
+        </div>
+        <TambahProduk />
       </div>
       <div className="rounded-md border">
         <Table>
