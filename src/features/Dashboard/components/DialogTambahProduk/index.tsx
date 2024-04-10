@@ -32,7 +32,7 @@ export const TambahProduk: FC = () => {
   return (
     <>
       <Dialog>
-        <DialogTrigger className="bg-recyeco-primary px-4 py-2 rounded-lg font-semibold text-white">
+        <DialogTrigger className="bg-recyeco-green-500 px-4 py-2 rounded-lg font-semibold text-white">
           + Tambah Produk
         </DialogTrigger>
         <DialogContent className="rounded-lg sm:max-w-3xl lg:max-w-5xl">
