@@ -18,9 +18,8 @@ import {
   SelectTrigger,
   SelectValue
 } from '@/components/ui/select';
-import { ProfileResSchema, ProfileResType } from '@/domains/profile';
+import { ProfileResType } from '@/domains/profile';
 import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
 import {
   Form,
   FormControl,
@@ -32,22 +31,9 @@ import { useProfileData, useProfileUpdate } from '../../hooks';
 
 const UserForm = () => {
   const [formData, setFormData] = useState(new FormData());
-
-  const { data, isLoading } = useProfileData();
-  const profileData = data;
-
-  const { mutate, isSuccess } = useProfileUpdate();
-
-  const form = useForm<ProfileResType>({
-    resolver: zodResolver(ProfileResSchema),
-    defaultValues: {
-      username: profileData?.username,
-      birthdate: profileData?.birthdate,
-      gender: profileData?.gender,
-      email: profileData?.email,
-      foto: profileData?.foto
-    }
-  });
+  const { data: profileData } = useProfileData();
+  const { mutate, isSuccess, isError } = useProfileUpdate();
+  const form = useForm();
 
   const onSubmit = (values: ProfileResType) => {
     formData.append('username', values?.username ?? '');
@@ -64,14 +50,10 @@ const UserForm = () => {
   };
 
   useEffect(() => {
-    if (isSuccess) {
+    if (isSuccess || isError) {
       setFormData(new FormData());
     }
-  }, [isSuccess]);
-
-  if (isLoading) {
-    return <p>Loadinggg....</p>;
-  }
+  }, [isSuccess, isError]);
 
   return (
     <div className="w-full xl:col-span-3 col-span-4">
@@ -87,7 +69,7 @@ const UserForm = () => {
               <div className="lg:basis-[40%] w-full">
                 <Card className="border-2 shadow-lg rounded-2xl">
                   <CardHeader className="justify-center items-center">
-                    <Avatar className="w-full h-auto rounded-2xl">
+                    <Avatar className="w-full h-auto rounded-2xl ">
                       <AvatarImage
                         src={
                           profileData?.foto || 'https://github.com/shadcn.png'
@@ -97,7 +79,6 @@ const UserForm = () => {
                   </CardHeader>
                   <CardContent>
                     <FormField
-                      control={form.control}
                       name="foto"
                       render={({ field: { onChange, ...field } }) => (
                         <FormItem className="h-auto">
@@ -137,7 +118,6 @@ const UserForm = () => {
                 <h1 className="font-semibold">Ubah Biodata Diri</h1>
                 <div className="grid lg:grid-rows-3 gap-y-4 mt-2">
                   <FormField
-                    control={form.control}
                     name="username"
                     render={({ field }) => (
                       <FormItem className="h-auto">
@@ -153,14 +133,13 @@ const UserForm = () => {
                             id="username"
                             placeholder="Masukkan Nama Anda"
                             {...field}
-                            defaultValue={profileData?.username}
+                            // defaultValue={profileData?.username}
                           />
                         </FormControl>
                       </FormItem>
                     )}
                   />
                   <FormField
-                    control={form.control}
                     name="birthdate"
                     render={({ field }) => (
                       <FormItem>
@@ -175,7 +154,7 @@ const UserForm = () => {
                             type="date"
                             id="birthdate"
                             {...field}
-                            defaultValue={profileData?.birthdate}
+                            // defaultValue={profileData?.birthdate}
                           />
                         </FormControl>
                         <FormMessage />
@@ -183,7 +162,6 @@ const UserForm = () => {
                     )}
                   />
                   <FormField
-                    control={form.control}
                     name="gender"
                     render={({ field }) => (
                       <FormItem>
@@ -196,7 +174,7 @@ const UserForm = () => {
                         <Select
                           {...field}
                           onValueChange={field.onChange}
-                          defaultValue={profileData?.gender}
+                          // defaultValue={profileData?.gender}
                         >
                           <FormControl>
                             <SelectTrigger>
@@ -216,7 +194,6 @@ const UserForm = () => {
                 <div className="mt-6">
                   <h1 className="font-semibold">Ubah Kontak</h1>
                   <FormField
-                    control={form.control}
                     name="email"
                     render={({ field }) => (
                       <FormItem className="mt-2">
@@ -232,7 +209,7 @@ const UserForm = () => {
                             id="email"
                             placeholder="Masukkan Email Anda"
                             {...field}
-                            defaultValue={profileData?.email}
+                            // defaultValue={profileData?.email}
                           />
                         </FormControl>
                       </FormItem>
