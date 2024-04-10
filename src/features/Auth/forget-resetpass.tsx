@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { getAssetUrl } from '@/lib/utils';
 import Image from 'next/image';
+import Link from 'next/link';
 import { FC } from 'react';
 
 const ForgetResetPass: FC = () => {
@@ -28,15 +29,22 @@ const ForgetResetPass: FC = () => {
           </p>
         </div>
         <div className="flex flex-col gap-5 w-8/12">
-          <Button size={'login'} className="bg-[#4F4F4F] hover:bg-neutral-500">
-            Kirim Ulang
-          </Button>
-          <Button
-            size={'login'}
-            className="bg-[#DCDCDC] text-black border-black border-2 hover:bg-[#4F4F4F] hover:border-0 hover:text-white"
-          >
-            Kembali
-          </Button>
+          <Link href="/forget-pass">
+            <Button
+              size={'login'}
+              className="w-full bg-[#4F4F4F] hover:bg-neutral-500"
+            >
+              Kirim Ulang
+            </Button>
+          </Link>
+          <Link href="/sign-in">
+            <Button
+              size={'login'}
+              className="w-full bg-[#DCDCDC] text-black border-black border-2 hover:bg-[#4F4F4F] hover:border-0 hover:text-white"
+            >
+              Kembali ke halaman Login
+            </Button>
+          </Link>
         </div>
       </div>
     </div>
