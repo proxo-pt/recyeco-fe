@@ -1,4 +1,3 @@
-import { ProfileResType } from '@/domains/profile';
 import useToast from '@/hooks/useToast';
 import { ProfileDataService, ProfileUpdateService } from '@/service/profile';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';

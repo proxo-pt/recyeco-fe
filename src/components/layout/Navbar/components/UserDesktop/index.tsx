@@ -11,22 +11,36 @@ import { DialogTrigger } from '@/components/ui/dialog';
 import { Avatar, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { LogOut } from 'lucide-react';
+import { LogOut, Store } from 'lucide-react';
 import { useProfileData } from '@/features/Profile/hooks';
 import { handleLogout } from '@/lib/utils';
+import { useDataShop } from '../DialogDaftarToko/hooks';
 
 export const UserDesktopLogin: FC = () => {
   const { data: profileData } = useProfileData();
+  const { data: shopData } = useDataShop();
+
+  const renderToko = () => {
+    return (
+      <div className="h-12 flex items-center justify-between bg-[#E1F7E8] rounded-xl flex-row-reverse gap-2 px-2">
+        {shopData ? (
+          <Store />
+        ) : (
+          <div className="w-10 h-10 bg-black rounded-xl"></div>
+        )}
+        <p className="font-normal">{shopData?.toko || 'Daftar Toko'}</p>
+      </div>
+    );
+  };
 
   return (
     <DialogDaftarToko>
       <div className="flex gap-2">
-        <DialogTrigger>
-          <div className=" h-12 flex items-center justify-between bg-[#E1F7E8] rounded-xl flex-row-reverse gap-2 px-2">
-            <div className="w-10 h-10 bg-black rounded-xl"></div>
-            <p className="font-normal">Toko</p>
-          </div>
-        </DialogTrigger>
+        {shopData ? (
+          <Link href="/dashboard">{renderToko()}</Link>
+        ) : (
+          <DialogTrigger>{renderToko()}</DialogTrigger>
+        )}
         <DropdownMenu>
           <DropdownMenuTrigger className="outline-none">
             <div
