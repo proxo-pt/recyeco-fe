@@ -200,7 +200,7 @@ export const TambahProduk: FC = () => {
                                 htmlFor="weight"
                                 className="absolute -top-2 left-3 bg-white px-1 text-xs"
                               >
-                                Berat
+                                Berat (Dalam KG)
                               </FormLabel>
                               <InputSuffix
                                 suffix={

@@ -13,7 +13,6 @@ import {
   useReactTable
 } from '@tanstack/react-table';
 import { Button } from '@/components/ui/button';
-import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/input';
 import {
   Table,
@@ -36,55 +35,10 @@ export const columns = (
   refetch: any
 ): ColumnDef<ProductResType>[] => [
   {
-    id: 'select',
-    header: ({ table }) => (
-      <div className="w-10">
-        <Checkbox
-          checked={
-            table.getIsAllPageRowsSelected() ||
-            (table.getIsSomePageRowsSelected() && 'indeterminate')
-          }
-          onCheckedChange={value => table.toggleAllPageRowsSelected(!!value)}
-          aria-label="Select all"
-        />
-      </div>
-    ),
-    cell: ({ row }) => (
-      <Checkbox
-        checked={row.getIsSelected()}
-        onCheckedChange={value => row.toggleSelected(!!value)}
-        aria-label="Select row"
-      />
-    ),
-    enableSorting: false,
-    enableHiding: false
-  },
-  {
-    accessorKey: 'id',
-    header: () => <div className="text-center">No</div>,
-    cell: ({ row }) => <div className="text-center">{row.getValue('id')}</div>,
-    enableHiding: false
-  },
-  {
-    accessorKey: 'id_verify',
-    header: () => <div className="text-center">No</div>,
-    cell: ({ row }) => (
-      <div className="text-center">{row.getValue('id_verify')}</div>
-    ),
-    enableHiding: false
-  },
-  {
     accessorKey: 'judul',
     header: () => <div className="md:mr-12 text-nowrap">Nama Produk</div>,
     cell: ({ row }) => (
       <div className="md:mr-12 text-nowrap">{row.getValue('judul')}</div>
-    )
-  },
-  {
-    accessorKey: 'status',
-    header: 'Status',
-    cell: ({ row }) => (
-      <div className="capitalize">{row.getValue('status')}</div>
     )
   },
   {
@@ -95,12 +49,28 @@ export const columns = (
   {
     accessorKey: 'berat',
     header: () => <div className="md:mx-12">Berat</div>,
-    cell: ({ row }) => <div className="md:mx-12">{row.getValue('berat')}</div>
+    cell: ({ row }) => (
+      <div className="md:mx-12">{row.getValue('berat')} KG</div>
+    )
   },
   {
     accessorKey: 'harga',
     header: () => <div className="md:mx-12">Harga</div>,
     cell: ({ row }) => <div className="md:mx-10">{row.getValue('harga')}</div>
+  },
+  {
+    accessorKey: 'status',
+    header: 'Status',
+    cell: ({ row }) => (
+      <div className="capitalize">{row.getValue('status')}</div>
+    )
+  },
+  {
+    accessorKey: 'id_verify',
+    header: () => <div className="text-center"></div>,
+    cell: ({ row }) => (
+      <div className="text-center text-white">{row.getValue('id_verify')}</div>
+    )
   },
   {
     id: 'actions',
@@ -145,15 +115,6 @@ export const DataTableProducts = () => {
     React.useState<VisibilityState>({});
   const [rowSelection, setRowSelection] = React.useState({});
 
-  const [selectedStatus, setSelectedStatus] = React.useState<string | null>(
-    null
-  );
-
-  const handleStatusFilter = (status: string | null) => {
-    table.getColumn('status')?.setFilterValue(status);
-    setSelectedStatus(status);
-  };
-
   const table = useReactTable({
     data: productData,
     columns: columns(mutate, refetch),
@@ -182,49 +143,8 @@ export const DataTableProducts = () => {
   }
 
   return (
-    <div className="w-full">
-      <div className="flex justify-between items-center py-4">
-        <div className="space-x-2">
-          <Input
-            value={
-              (table.getColumn('status')?.getFilterValue() as string) ?? ''
-            }
-            onChange={event =>
-              table.getColumn('status')?.setFilterValue(event.target.value)
-            }
-            className="max-w-sm hidden"
-          />
-          <Button
-            variant="outline"
-            onClick={() => handleStatusFilter(null)}
-            className={`max-w-sm ${selectedStatus === null && 'bg-recyeco-primary text-white'}`}
-          >
-            Semua
-          </Button>
-          <Button
-            variant="outline"
-            onClick={() => handleStatusFilter('Tersedia')}
-            className={`max-w-sm ${selectedStatus === 'Tersedia' && 'bg-recyeco-primary text-white'}`}
-          >
-            Tersedia
-          </Button>
-          <Button
-            variant="outline"
-            onClick={() => handleStatusFilter('Menunggu')}
-            className={`max-w-sm ${selectedStatus === 'Menunggu' && 'bg-recyeco-primary text-white'}`}
-          >
-            Menunggu
-          </Button>
-          <Button
-            variant="outline"
-            onClick={() => handleStatusFilter('Terjual')}
-            className={`max-w-sm ${selectedStatus === 'Terjual' && 'bg-recyeco-primary text-white'}`}
-          >
-            Terjual
-          </Button>
-        </div>
-        <TambahProduk />
-      </div>
+    <div className="w-full mt-4 space-y-4">
+      <TambahProduk />
       <div className="rounded-md border">
         <Table>
           <TableHeader>
