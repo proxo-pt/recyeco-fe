@@ -68,11 +68,6 @@ export const UserDesktopLogin: FC = () => {
                 </h1>
               </DropdownMenuItem>
             </Link>
-            <Link href="/dashboard">
-              <DropdownMenuItem className="flex items-center gap-4 cursor-pointer py-3">
-                <h1 className="text-sm font-semibold">Dashboard</h1>
-              </DropdownMenuItem>
-            </Link>
             <DropdownMenuSeparator />
             <Link href="" className="font-semibold" onClick={handleLogout}>
               <DropdownMenuItem className="flex justify-between items-center cursor-pointer">
