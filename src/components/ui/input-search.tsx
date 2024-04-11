@@ -6,6 +6,7 @@ import { cn } from '@/lib/utils';
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
   suffix?: React.ReactNode;
+  classInput?: string;
 }
 
 const InputSearch = React.forwardRef<HTMLInputElement, InputProps>(
