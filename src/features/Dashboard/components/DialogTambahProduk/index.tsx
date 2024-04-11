@@ -28,7 +28,7 @@ import {
 import { CategoryItems } from '@/constants/menu';
 import { useProductPost } from './hooks';
 import { useForm } from 'react-hook-form';
-import { ProductResType } from '@/domains/product';
+import { DashProductResType } from '@/domains/product';
 import {
   Form,
   FormControl,
@@ -44,7 +44,7 @@ export const TambahProduk: FC = () => {
 
   const form = useForm();
 
-  const onSubmit = (values: ProductResType) => {
+  const onSubmit = (values: DashProductResType) => {
     formData.append('judul', values?.judul ?? '');
     formData.append('jenis', values?.jenis ?? '');
     formData.append('berat', values?.berat ?? '');

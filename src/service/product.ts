@@ -1,4 +1,8 @@
-import { ProductPostResType, ProductResType } from '@/domains/product';
+import {
+  ProductBuyType,
+  ProductPostResType,
+  ProductResType
+} from '@/domains/product';
 import { fetcher } from './instance';
 
 export const ProductDataService = async (): Promise<any> => {
@@ -48,4 +52,13 @@ export const ProductPostDataService = async (
   } catch (e: any) {
     throw new Error(e.message);
   }
+};
+
+export const ProductBuyService = async (
+  idPostingan: number
+): Promise<ProductBuyType> => {
+  const res = await fetcher.get(
+    `postingan/detailPostingan/beli?idpostingan=${idPostingan}`
+  );
+  return res.data.users;
 };

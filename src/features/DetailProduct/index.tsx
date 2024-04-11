@@ -85,6 +85,7 @@ const Product = () => {
         judul={detailProduct?.judul}
         foto={detailProduct?.foto}
         harga={detailProduct?.harga}
+        id={detailProduct?.id}
       />
     </>
   );
