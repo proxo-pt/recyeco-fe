@@ -1,8 +1,6 @@
-import { FC } from 'react';
-import { NextPage } from 'next';
 import TransactionStep from '@/features/DetailProduct/sections/TransactionSteps';
 
-const TransactionSteps: FC<NextPage> = () => {
+const TransactionSteps = () => {
   return <TransactionStep />;
 };
 export default TransactionSteps;
