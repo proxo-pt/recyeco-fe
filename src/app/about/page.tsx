@@ -3,11 +3,7 @@ import { NextPage } from 'next';
 import AboutPage from '@/features/About';
 
 const About: FC<NextPage> = () => {
-  return (
-    <div>
-      <AboutPage />
-    </div>
-  );
+  return <AboutPage />;
 };
 
 export default About;
