@@ -39,6 +39,7 @@ export interface ItemCardProps {
   category?: string;
   shopName?: string;
   className?: string;
+  onClick: any;
 }
 
 export interface ItemsType {
