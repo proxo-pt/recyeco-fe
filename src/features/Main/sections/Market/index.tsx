@@ -11,7 +11,7 @@ const Market = () => {
     <div className="container min-h-screen mx-auto">
       <div className="flex-1 flex flex-col gap-3 mb-8">
         <h1 className="text-lg font-bold">Kategori</h1>
-        <div className="flex flex-wrap gap-4 items-center justify-center">
+        <div className="flex  gap-4  overflow-x-auto overflow-hidden">
           {Object.keys(CategoryItems).map(key => {
             const { backgroundColor, borderColor, label } = CategoryItems[key];
             return (
@@ -19,7 +19,7 @@ const Market = () => {
                 key={key}
                 asChild
                 variant="outline"
-                className={`flex flex-col flex-auto justify-center items-center w-28 h-24 p-4 text-black hover:bg-${backgroundColor} ${backgroundColor} hover:border-2 ${borderColor} rounded-lg`}
+                className={`flex flex-col flex-auto justify-center items-center min-w-28 w-28 h-24 p-4 text-black hover:bg-${backgroundColor} ${backgroundColor} hover:border-2 ${borderColor} rounded-lg`}
               >
                 <Link href="">
                   <Icon type={label} />
