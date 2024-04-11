@@ -70,3 +70,7 @@ const DashProductResSchema = z.object({
 });
 
 export type DashProductResType = z.infer<typeof DashProductResSchema>;
+
+const DashProductVerifySchema = z.enum(['Setujui', 'Batalkan']);
+
+export type DashProductVerifyType = z.infer<typeof DashProductVerifySchema>;

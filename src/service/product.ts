@@ -1,4 +1,5 @@
 import {
+  DashProductVerifyType,
   ProductBuyType,
   ProductPostResType,
   ProductResType
@@ -61,4 +62,14 @@ export const ProductBuyService = async (
     `postingan/detailPostingan/beli?idpostingan=${idPostingan}`
   );
   return res.data.users;
+};
+
+export const ProductVerifyService = async (
+  idPostingan: number,
+  action: DashProductVerifyType
+): Promise<any> => {
+  const res = await fetcher.put(`dashboard/verifikasi/${idPostingan}`, {
+    aksi: action
+  });
+  return res.data;
 };

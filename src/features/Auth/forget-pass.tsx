@@ -25,7 +25,6 @@ const ForgetPass = () => {
   });
 
   const onSubmit = (values: ForgetPassType) => {
-    console.log(values);
     mutate(values);
   };
 

@@ -30,8 +30,12 @@ import { TambahProduk } from '../DialogTambahProduk';
 import { ProductResType } from '@/domains/product';
 import { useProductData } from '../DialogTambahProduk/hooks';
 import { Skeleton } from '@/components/ui/skeleton';
+import { useVerifyProduct } from './hooks';
 
-export const columns: ColumnDef<ProductResType>[] = [
+export const columns = (
+  mutate: any,
+  refetch: any
+): ColumnDef<ProductResType>[] => [
   {
     id: 'select',
     header: ({ table }) => (
@@ -63,6 +67,14 @@ export const columns: ColumnDef<ProductResType>[] = [
     enableHiding: false
   },
   {
+    accessorKey: 'id_verify',
+    header: () => <div className="text-center">No</div>,
+    cell: ({ row }) => (
+      <div className="text-center">{row.getValue('id_verify')}</div>
+    ),
+    enableHiding: false
+  },
+  {
     accessorKey: 'judul',
     header: () => <div className="md:mr-12 text-nowrap">Nama Produk</div>,
     cell: ({ row }) => (
@@ -72,7 +84,9 @@ export const columns: ColumnDef<ProductResType>[] = [
   {
     accessorKey: 'status',
     header: 'Status',
-    cell: ({ row }) => <div>{row.getValue('status')}</div>
+    cell: ({ row }) => (
+      <div className="capitalize">{row.getValue('status')}</div>
+    )
   },
   {
     accessorKey: 'jenis',
@@ -96,9 +110,15 @@ export const columns: ColumnDef<ProductResType>[] = [
     cell: ({ row }) => {
       return (
         <div className="flex justify-center items-center">
-          {row.getValue('status') === 'Menunggu' ? (
+          {row.getValue('status') === 'menunggu' ? (
             <div className="flex gap-2">
-              <Button className="hover:bg-green-700 bg-green-600">
+              <Button
+                className="hover:bg-green-700 bg-green-600"
+                onClick={() => {
+                  mutate({ id: row.getValue('id_verify'), action: 'Setujui' });
+                  refetch();
+                }}
+              >
                 Setujui
               </Button>
               <Button className="hover:bg-red-700 bg-red-600">Batalkan</Button>
@@ -117,11 +137,12 @@ export const columns: ColumnDef<ProductResType>[] = [
 ];
 
 export const DataTableProducts = () => {
-  const { data: productData, isLoading } = useProductData();
+  const { data: productData, isLoading, refetch } = useProductData();
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
   );
+  const { mutate } = useVerifyProduct();
   const [columnVisibility, setColumnVisibility] =
     React.useState<VisibilityState>({});
   const [rowSelection, setRowSelection] = React.useState({});
@@ -137,7 +158,7 @@ export const DataTableProducts = () => {
 
   const table = useReactTable({
     data: productData,
-    columns,
+    columns: columns(mutate, refetch),
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
     getCoreRowModel: getCoreRowModel(),
