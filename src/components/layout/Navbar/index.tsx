@@ -10,9 +10,16 @@ import HeaderMenu from './components/HeaderMenu';
 import { UserMobileDefault, UserMobileLogin } from './components/UserMobile';
 import { UserDesktopDefault, UserDesktopLogin } from './components/UserDesktop';
 import { getToken } from '@/lib/storage';
+import useNavigateProduct from '@/hooks/useNavigateProduct';
 
 const Navbar: FC = () => {
   const [isLoggedIn, setLogin] = useState(false);
+
+  const { setSearch } = useNavigateProduct();
+
+  const handleSearchChange = (e: any) => {
+    setSearch(e.target.value);
+  };
 
   useEffect(() => {
     if (getToken()) {
@@ -28,8 +35,8 @@ const Navbar: FC = () => {
     <header className="w-full sticky top-0 z-10 flex-none transition-colors duration-500 shadow-sm border-b bg-white">
       <HeaderMenu />
       <div className="container mx-auto py-4 h-full">
-        <div className="flex items-center justify-between">
-          <Link href="/">
+        <div className="flex gap-2 sm:gap-0 items-center justify-between">
+          <Link href="/" className="hidden sm:block">
             <Image
               src={recyecoLogo}
               width={0}
@@ -38,16 +45,18 @@ const Navbar: FC = () => {
               className="w-24 h-auto"
             />
           </Link>
-          <div className="hidden lg:block w-6/12">
+          <div className="rounded-xl block w-full sm:w-6/12 lg:w-6/12">
             <InputSearch
               type="search"
               placeholder="Cari di RecyEco Mart..."
-              className="text-neutral-600 placeholder-neutral-600"
+              className="rounded-2xl text-neutral-600 placeholder-neutral-600"
               suffix={<Search className="text-neutral-600" />}
+              onChange={handleSearchChange}
+              // onKeyDown={handleKeyDown}
             />
           </div>
           <div className="flex justify-center items-center">
-            {!isLoggedIn ? (
+            {/* {!isLoggedIn ? (
               <Link href="">
                 <ShoppingCart className="h-4 w-4 mr-4" />
               </Link>
@@ -60,7 +69,7 @@ const Navbar: FC = () => {
                   <ShoppingCart className="h-4 w-4 mr-4" />
                 </Link>
               </div>
-            )}
+            )} */}
             {screenSize.width < 768 ? (
               <div className="flex text-xs">
                 {!isLoggedIn ? <UserMobileDefault /> : <UserMobileLogin />}

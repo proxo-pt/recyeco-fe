@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import Image from 'next/image';
 import {
@@ -11,8 +12,14 @@ import {
 import TransactionPanel from './components/TransactionPanel';
 import { getAssetUrl, formatNumber } from '@/lib/utils';
 import ProfileCard from './components/ProfileCard';
+import { useProductDetailData } from '../Main/hooks';
+import { useSearchParams } from 'next/navigation';
 
 const Product = () => {
+  const searchParams = useSearchParams();
+  const idParam = parseInt(searchParams.get('id') ?? '');
+  const { data: detailProduct } = useProductDetailData(idParam);
+
   return (
     <>
       <div className="container mx-auto px-6 py-2">
@@ -29,11 +36,13 @@ const Product = () => {
             </BreadcrumbList>
           </Breadcrumb>
         </div>
-        <div className="flex flex-wrap justify-center lg:flex-nowrap gap-7">
-          <div>
+        <div className="grid grid-cols-1 lg:grid-cols-4 justify-center lg:flex-nowrap gap-7">
+          <div className="col-span-3">
             <div className="relative w-full h-96">
               <Image
-                src={getAssetUrl('/img/dummy-sampah.jpg')}
+                src={
+                  detailProduct?.foto || getAssetUrl('/img/dummy-sampah.jpg')
+                }
                 layout="fill"
                 objectFit="cover"
                 alt="gambar sampah"
@@ -41,47 +50,42 @@ const Product = () => {
               />
             </div>
             <div className="flex flex-col gap-2 mb-6 mt-4">
-              <h1 className="text-2xl font-medium">
-                Tittle : Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit.
-              </h1>
+              <h1 className="text-2xl font-medium">{detailProduct?.judul}</h1>
               <div className="flex gap-7 text-sm font-light">
                 <ul>
-                  <li>Jenis : Sampah pelastik</li>
+                  <li>Jenis : {detailProduct?.jenis}</li>
                 </ul>
                 <ul className="list-disc">
-                  <li>Berat : 12kg</li>
+                  <li>Berat : {detailProduct?.berat}kg</li>
                 </ul>
               </div>
               <div className="font-bold text-2xl text-recyeco-primary">
-                Rp. {formatNumber(12000)}
+                {detailProduct?.harga?.toLocaleString('id-ID', {
+                  style: 'currency',
+                  currency: 'IDR'
+                }) || 0}
               </div>
             </div>
             <div className="flex flex-col gap-3">
               <h2 className="font-medium">Detail Produk</h2>
-              <p className="text-sm">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Accusamus, veniam velit expedita error saepe nesciunt!
-                Laboriosam quis libero provident eveniet aut doloribus quidem
-                sequi praesentium sapiente accusantium vero, vitae quibusdam
-                laudantium mollitia impedit quo unde repudiandae, hic nemo
-                incidunt id illum velit quos. Nulla repellat aperiam repudiandae
-                dolor obcaecati tempore consequuntur, distinctio quod. Aliquid
-                est nam enim, odit ad esse, possimus fugiat beatae a nihil aut
-                excepturi culpa? Ad deleniti laborum corrupti? Maiores unde
-                totam architecto aliquam deserunt, libero quidem dolorem rem nam
-                beatae, hic, harum debitis perferendis officia in reprehenderit
-                delectus dolor nobis expedita ipsum. Architecto voluptatum animi
-                nemo!
-              </p>
+              <p className="text-sm">{detailProduct?.deskripsi}</p>
             </div>
           </div>
-          <div className="md:w-2/3">
-            <ProfileCard />
+          <div>
+            <ProfileCard
+              toko={detailProduct?.toko.toko}
+              kontak={detailProduct?.toko.kontak}
+              link_map={detailProduct?.toko.link_map}
+              lokasi={detailProduct?.toko.lokasi}
+            />
           </div>
         </div>
       </div>
-      <TransactionPanel />
+      <TransactionPanel
+        judul={detailProduct?.judul}
+        foto={detailProduct?.foto}
+        harga={detailProduct?.harga}
+      />
     </>
   );
 };

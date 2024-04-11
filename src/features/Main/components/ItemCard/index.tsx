@@ -13,7 +13,8 @@ const ItemCard: FC<ItemCardProps> = ({
   price,
   category,
   shopName,
-  className
+  className,
+  onClick
 }) => {
   return (
     <Card
@@ -21,6 +22,7 @@ const ItemCard: FC<ItemCardProps> = ({
         `flex flex-col w-auto drop-shadow-md rounded-xl cursor-pointer`,
         className
       )}
+      onClick={onClick}
     >
       <div className="relative w-full h-32 md:h-52">
         <div className="absolute top-0 right-0 z-50 p-4 pr-3 pt-3 rounded-tr-xl rounded-bl-[2rem] bg-[#222D33] text-recyeco-primary">

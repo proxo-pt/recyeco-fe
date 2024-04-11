@@ -11,9 +11,14 @@ import {
 import { BookUser, MapPin } from 'lucide-react';
 import { getAssetUrl } from '@/lib/utils';
 
-const ProfileCard: FC = () => {
+const ProfileCard: FC<{
+  toko: string | undefined;
+  kontak: string | undefined;
+  lokasi: string | undefined;
+  link_map: string | undefined;
+}> = ({ toko, kontak, lokasi, link_map }) => {
   return (
-    <Card className="lg:w-72">
+    <Card className="w-full">
       <CardHeader className="p-4">
         <CardTitle className="flex items-center gap-2 text-base">
           <div className="relative w-12 h-12 rounded-xl border">
@@ -25,7 +30,7 @@ const ProfileCard: FC = () => {
               className="rounded-xl"
             />
           </div>
-          <span>Nama Toko</span>
+          <span>{toko}</span>
         </CardTitle>
       </CardHeader>
       <hr />
@@ -34,16 +39,14 @@ const ProfileCard: FC = () => {
           <div className="inline-block p-2 bg-[#E2F2E7] rounded-xl">
             <BookUser color="#3DAA5F" />
           </div>
-          <div className="line-clamp-1">+6285348203913</div>
+          <div className="line-clamp-1">{kontak}</div>
         </div>
         <div className="flex items-center gap-3">
           <div className="inline-block p-2 bg-[#E2F2E7] rounded-xl">
             <MapPin color="#3DAA5F" />
           </div>
           <div className="line-clamp-1 hover:underline underline-offset-2">
-            <Link href={`#`}>
-              Jln. Tara No. 183, Kab. Sigi, Kec. Sigi Biromaru, Desa Kalukubula
-            </Link>
+            <Link href={`${link_map}`}>{lokasi}</Link>
           </div>
         </div>
       </CardContent>
