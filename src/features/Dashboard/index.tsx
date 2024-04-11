@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import { getToken } from '@/lib/storage';
 import DashboardStatistics from './sections/DashboardOverview/dashboardStatistics';
 import DashboardTotals from './sections/DashboardOverview/dashboardTotals';
