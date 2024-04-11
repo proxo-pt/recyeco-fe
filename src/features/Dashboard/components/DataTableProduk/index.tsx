@@ -23,7 +23,6 @@ import {
   TableHeader,
   TableRow
 } from '@/components/ui/table';
-import { LihatProduk } from '../DialogLihatProduk';
 import { EditProduk } from '../DialogEditProduk';
 import { HapusProduk } from '../DialogHapusProduk';
 import { TambahProduk } from '../DialogTambahProduk';
@@ -125,7 +124,6 @@ export const columns = (
             </div>
           ) : (
             <div className="flex gap-4">
-              <LihatProduk />
               <EditProduk />
               <HapusProduk />
             </div>
