@@ -9,6 +9,7 @@ import tekstilIcon from '@/assets/icons/tekstil.svg';
 import whatsappIcon from '@/assets/icons/whatsapp.svg';
 import twitterIcon from '@/assets/icons/twitter.svg';
 import instagramIcon from '@/assets/icons/instagram.svg';
+import shopIcon from '@/assets/icons/shop.svg';
 
 export type IconName = string;
 
@@ -28,7 +29,8 @@ const loadIconData = (): IconData => {
     Tekstil: tekstilIcon,
     Whatsapp: whatsappIcon,
     Twitter: twitterIcon,
-    Instagram: instagramIcon
+    Instagram: instagramIcon,
+    Shop: shopIcon
   };
 };
 

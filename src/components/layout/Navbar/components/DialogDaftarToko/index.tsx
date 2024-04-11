@@ -10,7 +10,7 @@ import {
 } from '@/components/ui/dialog';
 import { MapPin, Store, BookUser } from 'lucide-react';
 import { InputSuffix } from '@/components/ui/input-suffix';
-import { useDataShop, useRegistShop } from './hooks';
+import { useRegistShop } from './hooks';
 import { useForm } from 'react-hook-form';
 import { ShopResSchema, ShopResType } from '@/domains/shop';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -24,7 +24,6 @@ import {
 
 export const DialogDaftarToko = ({ children }: { children: ReactNode }) => {
   const { mutate } = useRegistShop();
-  const { data: shopData } = useDataShop();
   const form = useForm<ShopResType>({
     resolver: zodResolver(ShopResSchema),
     defaultValues: { toko: '', kontak: '', lokasi: '', link_map: '' }

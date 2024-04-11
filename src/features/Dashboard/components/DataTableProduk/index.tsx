@@ -12,16 +12,8 @@ import {
   getSortedRowModel,
   useReactTable
 } from '@tanstack/react-table';
-import { ChevronDown } from 'lucide-react';
-
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
-import {
-  DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuTrigger
-} from '@/components/ui/dropdown-menu';
 import { Input } from '@/components/ui/input';
 import {
   Table,
@@ -34,11 +26,12 @@ import {
 import { LihatProduk } from '../DialogLihatProduk';
 import { EditProduk } from '../DialogEditProduk';
 import { HapusProduk } from '../DialogHapusProduk';
-import { DashProductType } from '@/types';
-import { DashProductMain } from '@/constants/dashboard';
 import { TambahProduk } from '../DialogTambahProduk';
+import { ProductResType } from '@/domains/product';
+import { useProductData } from '../DialogTambahProduk/hooks';
+import { Skeleton } from '@/components/ui/skeleton';
 
-export const columns: ColumnDef<DashProductType>[] = [
+export const columns: ColumnDef<ProductResType>[] = [
   {
     id: 'select',
     header: ({ table }) => (
@@ -70,10 +63,10 @@ export const columns: ColumnDef<DashProductType>[] = [
     enableHiding: false
   },
   {
-    accessorKey: 'name',
+    accessorKey: 'judul',
     header: () => <div className="md:mr-12 text-nowrap">Nama Produk</div>,
     cell: ({ row }) => (
-      <div className="md:mr-12 text-nowrap">{row.getValue('name')}</div>
+      <div className="md:mr-12 text-nowrap">{row.getValue('judul')}</div>
     )
   },
   {
@@ -82,19 +75,19 @@ export const columns: ColumnDef<DashProductType>[] = [
     cell: ({ row }) => <div>{row.getValue('status')}</div>
   },
   {
-    accessorKey: 'type',
+    accessorKey: 'jenis',
     header: () => <div className="md:mx-12">Jenis</div>,
-    cell: ({ row }) => <div className="md:mx-12">{row.getValue('type')}</div>
+    cell: ({ row }) => <div className="md:mx-12">{row.getValue('jenis')}</div>
   },
   {
-    accessorKey: 'weight',
+    accessorKey: 'berat',
     header: () => <div className="md:mx-12">Berat</div>,
-    cell: ({ row }) => <div className="md:mx-12">{row.getValue('weight')}</div>
+    cell: ({ row }) => <div className="md:mx-12">{row.getValue('berat')}</div>
   },
   {
-    accessorKey: 'price',
+    accessorKey: 'harga',
     header: () => <div className="md:mx-12">Harga</div>,
-    cell: ({ row }) => <div className="md:mx-10">{row.getValue('price')}</div>
+    cell: ({ row }) => <div className="md:mx-10">{row.getValue('harga')}</div>
   },
   {
     id: 'actions',
@@ -103,7 +96,7 @@ export const columns: ColumnDef<DashProductType>[] = [
     cell: ({ row }) => {
       return (
         <div className="flex justify-center items-center">
-          {row.original.status === 'Menunggu' ? (
+          {row.getValue('status') === 'Menunggu' ? (
             <div className="flex gap-2">
               <Button className="hover:bg-green-700 bg-green-600">
                 Setujui
@@ -124,6 +117,7 @@ export const columns: ColumnDef<DashProductType>[] = [
 ];
 
 export const DataTableProducts = () => {
+  const { data: productData, isLoading } = useProductData();
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
@@ -142,7 +136,7 @@ export const DataTableProducts = () => {
   };
 
   const table = useReactTable({
-    data: DashProductMain,
+    data: productData,
     columns,
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
@@ -159,6 +153,14 @@ export const DataTableProducts = () => {
       rowSelection
     }
   });
+
+  if (isLoading) {
+    return (
+      <>
+        <Skeleton className="w-full h-[32rem]" />
+      </>
+    );
+  }
 
   return (
     <div className="w-full">

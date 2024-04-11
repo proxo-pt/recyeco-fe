@@ -9,7 +9,7 @@ const WrapperDashboard = ({ children }: { children: ReactNode }) => {
         <DashboardNav />
         <div className="flex">
           <DashboardSide />
-          <div className="flex h-screen bg-[#E7E7E7] overflow-hidden w-full">
+          <div className="flex min-h-screen bg-[#E7E7E7] overflow-hidden w-full">
             <main className="flex-1 overflow-y-auto overflow-x-hidden pt-14">
               <div className="py-6 px-8">{children}</div>
             </main>

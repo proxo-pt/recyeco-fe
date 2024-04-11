@@ -178,11 +178,7 @@ const UserForm = () => {
                             {profileData?.gender || 'Masukkan Jenis Kelamin'}
                           </h1>
                         </div>
-                        <Select
-                          {...field}
-                          onValueChange={field.onChange}
-                          // defaultValue={profileData?.gender}
-                        >
+                        <Select {...field} onValueChange={field.onChange}>
                           <FormControl>
                             <SelectTrigger>
                               <SelectValue placeholder="Masukkan Jenis Kelamin" />

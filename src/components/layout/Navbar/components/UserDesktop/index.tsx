@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import Link from 'next/link';
 import { DialogDaftarToko } from '../DialogDaftarToko';
 import {
   DropdownMenu,
@@ -10,11 +11,11 @@ import {
 import { DialogTrigger } from '@/components/ui/dialog';
 import { Avatar, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
-import Link from 'next/link';
-import { LogOut, Store } from 'lucide-react';
+import { LogOut } from 'lucide-react';
 import { useProfileData } from '@/features/Profile/hooks';
 import { handleLogout } from '@/lib/utils';
 import { useDataShop } from '../DialogDaftarToko/hooks';
+import Icon from '@/components/ui/icon';
 
 export const UserDesktopLogin: FC = () => {
   const { data: profileData } = useProfileData();
@@ -23,11 +24,9 @@ export const UserDesktopLogin: FC = () => {
   const renderToko = () => {
     return (
       <div className="h-12 flex items-center justify-between bg-[#E1F7E8] rounded-xl flex-row-reverse gap-2 px-2">
-        {shopData ? (
-          <Store />
-        ) : (
-          <div className="w-10 h-10 bg-black rounded-xl"></div>
-        )}
+        <div className="flex justify-center items-center w-10 h-10 rounded-xl">
+          {shopData ? <Icon type="Shop" className="size-8" /> : <></>}
+        </div>
         <p className="font-normal">{shopData?.toko || 'Daftar Toko'}</p>
       </div>
     );
