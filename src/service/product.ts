@@ -1,6 +1,16 @@
-import { TotalResType } from '@/domains/product';
 import { fetcher } from './instance';
-import { z } from 'zod';
+
+export const ProductDataService = async (): Promise<any> => {
+  const res = await fetcher.get('postingan');
+  return res.data.postingan;
+};
+
+export const ProductPostService = async (data: FormData): Promise<any> => {
+  const res = await fetcher.post('addpostingan', data, {
+    headers: { 'Content-Type': 'multipart/form-data' }
+  });
+  return res.data.postingan;
+};
 
 export const TotalProductService = async (): Promise<number> => {
   const res = await fetcher.get('dashboard/totalproduk');

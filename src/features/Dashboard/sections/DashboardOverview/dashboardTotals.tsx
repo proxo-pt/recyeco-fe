@@ -5,7 +5,9 @@ import { PackageOpen, ShoppingCart, Wallet } from 'lucide-react';
 import { useTotalData } from '../hooks';
 
 const DashboardTotals = () => {
-  const renderContent = (title: string | undefined, totalData: any) => {
+  const { data: totalData } = useTotalData();
+
+  const renderContent = (title: string | undefined) => {
     let icon;
     let value;
 
@@ -14,7 +16,7 @@ const DashboardTotals = () => {
         icon = (
           <ShoppingCart className="text-recyeco-green-500 bg-recyeco-green-100 rounded-full size-10 p-2" />
         );
-        value = totalData?.totalProduct;
+        value = totalData?.totalProduct || 0;
         break;
       case 'Total Pendapatan':
         icon = (
@@ -30,23 +32,17 @@ const DashboardTotals = () => {
         icon = (
           <PackageOpen className="text-recyeco-green-400 bg-recyeco-green-200 rounded-full size-10 p-2" />
         );
-        value = totalData?.totalSold;
+        value = totalData?.totalSold || 0;
         break;
-      default:
-        icon = 0;
-        value = 0;
     }
 
     return { icon, value };
   };
 
-  const { data: totalData } = useTotalData();
-  console.log(totalData);
-
   return (
     <div className="flex lg:flex-row flex-col items-center justify-between gap-5">
       {dataDashboardTotals.map(({ id, title }) => {
-        const { icon, value } = renderContent(title, totalData);
+        const { icon, value } = renderContent(title);
 
         return (
           <Card
