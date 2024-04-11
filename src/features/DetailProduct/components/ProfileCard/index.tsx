@@ -39,7 +39,9 @@ const ProfileCard: FC<{
           <div className="inline-block p-2 bg-[#E2F2E7] rounded-xl">
             <BookUser color="#3DAA5F" />
           </div>
-          <div className="line-clamp-1">{kontak?.replace(/^0/, '62')}</div>
+          <Link href={`https://wa.me/${kontak?.replace(/^0/, '62')}`}>
+            <div className="line-clamp-1">{kontak}</div>
+          </Link>
         </div>
         <div className="flex items-center gap-3">
           <div className="inline-block p-2 bg-[#E2F2E7] rounded-xl">
