@@ -28,9 +28,11 @@ import {
   FormMessage
 } from '@/components/ui/form';
 import { useProfileData, useProfileUpdate } from '../../hooks';
+import { handleFileChange } from '@/lib/utils';
 
 const UserForm = () => {
   const [formData, setFormData] = useState(new FormData());
+  const [foto, setFoto] = useState('');
   const { data: profileData } = useProfileData();
   const { mutate, isSuccess, isError } = useProfileUpdate();
   const form = useForm();
@@ -72,7 +74,9 @@ const UserForm = () => {
                     <Avatar className="w-full h-auto rounded-2xl ">
                       <AvatarImage
                         src={
-                          profileData?.foto || 'https://github.com/shadcn.png'
+                          foto ||
+                          profileData?.foto ||
+                          'https://github.com/shadcn.png'
                         }
                       />
                     </Avatar>
@@ -96,7 +100,10 @@ const UserForm = () => {
                                 id="foto"
                                 className="p-0 rounded-xl border-recyeco-primary outline-recyeco-primary"
                                 classInput="opacity-0"
-                                onChange={handleUploadedFile}
+                                onChange={e => {
+                                  setFoto(handleFileChange(e));
+                                  handleUploadedFile(e);
+                                }}
                                 {...field}
                               />
                             </div>
@@ -171,11 +178,7 @@ const UserForm = () => {
                             {profileData?.gender || 'Masukkan Jenis Kelamin'}
                           </h1>
                         </div>
-                        <Select
-                          {...field}
-                          onValueChange={field.onChange}
-                          // defaultValue={profileData?.gender}
-                        >
+                        <Select {...field} onValueChange={field.onChange}>
                           <FormControl>
                             <SelectTrigger>
                               <SelectValue placeholder="Masukkan Jenis Kelamin" />

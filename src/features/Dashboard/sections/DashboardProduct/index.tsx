@@ -1,3 +1,4 @@
+'use client';
 import { FC } from 'react';
 import React from 'react';
 import { DataTableProducts } from '../../components/DataTableProduk';
