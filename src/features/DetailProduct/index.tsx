@@ -10,7 +10,7 @@ import {
   BreadcrumbSeparator
 } from '@/components/ui/breadcrumb';
 import TransactionPanel from './components/TransactionPanel';
-import { getAssetUrl, formatNumber } from '@/lib/utils';
+import { getAssetUrl } from '@/lib/utils';
 import ProfileCard from './components/ProfileCard';
 import { useProductDetailData } from '../Main/hooks';
 import { useSearchParams } from 'next/navigation';
@@ -85,7 +85,6 @@ const Product = () => {
         judul={detailProduct?.judul}
         foto={detailProduct?.foto}
         harga={detailProduct?.harga}
-        id={detailProduct?.id}
       />
     </>
   );

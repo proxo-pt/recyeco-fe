@@ -57,7 +57,7 @@ export const ProductPostDataService = async (
 export const ProductBuyService = async (
   idPostingan: number
 ): Promise<ProductBuyType> => {
-  const res = await fetcher.get(
+  const res = await fetcher.post(
     `postingan/detailPostingan/beli?idpostingan=${idPostingan}`
   );
   return res.data.users;

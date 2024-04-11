@@ -9,9 +9,6 @@ export const useProductBuy = (idPostingan: number) => {
   return useMutation({
     mutationFn: async () => await ProductBuyService(idPostingan),
     onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ['useProductBuy', idPostingan]
-      });
       showToast({
         title: 'Berhasil Memesan Produk',
         description: 'Silahkan Hubungi Penjual',

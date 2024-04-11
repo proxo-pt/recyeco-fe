@@ -3,13 +3,15 @@ import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { getAssetUrl } from '@/lib/utils';
 import { useProductBuy } from './hooks';
+import { useSearchParams } from 'next/navigation';
 
 const TransactionPanel: FC<{
-  id: number | undefined;
   harga: number | undefined;
   judul: string | undefined;
   foto: any;
-}> = ({ id, harga, judul, foto }) => {
+}> = ({ harga, judul, foto }) => {
+  const searchParam = useSearchParams();
+  const id = parseInt(searchParam.get('id') || '');
   const { mutate } = useProductBuy(id);
   const onSubmit = () => {
     mutate();
