@@ -1,13 +1,21 @@
 import React, { FC } from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import { getAssetUrl, formatNumber } from '@/lib/utils';
+import { getAssetUrl } from '@/lib/utils';
+import { useProductBuy } from './hooks';
+import { useSearchParams } from 'next/navigation';
 
 const TransactionPanel: FC<{
   harga: number | undefined;
   judul: string | undefined;
   foto: any;
 }> = ({ harga, judul, foto }) => {
+  const searchParam = useSearchParams();
+  const id = parseInt(searchParam.get('id') || '');
+  const { mutate } = useProductBuy(id);
+  const onSubmit = () => {
+    mutate();
+  };
   return (
     <div className="border-t-2 sticky bottom-0 bg-white mt-2">
       <div className="flex justify-between items-center container gap-3 mx-auto px-6 py-3">
@@ -33,7 +41,10 @@ const TransactionPanel: FC<{
           </div>
         </div>
         <div className="flex gap-3">
-          <Button className="lg:w-44 sm:h-12 hover:bg-recyeco-primary bg-recyeco-primary rounded-xl">
+          <Button
+            onClick={onSubmit}
+            className="lg:w-44 sm:h-12 hover:bg-recyeco-primary bg-recyeco-primary rounded-xl"
+          >
             Beli
           </Button>
         </div>

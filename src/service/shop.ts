@@ -10,6 +10,6 @@ export const ShopRegisterService = async (
 };
 
 export const ShopDataService = async (): Promise<ShopResType> => {
-  const res = await fetcher.get('toko');
+  const res = await fetcher.get('daftartoko');
   return res.data.dataToko;
 };
