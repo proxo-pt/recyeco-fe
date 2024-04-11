@@ -55,7 +55,7 @@ const Market = () => {
         >
           Kategori
         </h1>
-        <div className="flex flex-wrap gap-4 items-center justify-center">
+        <div className="flex items-center justify-center gap-4 overflow-x-auto overflow-hidden pb-2">
           {Object.keys(CategoryItems).map(key => {
             const { backgroundColor, borderColor, label } = CategoryItems[key];
             return (
@@ -63,7 +63,7 @@ const Market = () => {
                 key={key}
                 asChild
                 variant="outline"
-                className={`cursor-pointer flex flex-col flex-auto justify-center items-center w-28 h-24 p-4 text-black hover:bg-${backgroundColor} ${backgroundColor} hover:border-2 ${borderColor} rounded-lg`}
+                className={`cursor-pointer flex flex-col flex-auto justify-center items-center min-w-28 w-28 h-24 p-4 text-black hover:bg-${backgroundColor} ${backgroundColor} hover:border-2 ${borderColor} rounded-lg`}
                 onClick={() => {
                   setType(label);
                 }}
