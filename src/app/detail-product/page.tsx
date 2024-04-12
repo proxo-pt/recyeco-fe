@@ -1,6 +1,7 @@
-import ProductPage from '@/features/DetailProduct';
+import ProductDetail from '@/features/DetailProduct';
 
-const Products = () => {
-  return <ProductPage />;
+const Product = () => {
+  return <ProductDetail />;
 };
-export default Products;
+
+export default Product;

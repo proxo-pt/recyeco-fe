@@ -1,9 +1,10 @@
-import React, { FC } from 'react';
+import { FC, Suspense } from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { getAssetUrl } from '@/lib/utils';
 import { useProductBuy } from './hooks';
 import { useSearchParams } from 'next/navigation';
+import { Skeleton } from '@/components/ui/skeleton';
 
 const TransactionPanel: FC<{
   harga: number | undefined;
@@ -16,6 +17,25 @@ const TransactionPanel: FC<{
   const onSubmit = () => {
     mutate();
   };
+  
+  return (
+    <Suspense fallback={<Skeleton className='w-full h-10' />}>
+      <TransactionPanelContent
+        harga={harga}
+        judul={judul}
+        foto={foto}
+        onSubmit={onSubmit}
+      />
+    </Suspense>
+  );
+};
+
+const TransactionPanelContent: FC<{
+  harga: number | undefined;
+  judul: string | undefined;
+  foto: any;
+  onSubmit: () => void;
+}> = ({ harga, judul, foto, onSubmit }) => {
   return (
     <div className="border-t-2 sticky bottom-0 bg-white mt-2">
       <div className="flex justify-between items-center container gap-3 mx-auto px-6 py-3">

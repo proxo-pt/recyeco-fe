@@ -1,6 +1,6 @@
-'use client';
-import { getAssetUrl } from '@/lib/utils';
+import { Suspense } from 'react';
 import Image from 'next/image';
+import { getAssetUrl } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Lock } from 'lucide-react';
 import { InputPassword } from '@/components/ui/input-password';
@@ -34,6 +34,20 @@ const NewPassword = () => {
     mutate(values);
   };
 
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <NewPasswordContent form={form} onSubmit={onSubmit} />
+    </Suspense>
+  );
+};
+
+const NewPasswordContent = ({
+  form,
+  onSubmit
+}: {
+  form: any;
+  onSubmit: any;
+}) => {
   return (
     <div className="flex justify-between h-screen">
       <div className="hidden lg:flex justify-center items-center w-full bg-gradient-to-b from-[#61C580] to-[#C7F7AE]">

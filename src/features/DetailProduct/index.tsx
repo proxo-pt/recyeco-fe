@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { Suspense } from 'react';
 import Image from 'next/image';
 import {
   Breadcrumb,
@@ -14,10 +14,20 @@ import { getAssetUrl } from '@/lib/utils';
 import ProfileCard from './components/ProfileCard';
 import { useProductDetailData } from '../Main/hooks';
 import { useSearchParams } from 'next/navigation';
+import { Skeleton } from '@/components/ui/skeleton';
 
-const Product = () => {
+const ProductDetail = () => {
   const searchParams = useSearchParams();
   const idParam = parseInt(searchParams.get('id') ?? '');
+
+  return (
+    <Suspense fallback={<Skeleton className='w-full h-96' />}>
+      <ProductDetailContent idParam={idParam} />
+    </Suspense>
+  );
+};
+
+const ProductDetailContent = ({ idParam }: { idParam: number }) => {
   const { data: detailProduct } = useProductDetailData(idParam);
 
   return (
@@ -36,8 +46,8 @@ const Product = () => {
             </BreadcrumbList>
           </Breadcrumb>
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-4 justify-center lg:flex-nowrap gap-7">
-          <div className="col-span-3">
+        <div className="grid grid-cols-1 lg:grid-cols-4 justify-center gap-7">
+          <div className="lg:col-span-3 col-span-4">
             <div className="relative w-full h-96">
               <Image
                 src={
@@ -71,7 +81,7 @@ const Product = () => {
               <p className="text-sm">{detailProduct?.deskripsi}</p>
             </div>
           </div>
-          <div>
+          <div className='lg:col-span-1 col-span-4'>
             <ProfileCard
               toko={detailProduct?.toko.toko}
               kontak={detailProduct?.toko.kontak}
@@ -90,4 +100,4 @@ const Product = () => {
   );
 };
 
-export default Product;
+export default ProductDetail;
