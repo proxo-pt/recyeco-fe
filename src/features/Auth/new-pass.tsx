@@ -1,23 +1,16 @@
 'use client';
-import { Suspense } from 'react';
 import Image from 'next/image';
-import { getAssetUrl } from '@/lib/utils';
-import { Button } from '@/components/ui/button';
-import { Lock } from 'lucide-react';
-import { InputPassword } from '@/components/ui/input-password';
-import { useAuthResetPass } from './hooks';
-import { useForm } from 'react-hook-form';
-import { ResetPassSchema, ResetPassType } from '@/domains/auth';
-import { zodResolver } from '@hookform/resolvers/zod';
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage
-} from '@/components/ui/form';
 import { useSearchParams } from 'next/navigation';
+import { Button } from '@/components/ui/button';
+import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
+import { InputPassword } from '@/components/ui/input-password';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
+import { Lock } from 'lucide-react';
+import { ResetPassSchema, ResetPassType } from '@/domains/auth';
+import { getAssetUrl } from '@/lib/utils';
 import { setToken } from '@/lib/storage';
+import { useAuthResetPass } from './hooks';
 
 const NewPassword = () => {
   const searchParams = useSearchParams();
@@ -36,20 +29,6 @@ const NewPassword = () => {
   };
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <NewPasswordContent form={form} onSubmit={onSubmit} />
-    </Suspense>
-  );
-};
-
-const NewPasswordContent = ({
-  form,
-  onSubmit
-}: {
-  form: any;
-  onSubmit: any;
-}) => {
-  return (
     <div className="flex justify-between h-screen">
       <div className="hidden lg:flex justify-center items-center w-full bg-gradient-to-b from-[#61C580] to-[#C7F7AE]">
         <Image
@@ -63,16 +42,18 @@ const NewPasswordContent = ({
       </div>
       <div className="flex flex-col gap-7 justify-center items-center w-full bg-[#DCDCDC]">
         <div className="w-8/12">
-          <h1 className="text-3xl font-semibold mb-3 text-right">
-            Periksa Email Anda
-          </h1>
-          <p className="text-right font-medium">
-            kami telah mengirimkan email berisi informasi pengaturan ulang kata
-            sandi ke proxo@gmail.com
-          </p>
-          <p className="text-right mt-8">
-            Tidak menerima emailnya? periksa folder spam
-          </p>
+          <div className="w-8/12">
+            <h1 className="text-3xl font-semibold mb-3 text-right">
+              Periksa Email Anda
+            </h1>
+            <p className="text-right font-medium">
+              kami telah mengirimkan email berisi informasi pengaturan ulang
+              kata sandi ke proxo@gmail.com
+            </p>
+            <p className="text-right mt-8">
+              Tidak menerima emailnya? periksa folder spam
+            </p>
+          </div>
         </div>
         <div className="flex flex-col gap-5 w-8/12">
           <Form {...form}>

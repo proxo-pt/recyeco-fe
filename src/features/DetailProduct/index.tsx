@@ -1,5 +1,4 @@
 'use client';
-import React, { Suspense } from 'react';
 import Image from 'next/image';
 import {
   Breadcrumb,
@@ -14,20 +13,10 @@ import { getAssetUrl } from '@/lib/utils';
 import ProfileCard from './components/ProfileCard';
 import { useProductDetailData } from '../Main/hooks';
 import { useSearchParams } from 'next/navigation';
-import { Skeleton } from '@/components/ui/skeleton';
 
 const ProductDetail = () => {
   const searchParams = useSearchParams();
   const idParam = parseInt(searchParams.get('id') ?? '');
-
-  return (
-    <Suspense fallback={<Skeleton className="w-full h-96" />}>
-      <ProductDetailContent idParam={idParam} />
-    </Suspense>
-  );
-};
-
-const ProductDetailContent = ({ idParam }: { idParam: number }) => {
   const { data: detailProduct } = useProductDetailData(idParam);
 
   return (
