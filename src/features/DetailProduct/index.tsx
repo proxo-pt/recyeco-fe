@@ -21,7 +21,7 @@ const ProductDetail = () => {
   const idParam = parseInt(searchParams.get('id') ?? '');
 
   return (
-    <Suspense fallback={<Skeleton className='w-full h-96' />}>
+    <Suspense fallback={<Skeleton className="w-full h-96" />}>
       <ProductDetailContent idParam={idParam} />
     </Suspense>
   );
@@ -81,7 +81,7 @@ const ProductDetailContent = ({ idParam }: { idParam: number }) => {
               <p className="text-sm">{detailProduct?.deskripsi}</p>
             </div>
           </div>
-          <div className='lg:col-span-1 col-span-4'>
+          <div className="lg:col-span-1 col-span-4">
             <ProfileCard
               toko={detailProduct?.toko.toko}
               kontak={detailProduct?.toko.kontak}

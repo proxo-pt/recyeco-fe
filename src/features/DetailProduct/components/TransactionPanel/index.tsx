@@ -17,9 +17,9 @@ const TransactionPanel: FC<{
   const onSubmit = () => {
     mutate();
   };
-  
+
   return (
-    <Suspense fallback={<Skeleton className='w-full h-10' />}>
+    <Suspense fallback={<Skeleton className="w-full h-10" />}>
       <TransactionPanelContent
         harga={harga}
         judul={judul}

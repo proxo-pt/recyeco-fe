@@ -1,3 +1,4 @@
+'use client';
 import { FC, useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import {
