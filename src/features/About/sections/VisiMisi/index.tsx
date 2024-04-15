@@ -8,6 +8,7 @@ const VisiMisi = () => {
       <Image
         priority
         src={aboutBg}
+        loading="lazy"
         className="w-full object-cover"
         alt="About Background"
       />
