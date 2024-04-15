@@ -30,7 +30,12 @@ yarn install
 
 ### Development
 
-To run the project in development mode, use the following command:
+**Create Environment Variables:**
+
+   - Create a file named `.env` in the root of the project.
+   - Copy the contents from `.env.example` into `.env`.
+
+**To run the project in development mode, use the following command:**
 
 ```bash
 yarn dev
