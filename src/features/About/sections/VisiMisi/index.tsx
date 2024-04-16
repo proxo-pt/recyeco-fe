@@ -6,7 +6,6 @@ const VisiMisi = () => {
   return (
     <>
       <Image
-        priority
         src={aboutBg}
         loading="lazy"
         className="w-full object-cover"
