@@ -73,3 +73,22 @@ export const ProductVerifyService = async (
   });
   return res.data;
 };
+
+export const ProductDeleteService = async (
+  idPostingan: number
+): Promise<any> => {
+  const res = await fetcher.delete(
+    `manajemen/delete?idpostingan=${idPostingan}`
+  );
+  return res.data;
+};
+
+export const ProductUpdateService = async (data: FormData): Promise<any> => {
+  const idPostingan = data.get('idPostingan');
+  const res = await fetcher.put(
+    `manajemen/edit?idpostingan=${idPostingan}`,
+    data,
+    { headers: { 'Content-Type': 'multipart/form-data' } }
+  );
+  return res.data;
+};
