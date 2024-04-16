@@ -17,7 +17,7 @@ const TotalResSchema = z.object({
 export type TotalResType = z.infer<typeof TotalResSchema>;
 
 const ProductResSchema = z.object({
-  id: z.number().optional(),
+  id: z.number(),
   judul: z.string({ required_error: MESSAGE.PRODUCT }).min(3).optional(),
   jenis: z.string({ required_error: MESSAGE.TYPE }).optional(),
   deskripsi: z.string({ required_error: MESSAGE.DESC }).optional(),

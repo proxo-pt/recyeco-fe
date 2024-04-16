@@ -11,8 +11,14 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger
 } from '@/components/ui/alert-dialog';
+import { useDeleteProduct } from './hooks';
 
-export const HapusProduk: FC = () => {
+export const HapusProduk: FC<{ id: number }> = ({ id }) => {
+  const { mutate } = useDeleteProduct();
+  const onDelete = (id: number) => {
+    mutate(id);
+  };
+
   return (
     <AlertDialog>
       <AlertDialogTrigger className="text-red-500">
@@ -36,7 +42,10 @@ export const HapusProduk: FC = () => {
           <AlertDialogCancel className="w-full bg-gray-400 hover:bg-gray-400 text-white hover:text-white">
             Batal
           </AlertDialogCancel>
-          <AlertDialogAction className="w-full bg-red-500 hover:bg-red-500">
+          <AlertDialogAction
+            className="w-full bg-red-500 hover:bg-red-500"
+            onClick={() => onDelete(id)}
+          >
             Hapus
           </AlertDialogAction>
         </AlertDialogFooter>

@@ -94,8 +94,8 @@ export const columns = (
             </div>
           ) : (
             <div className="flex gap-4">
-              <EditProduk />
-              <HapusProduk />
+              <EditProduk id={row.original.id} />
+              <HapusProduk id={row.original.id} />
             </div>
           )}
         </div>
