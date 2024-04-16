@@ -2,7 +2,13 @@
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 import { Button } from '@/components/ui/button';
-import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage
+} from '@/components/ui/form';
 import { InputPassword } from '@/components/ui/input-password';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';

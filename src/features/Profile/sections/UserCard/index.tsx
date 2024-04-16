@@ -29,7 +29,7 @@ const UserCard = () => {
             variant="outline"
             className="w-full border-black rounded-xl"
           >
-            <Link href="/forget-newpass" className="font-semibold">
+            <Link href="/new-pass" className="font-semibold">
               Buat Kata Sandi Baru
             </Link>
           </Button>
