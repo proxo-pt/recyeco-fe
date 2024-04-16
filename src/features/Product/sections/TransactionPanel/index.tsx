@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import Image from 'next/image';
+import { useSearchParams } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { getAssetUrl } from '@/lib/utils';
-import { useProductBuy } from './hooks';
-import { useSearchParams } from 'next/navigation';
+import { useProductBuy } from '../../hooks';
 
 const TransactionPanel: FC<{
   harga: number | undefined;

@@ -2,7 +2,7 @@
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { dataDashboardTotals } from '@/constants/dashboard';
 import { PackageOpen, ShoppingCart, Wallet } from 'lucide-react';
-import { useTotalData } from '../hooks';
+import { useTotalData } from '../../hooks';
 
 const DashboardTotals = () => {
   const { data: totalData } = useTotalData();
@@ -40,7 +40,7 @@ const DashboardTotals = () => {
   };
 
   return (
-    <div className="flex lg:flex-row flex-col items-center justify-between gap-5">
+    <div className="flex lg:flex-row flex-col items-center justify-between gap-4">
       {dataDashboardTotals.map(({ id, title }) => {
         const { icon, value } = renderContent(title);
 

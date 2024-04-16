@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import {
   Card,
   CardHeader,
@@ -8,8 +7,8 @@ import {
   CardTitle,
   CardFooter
 } from '@/components/ui/card';
+import Icon from '@/components/ui/icon';
 import { BookUser, MapPin } from 'lucide-react';
-import { getAssetUrl } from '@/lib/utils';
 
 const ProfileCard: FC<{
   toko: string | undefined;
@@ -21,14 +20,8 @@ const ProfileCard: FC<{
     <Card className="w-full">
       <CardHeader className="p-4">
         <CardTitle className="flex items-center gap-2 text-base">
-          <div className="relative w-12 h-12 rounded-xl border">
-            <Image
-              src={getAssetUrl('/img/dummy-sampah.jpg')}
-              layout="fill"
-              objectFit="cover"
-              alt="gambar sampah"
-              className="rounded-xl"
-            />
+          <div className="flex justify-center items-center w-12 h-12 rounded-xl border">
+            <Icon type="Shop" className="size-8" />
           </div>
           <span>{toko}</span>
         </CardTitle>
@@ -52,7 +45,7 @@ const ProfileCard: FC<{
           </div>
         </div>
       </CardContent>
-      <Link href="/detail-product/transaction-steps">
+      <Link href="/product/transaction-steps">
         <CardFooter className="flex justify-center p-4 text-xs bg-gray-200 rounded-b-lg hover:bg-gray-300">
           Tahap-tahap transaksi
         </CardFooter>

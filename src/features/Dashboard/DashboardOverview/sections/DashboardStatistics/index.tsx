@@ -19,7 +19,7 @@ const DashboardStatistics = () => {
         <div className="bg-[#22CAAD] size-4 rounded-full"></div>
         <h1 className="text-sm">Belum Terjual</h1>
       </div>
-      <ResponsiveContainer width="100%" aspect={4}>
+      <ResponsiveContainer width="100%" aspect={3}>
         <AreaChart
           data={DataProductSales}
           margin={{

@@ -21,7 +21,7 @@ export const DashboardMenu: DashboardMenuType[] = [
     id: 2,
     title: 'Manajemen Produk',
     icon: Package,
-    path: '/dashboard/product',
+    path: '/dashboard/manage-product',
     isChildren: false
   }
 ];

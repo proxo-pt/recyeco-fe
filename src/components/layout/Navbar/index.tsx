@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import useWindowSize from '@/hooks/useWindowSize';
 import { InputSearch } from '@/components/ui/input-search';
-import { Bell, Search, ShoppingCart } from 'lucide-react';
+import { Search } from 'lucide-react';
 import recyecoLogo from '@/assets/recyeco-dark-logo.svg';
 import HeaderMenu from './components/HeaderMenu';
 import { UserMobileDefault, UserMobileLogin } from './components/UserMobile';
@@ -52,24 +52,9 @@ const Navbar: FC = () => {
               className="rounded-2xl text-neutral-600 placeholder-neutral-600"
               suffix={<Search className="text-neutral-600" />}
               onChange={handleSearchChange}
-              // onKeyDown={handleKeyDown}
             />
           </div>
           <div className="flex justify-center items-center">
-            {/* {!isLoggedIn ? (
-              <Link href="">
-                <ShoppingCart className="h-4 w-4 mr-4" />
-              </Link>
-            ) : (
-              <div className="flex">
-                <Link href="">
-                  <Bell className="h-4 w-4 mr-4" />
-                </Link>
-                <Link href="">
-                  <ShoppingCart className="h-4 w-4 mr-4" />
-                </Link>
-              </div>
-            )} */}
             {screenSize.width < 768 ? (
               <div className="flex text-xs">
                 {!isLoggedIn ? <UserMobileDefault /> : <UserMobileLogin />}

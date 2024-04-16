@@ -8,13 +8,13 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator
 } from '@/components/ui/breadcrumb';
-import TransactionPanel from './components/TransactionPanel';
+import TransactionPanel from './sections/TransactionPanel';
 import { getAssetUrl } from '@/lib/utils';
-import ProfileCard from './components/ProfileCard';
+import ProfileCard from './sections/ProfileCard';
 import { useProductDetailData } from '../Main/hooks';
 import { useSearchParams } from 'next/navigation';
 
-const ProductDetail = () => {
+const ProductPage = () => {
   const searchParams = useSearchParams();
   const idParam = parseInt(searchParams.get('id') ?? '');
   const { data: detailProduct } = useProductDetailData(idParam);
@@ -89,4 +89,4 @@ const ProductDetail = () => {
   );
 };
 
-export default ProductDetail;
+export default ProductPage;

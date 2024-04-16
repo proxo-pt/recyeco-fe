@@ -13,7 +13,7 @@ import {
   useReactTable
 } from '@tanstack/react-table';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
+import { Skeleton } from '@/components/ui/skeleton';
 import {
   Table,
   TableBody,
@@ -22,13 +22,11 @@ import {
   TableHeader,
   TableRow
 } from '@/components/ui/table';
+import { ProductResType } from '@/domains/product';
 import { EditProduk } from '../DialogEditProduk';
 import { HapusProduk } from '../DialogHapusProduk';
 import { TambahProduk } from '../DialogTambahProduk';
-import { ProductResType } from '@/domains/product';
-import { useProductData } from '../DialogTambahProduk/hooks';
-import { Skeleton } from '@/components/ui/skeleton';
-import { useVerifyProduct } from './hooks';
+import { useProductData, useVerifyProduct } from '../../ManageProduct/hooks';
 
 export const columns = (
   mutate: any,

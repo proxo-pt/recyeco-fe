@@ -1,10 +1,10 @@
-import ProductDetail from '@/features/DetailProduct';
 import { Suspense } from 'react';
+import ProductPage from '@/features/Product';
 
 const Product = () => {
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <ProductDetail />;
+      <ProductPage />;
     </Suspense>
   );
 };

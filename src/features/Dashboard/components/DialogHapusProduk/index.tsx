@@ -11,7 +11,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger
 } from '@/components/ui/alert-dialog';
-import { useDeleteProduct } from './hooks';
+import { useDeleteProduct } from '../../ManageProduct/hooks';
 
 export const HapusProduk: FC<{ id: number }> = ({ id }) => {
   const { mutate } = useDeleteProduct();

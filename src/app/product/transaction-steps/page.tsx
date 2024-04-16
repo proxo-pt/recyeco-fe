@@ -1,5 +1,5 @@
-import TransactionStep from '@/features/DetailProduct/sections/TransactionSteps';
 import { Suspense } from 'react';
+import TransactionStep from '@/features/Product/sections/TransactionSteps';
 
 const TransactionSteps = () => {
   return (

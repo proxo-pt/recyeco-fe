@@ -1,7 +1,7 @@
-import DashboardToko from '@/features/Dashboard';
+import DashboardPage from '@/features/Dashboard';
 
 const Dashboard = () => {
-  return <DashboardToko />;
+  return <DashboardPage />;
 };
 
 export default Dashboard;

@@ -29,7 +29,7 @@ import {
 import { CategoryItems } from '@/constants/menu';
 import { useForm } from 'react-hook-form';
 import { DashProductResType } from '@/domains/product';
-import { useUpdateProduct } from './hooks';
+import { useUpdateProduct } from '../../ManageProduct/hooks';
 import {
   Form,
   FormControl,

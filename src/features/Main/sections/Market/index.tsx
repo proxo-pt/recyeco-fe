@@ -101,7 +101,7 @@ const Market = () => {
               category={`${item.jenis}`}
               shopName={`${item.penjual}`}
               img={item.foto}
-              onClick={() => router.push(`/detail-product?id=${item.id}`)}
+              onClick={() => router.push(`/product?id=${item.id}`)}
             />
           ))}
         </div>

@@ -27,7 +27,7 @@ import {
   SelectValue
 } from '@/components/ui/select';
 import { CategoryItems } from '@/constants/menu';
-import { useProductPost } from './hooks';
+import { useProductPost } from '../../ManageProduct/hooks';
 import { useForm } from 'react-hook-form';
 import { DashProductResType } from '@/domains/product';
 import {

@@ -9,22 +9,22 @@ const LayoutContainer = ({ children }: { children: ReactNode }) => {
   const routerPath = usePathname();
   const pathName = [
     '/',
-    '/sign-in',
-    '/sign-up',
     '/about',
     '/forget-pass',
-    '/forget-newpass',
     '/forget-resetpass',
+    '/new-pass',
+    '/product',
+    '/product/transaction-steps',
     '/profile',
-    '/detail-product',
-    '/detail-product/transaction-steps'
+    '/sign-in',
+    '/sign-up'
   ];
   const navPathName = [
     '/',
     '/about',
-    '/profile',
-    '/detail-product',
-    '/detail-product/transaction-steps'
+    '/product',
+    '/product/transaction-steps',
+    '/profile'
   ];
   const isIndexPage = pathName.includes(routerPath);
   const isMainPage = navPathName.includes(routerPath);
