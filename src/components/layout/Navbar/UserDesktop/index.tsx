@@ -14,7 +14,7 @@ import { Button } from '@/components/ui/button';
 import { LogOut } from 'lucide-react';
 import { useProfileData } from '@/features/Profile/hooks';
 import { handleLogout } from '@/lib/utils';
-import { useDataShop } from '../DialogDaftarToko/hooks';
+import { useDataShop } from '@/features/Main/hooks';
 import Icon from '@/components/ui/icon';
 
 export const UserDesktopLogin: FC = () => {

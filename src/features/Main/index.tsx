@@ -1,9 +1,9 @@
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
-import { DialogDaftarToko } from '@/components/layout/Navbar/components/DialogDaftarToko';
+import { DialogDaftarToko } from '@/components/layout/Navbar/DialogDaftarToko';
 import { DialogTrigger } from '@/components/ui/dialog';
-import { useDataShop } from '@/components/layout/Navbar/components/DialogDaftarToko/hooks';
+import { useDataShop } from './hooks';
 import Market from './sections/Market';
 import mulaiRecyeco from '@/assets/imgs/mulaiRecyeco.svg';
 import joinRecyeco from '@/assets/imgs/joinRecyeco.svg';

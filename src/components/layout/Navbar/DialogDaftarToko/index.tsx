@@ -11,7 +11,7 @@ import {
 } from '@/components/ui/dialog';
 import { MapPin, Store, BookUser } from 'lucide-react';
 import { InputSuffix } from '@/components/ui/input-suffix';
-import { useRegistShop } from './hooks';
+import { useRegistShop } from '@/features/Main/hooks';
 import { useForm } from 'react-hook-form';
 import { ShopResSchema, ShopResType } from '@/domains/shop';
 import { zodResolver } from '@hookform/resolvers/zod';

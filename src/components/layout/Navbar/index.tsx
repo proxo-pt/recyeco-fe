@@ -6,9 +6,9 @@ import useWindowSize from '@/hooks/useWindowSize';
 import { InputSearch } from '@/components/ui/input-search';
 import { Search } from 'lucide-react';
 import recyecoLogo from '@/assets/recyeco-dark-logo.svg';
-import HeaderMenu from './components/HeaderMenu';
-import { UserMobileDefault, UserMobileLogin } from './components/UserMobile';
-import { UserDesktopDefault, UserDesktopLogin } from './components/UserDesktop';
+import HeaderMenu from './HeaderMenu';
+import { UserMobileDefault, UserMobileLogin } from './UserMobile';
+import { UserDesktopDefault, UserDesktopLogin } from './UserDesktop';
 import { getToken } from '@/lib/storage';
 import useNavigateProduct from '@/hooks/useNavigateProduct';
 
