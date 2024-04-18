@@ -15,10 +15,12 @@ import { HamburgerMenuIcon } from '@radix-ui/react-icons';
 import { DialogDaftarToko } from '../DialogDaftarToko';
 import { DialogTrigger } from '@/components/ui/dialog';
 import { useProfileData } from '@/features/Profile/hooks';
+import { useDataShop } from '@/features/Main/hooks';
 import { handleLogout } from '@/lib/utils';
 
 export const UserMobileLogin: FC = () => {
   const { data: profileData } = useProfileData();
+  const { data: shopData } = useDataShop();
 
   return (
     <DialogDaftarToko>
@@ -52,9 +54,17 @@ export const UserMobileLogin: FC = () => {
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
-            <DropdownMenuItem>
-              <DialogTrigger className="w-full text-left">Toko</DialogTrigger>
-            </DropdownMenuItem>
+            {shopData ? (
+              <DropdownMenuItem>
+                <Link href="/dashboard" className="w-full">
+                  Toko
+                </Link>
+              </DropdownMenuItem>
+            ) : (
+              <DropdownMenuItem>
+                <DialogTrigger className="w-full text-left">Toko</DialogTrigger>
+              </DropdownMenuItem>
+            )}
             {MainMenu.map(item => (
               <DropdownMenuItem key={item.id}>
                 <Link href={item.url}>{item.title}</Link>
