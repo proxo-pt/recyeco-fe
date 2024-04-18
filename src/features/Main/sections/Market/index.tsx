@@ -10,7 +10,6 @@ import useNavigateProduct from '@/hooks/useNavigateProduct';
 import {
   Pagination,
   PaginationContent,
-  PaginationEllipsis,
   PaginationItem,
   PaginationLink,
   PaginationNext,
@@ -55,7 +54,7 @@ const Market = () => {
         >
           Kategori
         </h1>
-        <div className="flex items-center justify-center gap-4 overflow-x-auto overflow-hidden pb-2">
+        <div className="flex items-center md:justify-center gap-4 overflow-x-auto overflow-hidden pb-2">
           {Object.keys(CategoryItems).map(key => {
             const { backgroundColor, borderColor, label } = CategoryItems[key];
             return (
