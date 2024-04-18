@@ -102,9 +102,8 @@ export const EditProduk: FC<{ id: number }> = ({ id }) => {
                                 getAssetUrl('/imgs/gambarTokoPlaceholder.png')
                               }
                               layout="fill"
-                              objectFit="cover"
                               alt="foto toko"
-                              className="rounded-xl"
+                              className="rounded-xl object-cover"
                             />
                           </FormLabel>
                           <Input

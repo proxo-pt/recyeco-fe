@@ -37,15 +37,16 @@ const ProductPage = () => {
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-4 justify-center gap-7">
           <div className="lg:col-span-3 col-span-4">
-            <div className="relative w-full h-96">
+            <div className="relative w-full h-96 rounded-xl shadow-md overflow-hidden">
               <Image
                 src={
-                  detailProduct?.foto || getAssetUrl('/img/dummy-sampah.jpg')
+                  detailProduct?.foto || getAssetUrl('/imgs/dummy-sampah.jpg')
                 }
-                layout="fill"
-                objectFit="cover"
+                width={0}
+                height={0}
+                loading="lazy"
                 alt="gambar sampah"
-                className="rounded-xl"
+                className="size-full object-cover"
               />
             </div>
             <div className="flex flex-col gap-2 mb-6 mt-4">

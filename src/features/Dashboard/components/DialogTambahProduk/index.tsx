@@ -99,9 +99,8 @@ export const TambahProduk: FC = () => {
                                 getAssetUrl('/imgs/gambarTokoPlaceholder.png')
                               }
                               layout="fill"
-                              objectFit="cover"
                               alt="foto toko"
-                              className="rounded-xl"
+                              className="rounded-xl object-cover"
                             />
                           </FormLabel>
                           <Input

@@ -23,11 +23,10 @@ const TransactionPanel: FC<{
         <div className="hidden sm:flex gap-3 items-center">
           <div className="flex-none relative w-12 h-12 rounded-xl border">
             <Image
-              src={foto || getAssetUrl('/img/dummy-sampah.jpg')}
+              src={foto || getAssetUrl('/imgs/dummy-sampah.jpg')}
               layout="fill"
-              objectFit="cover"
               alt="gambar sampah"
-              className="rounded-xl"
+              className="rounded-xl object-cover"
             />
           </div>
           <h2 className="line-clamp-1">{judul}</h2>

@@ -31,9 +31,8 @@ const ItemCard: FC<ItemCardProps> = ({
         <Image
           src={img ? `${img}` : ''}
           layout="fill"
-          objectFit="cover"
           alt="gambar sampah"
-          className="rounded-t-xl"
+          className="rounded-t-xl object-cover"
         />
       </div>
       <CardHeader className="block p-3 pb-1">
