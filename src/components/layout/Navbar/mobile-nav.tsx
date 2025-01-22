@@ -12,18 +12,23 @@ export default function MobileNav() {
 
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
-      <SheetTrigger className="rounded-lg border border-black p-2">
-        <Menu className="size-4" />
+      <SheetTrigger>
+        <div className="flex items-center gap-3">
+          <Search size={16} strokeWidth={2} aria-hidden="true" />
+          <div className="rounded-lg border border-black p-2">
+            <Menu className="size-4" />
+          </div>
+        </div>
       </SheetTrigger>
       <SheetContent side="top">
         <SheetHeader>
-          <SheetTitle>
+          <SheetTitle className="py-2">
             <Link href="/">
               <div className="mx-auto h-6 w-24 bg-[url('/assets/icons/ic_recyeco-dark.svg')] bg-cover bg-center md:h-8 md:w-28" />
             </Link>
           </SheetTitle>
-          <SheetDescription asChild className="space-y-4">
-            <div>
+          <SheetDescription asChild>
+            <div className="space-y-4">
               <div className="relative mx-auto w-80">
                 <Input className="peer border-black ps-9" placeholder="Cari di Recyeco..." type="search" />
                 <div className="pointer-events-none absolute inset-y-0 start-0 flex items-center justify-center ps-3 text-muted-foreground/80 peer-disabled:opacity-50">
