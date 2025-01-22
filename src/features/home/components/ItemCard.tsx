@@ -21,7 +21,7 @@ export default function ItemCard({ title, img, price, category, shopName, classN
         <div className="absolute right-0 top-0 z-50 rounded-bl-[2rem] rounded-tr-xl bg-[#222D33] p-4 pr-3 pt-3 text-recyeco-primary">
           <ShoppingCart />
         </div>
-        <Image src={img ?? ""} layout="fill" alt={title} className="rounded-t-xl object-cover" />
+        <Image src={img ?? ""} alt={title} fill className="rounded-t-xl object-cover" />
       </div>
       <CardHeader className="p-4 pb-1">
         <div className="flex items-center justify-between gap-2">
