@@ -6,7 +6,7 @@ import { MARKET_CATEGORIES, MARKET_ITEMS } from "./constants";
 export default function HomePage() {
   return (
     <main className="mx-auto min-h-screen p-7">
-      <Image src="/assets/images/advertise-banner.png" alt="Advertise Banner" width={1500} height={1000} />
+      <Image src="/assets/images/advertise-banner.png" alt="Advertise Banner" width={1500} height={1000} priority />
 
       {/* Market Category */}
       <div className="py-4">
