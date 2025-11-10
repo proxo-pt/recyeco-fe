@@ -25,7 +25,7 @@ export const UserDesktopLogin: FC = () => {
     return (
       <div className="h-12 flex items-center justify-between bg-[#E1F7E8] rounded-xl flex-row-reverse gap-2 px-2">
         <div className="flex justify-center items-center w-10 h-10 rounded-xl">
-          {shopData ? <Icon type="Shop" className="size-8" /> : <></>}
+          <Icon type="Shop" className="size-8" />
         </div>
         <p className="font-normal">{shopData?.toko || 'Daftar Toko'}</p>
       </div>
