@@ -2,6 +2,8 @@
 
 Welcome to our Recyeco Mart!
 
+![image](https://github.com/proxo-pt/recyeco-fe/assets/117993539/aa67bfc6-c38f-4905-ada8-813064833f70)
+
 ## Tech Stack
 
 ![Alt Text](https://skillicons.dev/icons?i=typescript,nextjs,tailwindcss&perline=10)
@@ -32,8 +34,8 @@ yarn install
 
 **Create Environment Variables:**
 
-   - Create a file named `.env` in the root of the project.
-   - Copy the contents from `.env.example` into `.env`.
+- Create a file named `.env` in the root of the project.
+- Copy the contents from `.env.example` into `.env`.
 
 **To run the project in development mode, use the following command:**
 
