@@ -19,7 +19,7 @@ import { useAuthRegister } from './hooks';
 import { Mail, Lock, CircleUserRound } from 'lucide-react';
 
 const SignUp = () => {
-  const { mutate } = useAuthRegister();
+  const { mutate, isPending } = useAuthRegister();
   const form = useForm<RegisterType>({
     resolver: zodResolver(RegisterSchema),
     defaultValues: { username: '', email: '', password: '' }
@@ -137,6 +137,7 @@ const SignUp = () => {
           <Button
             size={'login'}
             className="text-base"
+            loading={isPending}
             onClick={form.handleSubmit(onSubmit)}
           >
             Register

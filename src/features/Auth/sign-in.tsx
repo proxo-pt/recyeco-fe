@@ -19,7 +19,7 @@ import { useAuthLogin } from './hooks';
 import { Mail, Lock } from 'lucide-react';
 
 const SignIn = () => {
-  const { mutate } = useAuthLogin();
+  const { mutate, isPending } = useAuthLogin();
   const form = useForm<LoginType>({
     resolver: zodResolver(LoginSchema),
     defaultValues: { email: '', password: '' }
@@ -91,6 +91,7 @@ const SignIn = () => {
           <Button
             size={'login'}
             className="text-base"
+            loading={isPending}
             onClick={form.handleSubmit(onSubmit)}
           >
             Login
